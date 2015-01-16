@@ -1,0 +1,16 @@
+body {
+	background: url("background.jpg") fixed no-repeat center;
+	background-size: cover;
+}
+center.col-md-4, center.col-sm-4 {
+	padding-top: 10%;
+	opacity: 0.8;
+}
+
+a {
+	font-size: 20px;
+}
+
+a:link, a:active, a:visited, a:hover, a:focus{
+	text-decoration: none;
+};

@@ -5,25 +5,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="login.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <style>
-    body{background:url("background.jpg") fixed no-repeat center;background-size:cover;}
-  </style>
 </head>
 <body>
 
 <div class="container">
+  <div class="row">
+    <!--Empty row-->
     <div class="col-md-4 col-sm-4"></div>
-    <center class="col-md-4 col-sm-4" style="padding-top:10%;opacity:0.8;">
+    <!--Center row-->
+    <center class="col-md-4 col-sm-4">
+      <!--Start accordion-->
       <div class="panel-group" id="accordion">
+        <!--Login Panel-->
         <div class="panel panel-default">
+          <!--Panel Heading-->
           <div class="panel-heading">
             <h1 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#login">Login</a>
             </h1>
           </div>
-          <div  id="login" class="panel-collapse collapse in">
+          <!--Panel Content-->
+          <div id="login" class="panel-collapse collapse in">
             <div class="panel-body">
               <form role="form">
                 <div class="form-group">
@@ -34,17 +39,20 @@
                   <label class="sr-only" for="passowrd" >Passowrd:</label>
                   <input type="password" class="form-control input-lg" id="login_pwd" placeholder="Enter Password">
                 </div>
-                <button type="submit" class="btn btn-info btn-block btn-lg">Login</button>
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
               </form>
             </div>
           </div>
         </div>
+        <!--Sign Up Panel-->
         <div class="panel panel-default">
+          <!--Panel Heading-->
           <div class="panel-heading">
             <h1 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#signup">Sign Up</a>
             </h1>
           </div>
+          <!--Panel Content-->
           <div  id="signup" class="panel-collapse collapse">
             <div class="panel-body">
               <form role="form">
@@ -68,13 +76,14 @@
                   <label class="sr-only" for="passowrd" >Passowrd Authentication:</label>
                   <input type="password" class="form-control input-lg" id="signup2_pwd" placeholder="Re-Enter Password">
                 </div>
-                <button type="submit" class="btn btn-info btn-block btn-lg">Sign Up</button>
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
               </form>
             </div>
           </div>
         </div>
       </div>
     </center>
+  </div>
 </div>
 </body>
 </html>
