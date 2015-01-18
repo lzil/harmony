@@ -1,9 +1,100 @@
-<div class="center jumbotron">
-  <h1>i_can_physics</h1>
-
-  <h2>
-  Make music with others.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body class="login">
+<div class="center_background">
+<div class="center_jumbotron">
+  <h1 class="center_title">i_can_physics</h1>
+  <h2 class="center_subtitle">
+    Make music with others.
   </h2>
-
-  <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
 </div>
+</div>
+<div class="container">
+  <div class="row">
+    <!--Empty row-->
+    <div class="col-md-4 col-sm-4"></div>
+    <!--Center row-->
+    <center class="col-md-4 col-sm-4">
+      <!--Start accordion-->
+      <div class="panel-group" id="accordion">
+        <!--Login Panel-->
+        <div class="panel panel-default">
+          <!--Panel Heading-->
+          <div class="panel-heading">
+            <h1 class="panel-title">
+              <a class="login" data-toggle="collapse" data-parent="#accordion" href="#login">Login</a>
+            </h1>
+          </div>
+          <!--Panel Content-->
+          <div id="login" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <form role="form" accept-charset="UTF-8" action="/login" method="post">
+                  <input name="utf8" type="hidden" value="&#x2713;" />
+                  <%= token_tag nil %>
+                  <div class="form-group">
+
+                  <label class="sr-only" for="session_username">Username:</label>
+                  <input type="text" class="form-control input" id="session_username" name="session[username]" placeholder="Enter Username">
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="session_password">Password:</label>
+                  <input type="password" class="form-control input" id="session_password" name="session[password]" placeholder="Enter Password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg" name="commit">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--Sign Up Panel-->
+        <div class="panel panel-default">
+          <!--Panel Heading-->
+          <div class="panel-heading">
+            <h1 class="panel-title">
+              <a class="login" data-toggle="collapse" data-parent="#accordion" href="#signup">Sign Up</a>
+            </h1>
+          </div>
+          <!--Panel Content-->
+          <div  id="signup" class="panel-collapse collapse">
+            <div class="panel-body">
+	    <form role="form" action="/users" class="new_user" id="new_user" method="post">
+                <div class="form-group">
+          <!--%= render 'shared/error_messages'%-->        
+          <input name="utf8" type="hidden" value="&#x2713;" />
+                  <%= token_tag nil %>
+                  <label class="sr-only" for="user_name">Username:</label>
+                  <input type="text" class="form-control input" id="user_username" placeholder="Enter Username" name="user[username]">
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="user_email">Email:</label>
+                  <input type="text" class="form-control input" id="user_email" placeholder="Enter Email" name="user[email]">
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="user_password" >Password:</label>
+                  <input type="password" class="form-control input" id="user_password" placeholder="Enter Password" name="user[password]">
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="user_password_confirmation" >Password Authentication:</label>
+                  <input type="password" class="form-control input" id="user_password_confirmation" placeholder="Re-Enter Password" name="user[password_confirmation]">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg" name="commit">Sign Up</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </center>
+  </div>
+</div>
+</body>
+</html>
+

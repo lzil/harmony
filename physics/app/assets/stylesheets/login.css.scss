@@ -1,0 +1,54 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body.login{
+	background-image: asset-data-url("background.jpg");
+	background-size: cover;
+}
+center.col-md-4, center.col-sm-4 {
+	padding-top: 2%;
+	opacity: 0.8;
+}
+
+.center_jumbotron {
+	opacity: 1;
+	color: #ffffff;
+}
+
+.center_title {
+	font-size: 60px;
+	text-align: center;
+}
+.center_subtitle{
+	font-size: 20px;
+	text-align: center;
+	color: #777;
+}
+
+a.login {
+	font-size: 16px;
+}
+
+a:link, a:active, a:visited, a:hover, a:focus{
+	text-decoration: none;
+}
+
+#error_explanation {
+  color: red;
+  text-align: left;
+  ul {
+    color: red;
+    margin: -10px -50px 20px -20px;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.alert-danger {
+  outline: -5px 0px -50px 0px;
+}
