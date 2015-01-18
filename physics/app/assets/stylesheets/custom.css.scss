@@ -19,12 +19,6 @@ textarea {
   text-align: center;
 }
 
-/* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
 /* header */
 
 #logo {
@@ -72,4 +66,19 @@ footer ul {
 footer ul li {
   float: left;
   margin-left: 15px;
+}
+
+/* profile */
+
+body.profile{
+  padding-top: 80px;
+}
+
+.col-md-8 .profile{
+  background-color: #555555;
+  border-radius: 3px;
+}
+
+.col-md-4 .profile{
+  margin-top: 30px;
 }
