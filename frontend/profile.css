@@ -1,12 +1,18 @@
-body {
+.body-main {
 	padding-top: 70px;
+	background-color: #333333;
 }
 
-.col-md-8 {
+.dropdown-menu {
+	padding: 10px 0 10px 0;
+	text-align: center;
+}
+
+.contents, .data {
 	background-color: #555555;
 	border-radius: 3px;
 }
 
-.col-md-4 {
+.tabs {
 	margin-top: 30px;
 }

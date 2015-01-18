@@ -9,14 +9,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body class="body_login">
 
 <div class="container">
   <div class="row">
     <!--Empty row-->
     <div class="col-md-4 col-sm-4"></div>
     <!--Center row-->
-    <center class="col-md-4 col-sm-4">
+    <center class="col-md-4 col-sm-4 center_login">
       <!--Start accordion-->
       <div class="panel-group" id="accordion">
         <!--Login Panel-->
@@ -24,7 +24,7 @@
           <!--Panel Heading-->
           <div class="panel-heading">
             <h1 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#login">Login</a>
+              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#login">Login</a>
             </h1>
           </div>
           <!--Panel Content-->
@@ -49,7 +49,7 @@
           <!--Panel Heading-->
           <div class="panel-heading">
             <h1 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#signup">Sign Up</a>
+              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#signup">Sign Up</a>
             </h1>
           </div>
           <!--Panel Content-->
@@ -74,7 +74,7 @@
                 </div>
                 <div class="form-group">
                   <label class="sr-only" for="passowrd" >Passowrd Authentication:</label>
-                  <input type="password" class="form-control input-lg" id="signup2_pwd" placeholder="Re-Enter Password">
+                  <input type="password" class="form-control input-lg" id="signup_2pwd" placeholder="Re-Enter Password">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
               </form>
