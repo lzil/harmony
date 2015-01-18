@@ -1,0 +1,15 @@
+.body-main {
+	padding-top: 70px;
+	background-color: #333333;
+}
+
+.contents {
+	background-color: #555555;
+	border-radius: 3px;
+}
+
+#sheet-music {
+	width: 1000px;
+	height: 600px;
+	background-color: #000000;
+}
