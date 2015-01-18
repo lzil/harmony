@@ -9,7 +9,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
-
 <body class="body-login">
 <div class="container">
   <div class="row">
@@ -30,16 +29,23 @@
           <!--Panel Content-->
           <div id="login" class="panel-collapse collapse in">
             <div class="panel-body">
-              <form role="form">
+              <!--Login Form-->
+              <form role="form" accept-charset="UTF-8" action="/login" method="post">
+                <input name="utf8" type="hidden" value="&#x2713;" />
+                <%= token_tag nil %>
+                <!--Username-->
                 <div class="form-group">
-                  <label class="sr-only" for="email">Email:</label>
-                  <input type="text" class="form-control input-lg" id="login_email" placeholder="Enter Email">
+                  <label class="sr-only" for="session_username">Username:</label>
+                  <input type="text" class="form-control input" id="session_username" name="session[username]" placeholder="Enter Username">
                 </div>
+                <!--Password-->
                 <div class="form-group">
-                  <label class="sr-only" for="passowrd" >Passowrd:</label>
-                  <input type="password" class="form-control input-lg" id="login_pwd" placeholder="Enter Password">
+                  <label class="sr-only" for="session_password" >Password:</label>
+                  <input type="password" class="form-control input" id="session_password" placeholder="Enter Password">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
+                <!--Login Button-->
+                <button type="submit" class="btn btn-primary btn-block btn-lg" name="commit">Login
+                </button>
               </form>
             </div>
           </div>
@@ -55,28 +61,33 @@
           <!--Panel Content-->
           <div  id="signup" class="panel-collapse collapse">
             <div class="panel-body">
-              <form role="form">
+              <!--Sign Up Form-->
+              <form role="form" action="/users" class="new_user" id="new_user" method="post">
+                <input name="utf8" type="hidden" value="&#x2713;" />
+                  <%= token_tag nil %>
+                <!--Username-->
                 <div class="form-group">
-                  <label class="sr-only" for="text">First Name:</label>
-                  <input type="text" class="form-control input-lg" id="signup_fname" placeholder="Enter First Name">
+                  <label class="sr-only" for="user_name">Username:</label>
+                  <input type="text" class="form-control input" id="user_username" placeholder="Enter Username" name="user[username]">
                 </div>
+                <!--Email-->
                 <div class="form-group">
-                  <label class="sr-only" for="text">Last Name:</label>
-                  <input type="text" class="form-control input-lg" id="signup_lname" placeholder="Enter Last Name">
+                  <label class="sr-only" for="user_rmail">Email:</label>
+                  <input type="text" class="form-control input" id="user_email" placeholder="Enter Email" name="user[email]">
                 </div>
+                <!--Password-->
                 <div class="form-group">
-                  <label class="sr-only" for="email">Email:</label>
-                  <input type="text" class="form-control input-lg" id="signup_email" placeholder="Enter Email">
+                  <label class="sr-only" for="user_password">Password:</label>
+                  <input type="password" class="form-control input" id="user_password" placeholder="Enter Password" name="user[password">
                 </div>
+                <!--Password Authentication-->
                 <div class="form-group">
-                  <label class="sr-only" for="passowrd" >Passowrd:</label>
-                  <input type="password" class="form-control input-lg" id="signup_pwd" placeholder="Enter Password">
+                  <label class="sr-only" for="password" >Password Authentication:</label>
+                  <input type="password" class="form-control input" id="user_password_confirmation" placeholder="Re-Enter Password" name="user[password_confirmation">
                 </div>
-                <div class="form-group">
-                  <label class="sr-only" for="passowrd" >Passowrd Authentication:</label>
-                  <input type="password" class="form-control input-lg" id="signup_2pwd" placeholder="Re-Enter Password">
-                </div>
-                <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+                <!--Sign Up Button-->
+                <button type="submit" class="btn btn-primary btn-block btn-lg" name="commit">Sign Up
+                </button>
               </form>
             </div>
           </div>
