@@ -42,23 +42,19 @@
           <div id="login" class="panel-collapse collapse in">
             <div class="panel-body">
               <!--Login Form-->
-              <form role="form" accept-charset="UTF-8" action="/login" method="post">
-                <input name="utf8" type="hidden" value="&#x2713;" />
-                <%= token_tag nil %>
-                <!--Username-->
-                <div class="form-group">
-                  <label class="sr-only" for="session_username">Username:</label>
-                  <input type="text" class="form-control input" id="session_username" name="session[username]" placeholder="Enter Username">
-                </div>
-                <!--Password-->
-                <div class="form-group">
-                  <label class="sr-only" for="session_password" >Password:</label>
-                  <input type="password" class="form-control input" id="session_password" placeholder="Enter Password">
-                </div>
-                <!--Login Button-->
-                <button type="submit" class="btn btn-primary btn-block" name="commit">Login
-                </button>
-              </form>
+            <%= form_for(:session, url: login_path) do |f| %>
+              <!--Username-->
+              <div class="form-group">
+              <%= f.label :username, class: 'sr-only' %>
+              <%= f.text_field :username, class: 'form-control input', placeholder: "Enter Username" %>
+              <!--Password-->
+              </div><div class="form-group">
+              <%= f.label :password, class: 'sr-only' %>
+              <%= f.password_field :password, class: 'form-control input', placeholder: "Enter Password" %>
+              </div>
+              <!--Submit Button-->
+              <%= f.submit "Log in", class: "btn btn-primary btn-block" %>
+            <% end %>
             </div>
           </div>
         </div>
@@ -74,33 +70,31 @@
           <div  id="signup" class="panel-collapse collapse">
             <div class="panel-body">
               <!--Sign Up Form-->
-              <form role="form" action="/users" class="new_user" id="new_user" method="post">
-                <input name="utf8" type="hidden" value="&#x2713;" />
-                  <%= token_tag nil %>
+              <%= form_for(@user) do |f| %>
+                <%= render 'shared/error_messages' %>
                 <!--Username-->
                 <div class="form-group">
-                  <label class="sr-only" for="user_name">Username:</label>
-                  <input type="text" class="form-control input" id="user_username" placeholder="Enter Username" name="user[username]">
+                  <%= f.label :username, class: 'sr-only'%>
+                  <%= f.text_field :username, class: 'form-control input', placeholder: "Enter Username"%>
                 </div>
                 <!--Email-->
                 <div class="form-group">
-                  <label class="sr-only" for="user_rmail">Email:</label>
-                  <input type="text" class="form-control input" id="user_email" placeholder="Enter Email" name="user[email]">
+                  <%= f.label :email, class: 'sr-only' %>
+                  <%= f.email_field :email, class: 'form-control input', placeholder: "Enter Email" %>
                 </div>
                 <!--Password-->
                 <div class="form-group">
-                  <label class="sr-only" for="user_password">Password:</label>
-                  <input type="password" class="form-control input" id="user_password" placeholder="Enter Password" name="user[password">
+                  <%= f.label :password, class: 'sr-only' %>
+                  <%= f.password_field :password, class: 'form-control', placeholder: "Enter Password" %>
                 </div>
                 <!--Password Authentication-->
                 <div class="form-group">
-                  <label class="sr-only" for="password" >Password Authentication:</label>
-                  <input type="password" class="form-control input" id="user_password_confirmation" placeholder="Re-Enter Password" name="user[password_confirmation">
+                  <%= f.label :password_confirmation, "Confirmation", class: 'sr-only' %>
+                  <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Re-Enter Password" %>
                 </div>
-                <!--Sign Up Button-->
-                <button type="submit" class="btn btn-primary btn-block" name="commit">Sign Up
-                </button>
-              </form>
+                <!--Signup Button-->
+                <%= f.submit "Create my account", class: "btn btn-primary" %>
+              <% end %>
             </div>
           </div>
         </div>

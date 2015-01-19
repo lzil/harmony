@@ -19,8 +19,10 @@
 	        <li><a href="#"><span class="glyphicon glyphicon-user"></span><span> Profile</span></a>
 	        </li>
                 <li>
+                  <% if logged_in? %>
 	          <a rel="nofollow" data-method="delete" href="/logout"><span class="glyphicon glyphicon-log-out"></span><span class="hidden-md hidden-lg"> </span></a>
-	        </li>
+	          <% end %>
+                </li>
 	      </ul>
 	    </div>
 	  </div>
