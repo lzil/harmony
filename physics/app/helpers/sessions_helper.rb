@@ -19,9 +19,4 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
-
-  def destroy
-    log_out
-    redirect_to root_url
-  end
 end
