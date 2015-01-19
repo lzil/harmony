@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get       'signup'     => 'static_pages#home'
   get       'about'      => 'static_pages#about'
   get       'editor'     => 'static_pages#editor'
+  get       'dashboard'  => 'static_pages#dashboard'
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
