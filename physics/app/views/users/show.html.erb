@@ -13,26 +13,28 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 
-<body class="profile">
+<body class="profile body-main">
 <!--Navbar-->
 <%= render "layouts/header" %>
-<!--Center Coloumn-->
+<!--Container-->
 <div class="container-fluid">
-<div class="col-md-2"></div>
+  <!--Empty Column-->
+  <div class="col-md-2"></div>
   <!--Profile-->
-  <center class="col-md-8 profile">
+  <div class="col-md-8 contents">
     <!--Tabs-->
-    <div class="col-md-4 profile">
-      <div class="list-group">
+    <div class="col-md-4 tabs">
+      <div class="list-group collapse navbar-collapse menu-list">
         <a href="#" class="list-group-item active">Personal Info</a>
         <a href="#" class="list-group-item">Music Background</a>
         <a href="#" class="list-group-item">Preferences</a>
         <a href="#" class="list-group-item">Account Settings</a>
       </div>
     </div>
-    <!--Content-->
-    <div class="col-md-8 profile">
+    <!--Contents-->
+    <div class="col-md-8 data">
     </div>
-  </center>
+  </div>
 </div>
 </body>
+</html>
