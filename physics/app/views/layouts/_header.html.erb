@@ -16,13 +16,13 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="user-controls">
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#"><span class="glyphicon glyphicon-user"></span><span> Profile</span></a>
+	        <li>
+	          <a href="#"><span class="glyphicon glyphicon-user"></span><span> Profile</span></a>
 	        </li>
                 <li>
-                  <% if logged_in? %>
-	          <a rel="nofollow" data-method="delete" href="/logout"><span class="glyphicon glyphicon-log-out"></span><span class="hidden-md hidden-lg"> </span></a>
-	          <% end %>
+	          <%= link_to logout_path, method: "delete" do %> <span class="glyphicon glyphicon-log-out"></span><span class="hidden-md hidden-lg"> </span><% end %>
                 </li>
+		<li><%= link_to "Log out", logout_path, method: "delete" %></li>
 	      </ul>
 	    </div>
 	  </div>
