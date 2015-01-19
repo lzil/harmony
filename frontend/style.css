@@ -1,8 +1,8 @@
-.body-login {
+.body-home {
 	background: url("background.jpg") fixed no-repeat center;
 	background-size: cover;
 }
-.center-login {
+.center-home {
 	padding-top: 10%;
 	opacity: 0.8;
 }

@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Login Page</title>
+  <title>Home Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <%= csrf_meta_tags %>
 </head>
-<body class="body-login">
+<body class="body-home">
+<div class="center_background">
+  <div class="center_jumbotron">
+    <h1 class="center_title">i_can_physics</h1>
+    <h2 class="center_subtitle">
+      Make music with others.
+    </h2>
+  </div>
+</div>
 <div class="container">
   <div class="row">
     <!--Empty row-->
     <div class="col-md-4 col-sm-4"></div>
     <!--Center row-->
-    <center class="col-md-4 col-sm-4 center-login">
+    <center class="col-md-4 col-sm-4 center-home">
       <!--Start accordion-->
       <div class="panel-group" id="accordion">
         <!--Login Panel-->
@@ -44,7 +54,7 @@
                   <input type="password" class="form-control input" id="session_password" placeholder="Enter Password">
                 </div>
                 <!--Login Button-->
-                <button type="submit" class="btn btn-primary btn-block btn-lg" name="commit">Login
+                <button type="submit" class="btn btn-primary btn-block" name="commit">Login
                 </button>
               </form>
             </div>
@@ -86,7 +96,7 @@
                   <input type="password" class="form-control input" id="user_password_confirmation" placeholder="Re-Enter Password" name="user[password_confirmation">
                 </div>
                 <!--Sign Up Button-->
-                <button type="submit" class="btn btn-primary btn-block btn-lg" name="commit">Sign Up
+                <button type="submit" class="btn btn-primary btn-block" name="commit">Sign Up
                 </button>
               </form>
             </div>
