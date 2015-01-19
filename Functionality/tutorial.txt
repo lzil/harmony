@@ -1,0 +1,35 @@
+Our website uses ABC notation language input as the primary form of writing music. ABC notation is a text-based music writing language that streamlines the music writing process in a quick, easy to type format that can be kept in small-sized files. Here, we present a brief tutorial in using ABC language so you can start composing using this elegant language!
+
+I. Headers
+
+ABC language is written in tunes, typically separated into header lines and music lines. The header contains the information about the tune, such as the title, meter, key, and tempo. An example would be:
+
+X: 1
+T: Justin's Piece
+C: Justin Xiao
+M: 4/4
+L: 1/8
+K: Dm
+Q: 1/4=112
+
+In this example, X represents the index number of the tune. For most purposes it is irrelevant, but omission may confuse the software so it is better to include it. T represents the title of the piece, here it is "Justin's Piece". C is the composer, M the meter, L the unit note length (this will be further explained in following sections), K the key, and Q the tempo (here it stands for quarter note = 112). There are other options which can be searched online, but these are the most important ones.
+
+II. Writing Notes
+
+The syntax for writing notes may be somewhat confusing for those starting out. Given some staff, say a treble, than capital letters refer to the bottom half of the staff while lower case letters represent the upper half of the staff. For example, in treble, C would mean middle C while c is the c an octave above it. To increase range, adding the apostrophe modifier to a note (') increases the note value by an octave, while the comma modifier (,) lowers the value by an octave. As many modifiers can be used on a given note as needed; for example, C''' is equivalent to c'' which is 3 octaves above middle C. It is worth noting that notes without spaces are automatically beamed, if possible. The modifiers ^, =, and _ are written before their modified note to represent sharp, neutral, and flat respectively. Try writing some notes for yourself to get used to it! Equivalently, rests are notated by a z, so a z8 is a whole rest.
+
+If you use the example header from the previous section and start typing notes as outlined, you should notice that all of the notes come out as eighth notes. This is because we set our unit note length to 1/8, or eighth note. If instead we had used L: 1/4, then the default note length would have been quarter notes! To add some variety, we add a multiplier modifier to the note to multiply the default length by whatever value the multiplier is. For example, C2 has a length twice the default, which would be a quarter note for an eighth note default length, while C1/2 (which can be written as C/ as a shortcut) has a length half the default, or a sixteenth note for our example. You can easily write a dotted rhythm by using the 3/2 modifier, so a C3/2 would be a dotted eighth note in our example. Practice your arithmetic and ABC notation to get the hang of it! It is useful to note a certain shortut involving the > and < signs. Use of one of these between two notes of equal length takes away half the length for one and assigns it to the other, which is useful for swing-y rhythms. For example, C>D is the same as C3/2D1/2, which would be a dotted eighth to sixteenth rhythm. 
+
+III. Chords
+
+Writing multiple notes into a chord is simple; putting our notes into a bracket will form a chord. For example, [CEG] will make a C major chord. It is important to note that the length of the chord will be set as the bracket's first note's length. For example, with L: 1/8, [C2EG] would be written as a quarter note chord, even though the E and G are written as eighth notes. 
+
+IV. Miscellaneous
+
+To make multiple voices, either on one staff or multiple staffs, the typical declaration is as follows - V:1 clef=treble name="Piano Treble"  snm="P. Trb", where 1 labels the voice, name is the name of the voice, and snm is the short name. You can declare multiple voices to make multi-staffed music, like the left and right hand of the piano. You can then write something along the lines of:
+[V:1]  CDEF GABC  | CDED CDED
+[V:2]  [C8EG]  | EFGF EFGF
+Which would create two separate voices, where the | represents a barline. Multiple voices can be grouped together in a staff by writing in the header %%score (1 2) (3 4), which groups voices 1 and 2 into one staff and 3 and 4 into another one. 
+
+Our tutorial concludes here, but there are tons of feautures to explore, such as bar lines, ornamentaion, lyrics, annotations, and so on. Take a look online for more information, to get the most out of ABC music notation! A good resource can be found here: http://abcnotation.com/wiki/abc:standard:v2.1
+
