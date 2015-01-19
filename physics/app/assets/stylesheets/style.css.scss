@@ -3,6 +3,7 @@
 
 /* Home Page Styling */
 .body-home {
+	background-color: #ffffff;
 	background: url("background.jpg") fixed no-repeat center;
 	background-size: cover;
 }
@@ -19,19 +20,14 @@
 	text-decoration: none;
 }
 
-.center_jumbotron {
-	opacity: 1;
+.title {
+	font-size: 60px;
 	color: #ffffff;
 }
 
-.center_title {
-	font-size: 60px;
-	text-align: center;
-}
-.center_subtitle{
+.subtitle {
 	font-size: 20px;
-	text-align: center;
-	color: #777;
+	color: #777
 }
 
 /* Header Styling */
