@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Login Page</title>
+  <title>Home Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -10,21 +10,21 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
-<body class="login">
+<body class="body-home">
 <div class="center_background">
-<div class="center_jumbotron">
-  <h1 class="center_title">i_can_physics</h1>
-  <h2 class="center_subtitle">
-    Make music with others.
-  </h2>
-</div>
+  <div class="center_jumbotron">
+    <h1 class="center_title">i_can_physics</h1>
+    <h2 class="center_subtitle">
+      Make music with others.
+    </h2>
+  </div>
 </div>
 <div class="container">
   <div class="row">
     <!--Empty row-->
     <div class="col-md-4 col-sm-4"></div>
     <!--Center row-->
-    <center class="col-md-4 col-sm-4">
+    <center class="col-md-4 col-sm-4 center-home">
       <!--Start accordion-->
       <div class="panel-group" id="accordion">
         <!--Login Panel-->
@@ -32,25 +32,29 @@
           <!--Panel Heading-->
           <div class="panel-heading">
             <h1 class="panel-title">
-              <a class="login" data-toggle="collapse" data-parent="#accordion" href="#login">Login</a>
+              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#login">Login</a>
             </h1>
           </div>
           <!--Panel Content-->
           <div id="login" class="panel-collapse collapse in">
             <div class="panel-body">
+              <!--Login Form-->
               <form role="form" accept-charset="UTF-8" action="/login" method="post">
-                  <input name="utf8" type="hidden" value="&#x2713;" />
-                  <%= token_tag nil %>
-                  <div class="form-group">
-
+                <input name="utf8" type="hidden" value="&#x2713;" />
+                <%= token_tag nil %>
+                <!--Username-->
+                <div class="form-group">
                   <label class="sr-only" for="session_username">Username:</label>
                   <input type="text" class="form-control input" id="session_username" name="session[username]" placeholder="Enter Username">
                 </div>
+                <!--Password-->
                 <div class="form-group">
-                  <label class="sr-only" for="session_password">Password:</label>
-                  <input type="password" class="form-control input" id="session_password" name="session[password]" placeholder="Enter Password">
+                  <label class="sr-only" for="session_password" >Password:</label>
+                  <input type="password" class="form-control input" id="session_password" placeholder="Enter Password">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-lg" name="commit">Login</button>
+                <!--Login Button-->
+                <button type="submit" class="btn btn-primary btn-block" name="commit">Login
+                </button>
               </form>
             </div>
           </div>
@@ -60,33 +64,39 @@
           <!--Panel Heading-->
           <div class="panel-heading">
             <h1 class="panel-title">
-              <a class="login" data-toggle="collapse" data-parent="#accordion" href="#signup">Sign Up</a>
+              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#signup">Sign Up</a>
             </h1>
           </div>
           <!--Panel Content-->
           <div  id="signup" class="panel-collapse collapse">
             <div class="panel-body">
-	    <form role="form" action="/users" class="new_user" id="new_user" method="post">
-                <div class="form-group">
-          <!--%= render 'shared/error_messages'%-->        
-          <input name="utf8" type="hidden" value="&#x2713;" />
+              <!--Sign Up Form-->
+              <form role="form" action="/users" class="new_user" id="new_user" method="post">
+                <input name="utf8" type="hidden" value="&#x2713;" />
                   <%= token_tag nil %>
+                <!--Username-->
+                <div class="form-group">
                   <label class="sr-only" for="user_name">Username:</label>
                   <input type="text" class="form-control input" id="user_username" placeholder="Enter Username" name="user[username]">
                 </div>
+                <!--Email-->
                 <div class="form-group">
-                  <label class="sr-only" for="user_email">Email:</label>
+                  <label class="sr-only" for="user_rmail">Email:</label>
                   <input type="text" class="form-control input" id="user_email" placeholder="Enter Email" name="user[email]">
                 </div>
+                <!--Password-->
                 <div class="form-group">
-                  <label class="sr-only" for="user_password" >Password:</label>
-                  <input type="password" class="form-control input" id="user_password" placeholder="Enter Password" name="user[password]">
+                  <label class="sr-only" for="user_password">Password:</label>
+                  <input type="password" class="form-control input" id="user_password" placeholder="Enter Password" name="user[password">
                 </div>
+                <!--Password Authentication-->
                 <div class="form-group">
-                  <label class="sr-only" for="user_password_confirmation" >Password Authentication:</label>
-                  <input type="password" class="form-control input" id="user_password_confirmation" placeholder="Re-Enter Password" name="user[password_confirmation]">
+                  <label class="sr-only" for="password" >Password Authentication:</label>
+                  <input type="password" class="form-control input" id="user_password_confirmation" placeholder="Re-Enter Password" name="user[password_confirmation">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-lg" name="commit">Sign Up</button>
+                <!--Sign Up Button-->
+                <button type="submit" class="btn btn-primary btn-block" name="commit">Sign Up
+                </button>
               </form>
             </div>
           </div>
@@ -97,4 +107,3 @@
 </div>
 </body>
 </html>
-
