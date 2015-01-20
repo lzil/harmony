@@ -22,7 +22,7 @@ $(document).ready(function() {
 	//   doc.output('datauri');
 		var canvas = document.getElementById('PDFcanvas'), ctx = canvas.getContext('2d');
 		canvas.toBlob(function(blob) {
-			saveAs(blob,"thing.pdf");
+			saveAs(blob,"thing.png");
 		});
 	});
 
