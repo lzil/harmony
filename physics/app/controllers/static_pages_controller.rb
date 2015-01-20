@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
   before_action :logged_in_user, only: [:dashboard]
+  before_action :logged_out_user, only: [:home]
+  layout "application", except: [:playground]
 
   def home
     @user = User.new 
@@ -9,6 +11,9 @@ class StaticPagesController < ApplicationController
   end
 
   def dashboard
+  end
+
+  def playground
   end
 
   def editor
@@ -27,5 +32,11 @@ class StaticPagesController < ApplicationController
       unless logged_in?
         redirect_to root_path
       end
-    end 
+    end
+
+    def logged_out_user
+      unless !logged_in?
+        redirect_to dashboard_path
+      end
+    end
 end
