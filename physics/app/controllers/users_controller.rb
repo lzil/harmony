@@ -6,11 +6,13 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render "static_pages/home"
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       flash[:success] = "Congratulations! You have successfully signed up <3"
       redirect_to @user
     else
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @article = Article.find(user_params)
+    @user = User.find(params[:id])
   end
   private
 

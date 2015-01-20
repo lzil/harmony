@@ -1,12 +1,40 @@
-<%= render 'layouts/header' %>
-<% provide(:title, @user.username) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.username %>
-      </h1>
-    </section>
-  </aside>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>User Profile</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+
+<body class="profile body-main">
+<!--Navbar-->
+<%= render "layouts/header" %>
+<!--Container-->
+<div class="container-fluid">
+  <!--Empty Column-->
+  <div class="col-md-2"></div>
+  <!--Profile-->
+  <div class="col-md-8 contents">
+    <!--Tabs-->
+    <div class="col-md-4 tabs">
+      <div class="list-group collapse navbar-collapse menu-list">
+        <a href="#" class="list-group-item active">Personal Info</a>
+        <a href="#" class="list-group-item">Music Background</a>
+        <a href="#" class="list-group-item">Preferences</a>
+        <a href="#" class="list-group-item">Account Settings</a>
+      </div>
+    </div>
+    <!--Contents-->
+    <div class="col-md-8 data">
+    </div>
+  </div>
 </div>
+</body>
+</html>

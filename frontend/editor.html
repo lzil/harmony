@@ -1,0 +1,26 @@
+<% provide(:title, "Editor") %>
+<body class="body-main">
+<div class="container-fluid">
+  <!--Editor-->
+  <div class="col-md-8 editor">
+    <div id="sheet-music"></div>
+    <div id="warnings"></div>
+    <textarea id="editor-input" rows="4" cols="50"></textarea>
+    <script type="text/javascript">
+      window.onload = function() {
+        abc_editor = new ABCJS.Editor("editor-input", { canvas_id: "sheet-music", warnings_id:"warnings", generate_midi:"true"});
+      }
+    </script>
+  </div>
+  <!--Chatbox-->
+  <div class="col-md-4 chatbox">
+    <!--Chatlog-->
+    <div class="chatlog">
+
+    </div>
+    <!--SMS-->
+    <div class="SMS">
+
+    </div>
+  </div>
+</div>

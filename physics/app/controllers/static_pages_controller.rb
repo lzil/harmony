@@ -1,19 +1,16 @@
 class StaticPagesController < ApplicationController
-  layout "mainlay", only: [:home]
 
-  def create
-#    @user = User.new(user_params)
-#    if @user.save
-#      redirect_to @user
-#    else
-#      render 'static_pages/home'
-#    end
-  end
   def home
     @user = User.new 
   end
 
   def about
+  end
+
+  def dashboard
+  end
+
+  def editor
   end
 
   def edit
