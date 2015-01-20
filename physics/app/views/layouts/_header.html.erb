@@ -20,7 +20,9 @@
 	          <a href="#"><span class="glyphicon glyphicon-user"></span><span> Profile</span></a>
 	        </li>
                 <li>
+		<% if logged_in? %>
 	          <%= link_to logout_path, method: "delete" do %> <span class="glyphicon glyphicon-log-out"></span><span class="hidden-md hidden-lg"> </span><% end %>
+		<% end %>
                 </li>
 	      </ul>
 	    </div>
