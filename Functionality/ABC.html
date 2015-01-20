@@ -13,6 +13,7 @@
         <script type='text/javascript' src='FileSaver.min.js'></script>
         <Script type='text/javascript' src='canvas-toBlob.js'></script>
         <script type='text/javascript' src='PDFmaker.js'></script>
+        <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <link type="text/css" rel="stylesheet" href="midiButton.css"/>
 	</head>
 	<body>
@@ -25,6 +26,21 @@
         <div id="canvas0"></div>
         <div id="midi"></div>
     </div>
+
+    <script>
+        var myDataRef = new Firebase('https://shining-heat-7731.firebaseio.com/');
+        $('#abc').keypress(function() {
+          var textAreaMusic = $('#abc').val();
+          myDataRef.set(textAreaMusic);
+        });
+
+        myDataRef.on('child_added', function(snapshot) {
+            var message = snapshot.val();
+            $('#abc').val(message)
+
+        })
+    </script>
+
     <canvas id="PDFcanvas" width="1000px" height="600px"></canvas> 
     <div id="editor"></div> 
     <button id="cmd">generate PDF</button>
