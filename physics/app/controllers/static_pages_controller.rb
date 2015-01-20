@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  before_action :logged_in_user, only: [:dashboard]
 
   def home
     @user = User.new 
@@ -21,4 +22,10 @@ class StaticPagesController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
+
+    def logged_in_user
+      unless logged_in?
+        redirect_to root_path
+      end
+    end 
 end
