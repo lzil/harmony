@@ -37,14 +37,13 @@
 	text-align: center;
 }
 
-/* Post Log in Styling */
+/* Dashboard Styling */
 .contents {
 	background-color: #555555;
 	border-radius: 3px;
 }
 
-/* Dashboard Styling */
-.menu {
+/*.menu {
 	padding: 0;
 	margin: 0;
 }
@@ -56,14 +55,15 @@
 .list-group-item:first-child {
 	border-radius: 0;
 }
-
-.updates {
+*/
+.updates, .menu {
 	margin: 30px 0 20px 0;
 }
 
 .caption-text {
 	margin-top: 0;
 }
+
 /* Profile Page Styling */
 .tabs {
 	margin-top: 30px;

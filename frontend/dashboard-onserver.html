@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Main Page</title>
+  <title>Dashboard</title>
   <!--<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>-->
@@ -30,7 +30,7 @@
       </button>
       <a class="navbar-brand" href="#">i can physics</a>
     </div>
-    <div class="collapse navbar-nav-collapse" id="user-controls">
+    <div class="collapse navbar-collapse" id="user-controls">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span><span> Profile</span></a>
         </li>
@@ -44,15 +44,17 @@
 <div class="container-fluid">
   <!--News Feed-->
   <div class="col-md-12 contents">
-    <!--Tabs-->
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">News Feed</a></li>
-        <li role="presentation"><a href="#">Find</a></li>
-        <li role="presentation"><a href="#">Browse</a></li>
-        <li role="presentation"><a href="#">Create</a></li>
-    </ul>
-    <div class="col-md-12 updates">
-      <!--Updates-->
+    <!--Left Menu-->
+    <div class="col-md-3 menu">
+      <div class="list-group collapse navbar-collapse menu-list">
+        <a href="#" class="list-group-item">News Feed</a>
+        <a href="#" class="list-group-item disabled">Manage My Projects</a>
+        <a href="#" class="list-group-item disabled">Browse Completed Pieces</a>
+        <a href="#" class="list-group-item list-group-item-danger">Create New Project</a>
+      </div>
+    </div>
+    <!--Updates-->
+    <div class="col-md-9 updates">
       <div class="col-md-4">
         <!--Post-->
         <div class="thumbnail">
@@ -62,7 +64,7 @@
           <div class="caption">
             <h3 class="caption-text">Piano exercise</h3>
             <p>Are you guys ready for the "Animenz challenge"?<br/>Go and find it out how tough you really are on the piano!</p>
-            <p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button" disabled="disabled">Send Request</a></p>
+            <p><a href="#" class="btn btn-primary" role="button" disabled="disabled">View</a> <a href="#" class="btn btn-default" role="button" disabled="disabled">Send Request</a></p>
           </div>
         </div>
       </div>
@@ -70,7 +72,7 @@
         <!--Post-->
         <div class="thumbnail">
           <!--Thumbnail-->
-          <img src="thumbnail.jpg" alt="Lorem Ipsum" class="img-respoinsive">
+          <img src="thumbnail.jpg" alt="Lorem Ipsum" class="img-responsive">
           <!--Caption-->
           <div class="caption">
             <h3 class="caption-text">Piano exercise</h3>
