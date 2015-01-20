@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'projects/default'
+
   root      'static_pages#home'
   get       'login'      => 'sessions#new'
   post      'login'      => 'sessions#create'
@@ -8,6 +10,8 @@ Rails.application.routes.draw do
   get       'editor'     => 'static_pages#editor'
   get       'dashboard'  => 'static_pages#dashboard'
   resources :users
+
+  get       'playground' => 'static_pages#playground'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

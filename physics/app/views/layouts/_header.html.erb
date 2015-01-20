@@ -12,15 +12,17 @@
 	        <span class="sr-only">Toggle navigation</span>
 	        <span class="glyphicon glyphicon-chevron-down"></span>
 	      </button>
-	      <a class="navbar-brand" href="#">i can physics</a>
+              <%= link_to dashboard_path, class:"navbar-brand" do %> i can physics <% end %>
 	    </div>
 	    <div class="collapse navbar-collapse" id="user-controls">
 	      <ul class="nav navbar-nav navbar-right">
 	        <li>
-	          <a href="#"><span class="glyphicon glyphicon-user"></span><span> Profile</span></a>
+	          <%= link_to user_path(current_user) do %><span class="glyphicon glyphicon-user"></span><span> Profile</span><% end %>
 	        </li>
                 <li>
+		<% if logged_in? %>
 	          <%= link_to logout_path, method: "delete" do %> <span class="glyphicon glyphicon-log-out"></span><span class="hidden-md hidden-lg"> </span><% end %>
+		<% end %>
                 </li>
 	      </ul>
 	    </div>
