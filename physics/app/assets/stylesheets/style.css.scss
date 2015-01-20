@@ -77,6 +77,21 @@
 	border-radius: 3px;
 }
 
+/* Editor Page Styling */
+
+.editor {
+	resize: none;
+	min-height: 400px;
+}
+
+.editor-render {
+	background-color: #ffffff;
+	max-height: 850px;
+	min-height: 850px;
+	overflow: scroll;
+	padding-left: 50px;
+}
+
 /* Error page */
 #error_explanation {
   color: red;
