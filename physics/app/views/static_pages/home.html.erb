@@ -32,6 +32,7 @@
             <div class="panel-body">
               <!--Login Form-->
             <%= form_for(:session, url: login_path) do |f| %>
+              <%= flash.now[:danger] %>
               <!--Username-->
               <div class="form-group">
               <%= f.label :username, class: 'sr-only' %>
