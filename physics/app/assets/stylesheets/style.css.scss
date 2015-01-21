@@ -71,7 +71,7 @@ a.list-group-item {
 	color: #000000;
 }
 
-.btn-primary {
+.btn .btn-primary {
 	background-color: #333333;
 	border-color: #000000;
 	border-radius: 0;
@@ -80,11 +80,12 @@ a.list-group-item {
 	color: #ffffff;
 }
 
-.btn-primary:hover, .btn-primary:focus {
+.btn .btn-primary:hover, .btn .btn-primary:focus {
 	background-color: #777;
 	border-color: #000000;
 }
-.btn-default {
+
+.btn .btn-default {
 	background-color: #ffffff;
 	border-color: #000000;
 	border-radius: 0;
@@ -104,6 +105,7 @@ a.list-group-item {
 	background-color: #ffffff;
 	max-height: 850px;
 	min-height: 850px;
+	height: 850px;
 	overflow: scroll;
 	padding-left: 50px;
 }
@@ -113,6 +115,7 @@ a.list-group-item {
 }
 
 /* Error page */
+
 #error_explanation {
   color: red;
   text-align: left;
