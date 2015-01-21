@@ -3,6 +3,27 @@
 #INTENT:
 To build a website that allows users to compose and edit music together and at the same time.
 
+#TO-DO:
+-Realtime textbox sharing.
+-Continuous update of javascript
+-Fix editor linking bug
+-Forgot password?
+-Figure out Project structure
+-Form for creating new Project
+-Inviting other users to Project
+-download MIDI
+-replay score
+-profile editing
+-search for users
+-search for Projects
+-download score as PDF
+-saving Projects
+-chatbox
+-tutorial
+-remove textbox => buttons
+-logo
+-all the other UI/CSS stuff
+
 
 #PATHS:
 So the most confusing stuff will probably be in the /physics folder. Important directories/locations of relevant files:
@@ -14,24 +35,3 @@ So the most confusing stuff will probably be in the /physics folder. Important d
 -physics/app/assets/images			:where ALL your images go. Simply move files into this folder and all pages will have access to them, with use of <%= image_tag "image-name-here.jpg" %>.
 
 Everything else just talk to Liang about.
-
-
-#TO-DO:
-
-Liang:
--Implement a "Projects" controller that handles the editor.
--Work on having real-time collaboration.
--Figure out how to implement Firebase.
-
-Monde:
--Dashboard.
--Profile page.
--Projects page (after it's implemented).
--Logo.
--Project name.
--Work on tutorial.
-
-Justin:
--Work on tutorial with Monde.
--User presses buttons/something => text appears in textbox => score shows up.
--Work with Liang on real-time collaboration and Firebase implementation.
