@@ -4,11 +4,10 @@
 To build a website that allows users to compose and edit music together and at the same time.
 
 #TO-DO:
--Realtime textbox sharing.
--Continuous update of javascript
--Fix editor linking bug
--Forgot password?
--Figure out Project structure
+-Firebase security
+-Continuous update of javascript (ASK)
+-Fix editor linking bug (ASK)
+-Figure out Project structure (ASK)
 -Form for creating new Project
 -Inviting other users to Project
 -download MIDI
@@ -17,12 +16,13 @@ To build a website that allows users to compose and edit music together and at t
 -search for users
 -search for Projects
 -download score as PDF
--saving Projects
+-saving Projects (ASK)
 -chatbox
 -tutorial
 -remove textbox => buttons
 -logo
 -all the other UI/CSS stuff
+-Forgot password?
 
 
 #PATHS:
