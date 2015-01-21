@@ -6,12 +6,13 @@
     <!--Empty row-->
     <div class="col-md-3 col-sm-3"></div>
     <!--Center row-->
-    <center class="col-md-6 col-sm-3">
+    <center class="col-md-6 col-sm-3 heading-home">
       <!--Heading-->
-        <h1 class="title">i has physics</h1>
-        <h2 class="subtitle">Make music with others.</h2>
+        <h1 class="title">I HAS PHYSICS</h1>
+        <h2 class="subtitle">Collaborate on sheet music worldwide.</h2>
     </center>
   </div>
+  <!--Login Sign Up Widget-->
   <div class="row">
     <!--Empty row-->
     <div class="col-md-4 col-sm-4"></div>
@@ -24,27 +25,28 @@
           <!--Panel Heading-->
           <div class="panel-heading">
             <h1 class="panel-title">
-              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#login">Login</a>
+              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#login">LOGIN</a>
             </h1>
           </div>
           <!--Panel Content-->
           <div id="login" class="panel-collapse collapse in">
             <div class="panel-body">
               <!--Login Form-->
-            <%= form_for(:session, url: login_path) do |f| %>
-              <%= flash.now[:danger] %>
+                <%= form_for(:session, url: login_path) do |f| %>
+                <%= flash.now[:danger] %>
               <!--Username-->
               <div class="form-group">
-              <%= f.label :username, class: 'sr-only' %>
-              <%= f.text_field :username, class: 'form-control input', placeholder: "Enter Username" %>
-              <!--Password-->
-              </div><div class="form-group">
-              <%= f.label :password, class: 'sr-only' %>
-              <%= f.password_field :password, class: 'form-control input', placeholder: "Enter Password" %>
+                <%= f.label :username, class: 'sr-only' %>
+                <%= f.text_field :username, class: 'form-control input', placeholder: "Enter Username" %>
               </div>
-              <!--Submit Button-->
-              <%= f.submit "Login", class: "btn btn-primary btn-block" %>
-            <% end %>
+              <!--Password-->
+              <div class="form-group">
+                <%= f.label :password, class: 'sr-only' %>
+                <%= f.password_field :password, class: 'form-control input', placeholder: "Enter Password" %>
+              </div>
+              <!--Login Button-->
+                <%= f.submit "LOGIN", class: "btn btn-primary btn-block" %>
+                <% end %>
             </div>
           </div>
         </div>
@@ -53,38 +55,38 @@
           <!--Panel Heading-->
           <div class="panel-heading">
             <h1 class="panel-title">
-              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#signup">Sign Up</a>
+              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#signup">SIGN UP</a>
             </h1>
           </div>
           <!--Panel Content-->
           <div  id="signup" class="panel-collapse collapse">
             <div class="panel-body">
               <!--Sign Up Form-->
-              <%= form_for(@user) do |f| %>
+                <%= form_for(@user) do |f| %>
                 <%= render 'shared/error_messages' %>
-                <!--Username-->
-                <div class="form-group">
-                  <%= f.label :username, class: 'sr-only'%>
-                  <%= f.text_field :username, class: 'form-control input', placeholder: "Enter Username"%>
-                </div>
-                <!--Email-->
-                <div class="form-group">
-                  <%= f.label :email, class: 'sr-only' %>
-                  <%= f.email_field :email, class: 'form-control input', placeholder: "Enter Email" %>
-                </div>
-                <!--Password-->
-                <div class="form-group">
-                  <%= f.label :password, class: 'sr-only' %>
-                  <%= f.password_field :password, class: 'form-control', placeholder: "Enter Password" %>
-                </div>
-                <!--Password Authentication-->
-                <div class="form-group">
-                  <%= f.label :password_confirmation, "Confirmation", class: 'sr-only' %>
-                  <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Re-Enter Password" %>
-                </div>
+              <!--Username-->
+              <div class="form-group">
+                <%= f.label :username, class: 'sr-only'%>
+                <%= f.text_field :username, class: 'form-control input', placeholder: "Enter Username"%>
+              </div>
+              <!--Email-->
+              <div class="form-group">
+                <%= f.label :email, class: 'sr-only' %>
+                <%= f.email_field :email, class: 'form-control input', placeholder: "Enter Email" %>
+              </div>
+              <!--Password-->
+              <div class="form-group">
+                <%= f.label :password, class: 'sr-only' %>
+                <%= f.password_field :password, class: 'form-control', placeholder: "Enter Password" %>
+              </div>
+              <!--Password Authentication-->
+              <div class="form-group">
+                <%= f.label :password_confirmation, "Confirmation", class: 'sr-only' %>
+                <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Re-Enter Password" %>
+              </div>
                 <!--Signup Button-->
-                <%= f.submit "Sign Up", class: "btn btn-primary btn-block" %>
-              <% end %>
+                <%= f.submit "SIGN UP", class: "btn btn-primary btn-block" %>
+                <% end %>
             </div>
           </div>
         </div>

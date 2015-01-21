@@ -4,25 +4,31 @@
 <!--Navbar-->
 <%= render "layouts/header" %>
 <div class="container-fluid">
-  <!--Editor-->
   <div class="col-md-4">
-    <textarea class="form-control editor" id="editor-input"></textarea>
+    <!--Editor-->
+    <div class="col-md-12">
+      <textarea class="form-control editor" id="editor-input"></textarea>
+    </div>
+    <!--Chatbox-->
+    <div class="col-md-12">
+      <!--Chatlog-->
+      <div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <!--SMS-->
+      <div>
+      </div>
+    </div>
+  </div>
+  <!--Empty Coloumn-->
+  <div class="col-md-1">
   </div>
   <!--Editor Render-->
   <div class="col-md-6 editor-render">
-    <div id="sheet-music"></div>
+    <div class="sheet-music" id="sheet-music"></div>
     <div id="warnings"></div>
-  </div>
-  <!--Chatbox-->
-  <div class="col-md-3 chatbox">
-    <!--Chatlog-->
-    <div class="chatlog">
-
-    </div>
-    <!--SMS-->
-    <div class="SMS">
-
-    </div>
   </div>
 </div>
 </body>
+</html>

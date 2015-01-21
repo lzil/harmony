@@ -1,80 +1,96 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* General Styling */
+.btn-block {
+	background-color: #333333;
+	border-color: #000000;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+}
+
+.btn-block:hover, .btn-block:focus {
+	background-color: #777;
+	border-color: #000000;
+}
+
 /* Home Page Styling */
 .body-home {
 	background: url("background.jpg") fixed no-repeat center;
 	background-size: cover;
 }
+
+.heading-home {
+	padding-top: 5%;
+}
+
+.title {
+	font-family: 'Raleway', sans-serif;
+	font-size: 60px;
+	font-weight: 300;
+	color: #ffffff;
+}
+
+.subtitle {
+	font-family: 'Raleway', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	color: #777;
+}
+
 .center-home {
 	padding-top: 5%;
 	opacity: 0.8;
 }
 
-.log-sign {
-	font-size: 20px;
-}
-
-.log-sign:link, .log-sign:active, .log-sign:visited, .log-sign:hover, .log-sign:focus{
+.log-sign .log-sign:link, .log-sign:active, .log-sign:visited, .log-sign:hover, .log-sign:focus{
 	text-decoration: none;
-}
-
-.title {
-	font-size: 60px;
-	color: #ffffff;
-}
-
-.subtitle {
-	font-size: 20px;
-	color: #777
+	font-size: 16px;
 }
 
 /* Header Styling */
-.body-main {
-	padding-top: 70px;
-	background-color: #333333;
+nav {
+	padding: 0 3% 0 2%;
 }
 
-.dropdown-menu {
-	padding: 10px 0 10px 0;
-	text-align: center;
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-right {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+}
+
+.body-main {
+	padding-top: 70px;
+	background-color: #DCDCDC;;
 }
 
 /* Dashboard Styling */
-.contents {
-	background-color: #555555;
-	border-radius: 3px;
+
+a.list-group-item {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	color: #000000;
 }
 
-/*.menu {
-	padding: 0;
-	margin: 0;
-}
-
-.menu-list {
-	padding: 0;
-}
-
-.list-group-item:first-child {
+.btn-primary {
+	background-color: #333333;
+	border-color: #000000;
 	border-radius: 0;
-}
-*/
-.updates, .menu {
-	margin: 30px 0 20px 0;
-}
-
-.caption-text {
-	margin-top: 0;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	color: #ffffff;
 }
 
-/* Profile Page Styling */
-.tabs {
-	margin-top: 30px;
+.btn-primary:hover, .btn-primary:focus {
+	background-color: #777;
+	border-color: #000000;
 }
-
-.data  {
-	background-color: #555555;
-	border-radius: 3px;
+.btn-default {
+	background-color: #ffffff;
+	border-color: #000000;
+	border-radius: 0;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	color: #000000;
 }
 
 /* Editor Page Styling */
@@ -90,6 +106,10 @@
 	min-height: 850px;
 	overflow: scroll;
 	padding-left: 50px;
+}
+
+.sheet-music {
+	margin: auto;
 }
 
 /* Error page */
