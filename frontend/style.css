@@ -86,5 +86,8 @@
 	max-height: 850px;
 	min-height: 850px;
 	overflow: scroll;
-	padding-left: 50px;
+}
+
+.sheet-music {
+	margin: auto;
 }
