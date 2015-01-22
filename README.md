@@ -20,9 +20,10 @@ To build a website that allows users to compose and edit music together and at t
 -chatbox
 -tutorial
 -remove textbox => buttons
--logo
+-logo + name
 -all the other UI/CSS stuff
 -Forgot password?
+-database of music
 
 
 #PATHS:
