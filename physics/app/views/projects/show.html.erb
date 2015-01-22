@@ -1,3 +1,7 @@
+<body class="body-main">
+<!--Navbar-->
+<%= render "layouts/header" %>
+<div class="container-fluid">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -17,3 +21,34 @@
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+<% provide(:title, "Editor") %>
+
+  <div class="col-md-4">
+    <!--Editor-->
+    <div class="col-md-12">
+      <textarea class="form-control editor" id="editor-input"></textarea>
+    </div>
+    <!--Chatbox-->
+    <div class="col-md-12">
+      <!--Chatlog-->
+      <div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <!--SMS-->
+      <div>
+      </div>
+    </div>
+  </div>
+  <!--Empty Coloumn-->
+  <div class="col-md-1">
+  </div>
+  <!--Editor Render-->
+
+  <div class="col-md-6 editor-render">
+    <div class="sheet-music" id="sheet-music"></div>
+    <div id="warnings"></div>
+  </div>
+</div>
+</body>
+</html>

@@ -21,7 +21,7 @@
 
       myDataRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
-        $('#messageInput').val(message.text);
+        $('#messageInput').val(message.text).change();
       });
     </script>
 

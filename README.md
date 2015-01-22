@@ -5,8 +5,6 @@ To build a website that allows users to compose and edit music together and at t
 
 #TO-DO:
 -Firebase security
--Continuous update of javascript (ASK)
--Fix editor linking bug (ASK)
 -Figure out Project structure (ASK)
 -Form for creating new Project
 -Inviting other users to Project
