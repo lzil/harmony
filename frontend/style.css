@@ -1,110 +1,110 @@
 /* General Styling */
-.btn-block {
-	background-color: #333333;
-	border-color: #000000;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-}
 
-.btn-block:hover, .btn-block:focus {
-	background-color: #777;
-	border-color: #000000;
-}
-
-/* Home Page Styling */
-.body-home {
-	background: url("background.jpg") fixed no-repeat center;
-	background-size: cover;
-}
-
-.heading-home {
-	padding-top: 5%;
-}
-
-.title {
-	font-family: 'Raleway', sans-serif;
-	font-size: 60px;
-	font-weight: 300;
-	color: #ffffff;
-}
-
-.subtitle {
-	font-family: 'Raleway', sans-serif;
-	font-size: 20px;
-	font-weight: 400;
-	color: #777;
-}
-
-.center-home {
-	padding-top: 5%;
-	opacity: 0.8;
-}
-
-.log-sign .log-sign:link, .log-sign:active, .log-sign:visited, .log-sign:hover, .log-sign:focus{
-	text-decoration: none;
-	font-size: 16px;
-}
+	/* Button Styling */
+		.btn-block {
+			background-color: #333333;
+			border-color: #000000;
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;}
+		.btn-block:hover, .btn-block:focus {
+			background-color: #777;
+			border-color: #000000;}
+		.btn-primary {
+			background-color: #333333;
+			border-color: #000000;
+			border-radius: 0;
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
+			color: #ffffff;}
+		.btn-primary:hover, .btn-primary:focus {
+			background-color: #777;
+			border-color: #000000;}
+		.btn-default {
+			background-color: #ffffff;
+			border-color: #000000;
+			border-radius: 0;
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
+			color: #000000;}
+	/* Form Styling */
+		.form-control:focus {
+			border-color: rgba(255, 0, 0, 0.8);
+  			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(150, 0, 0, 0.6);
+  			outline: 0 none;}
 
 /* Header Styling */
-nav {
-	padding: 0 3% 0 2%;
-}
+	nav {padding: 0 3% 0 2%;}
+	.navbar-inverse .navbar-brand, .navbar-inverse .navbar-right {
+		font-family: 'Raleway', sans-serif;
+		font-weight: 400;}
+	.body-main {
+		padding-top: 70px;
+		background-color: #DCDCDC;}
 
-.navbar-inverse .navbar-brand, .navbar-inverse .navbar-right {
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-}
+/* Pages */
 
-.body-main {
-	padding-top: 70px;
-	background-color: #DCDCDC;;
-}
+	/* Home Page Styling */
+		.body-home {
+			background: url("background.jpg") fixed no-repeat center;
+			background-size: cover;}
+		.heading-home {
+			padding-top: 5%;}
+		.title {
+			font-family: 'Raleway', sans-serif;
+			font-size: 60px;
+			font-weight: 300;
+			color: #ffffff;}
+		.subtitle {
+			font-family: 'Raleway', sans-serif;
+			font-size: 20px;
+			font-weight: 400;
+			color: #777;}
+		.center-home {
+			padding-top: 5%;
+			opacity: 0.8;}
+		.log-sign .log-sign:link, .log-sign:active, .log-sign:visited, .log-sign:hover, .log-sign:focus{
+			text-decoration: none;
+			font-size: 16px;}
 
-/* Dashboard Styling */
+	/* Dashboard Styling */
 
-a.list-group-item {
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	color: #000000;
-}
+		a.list-group-item {
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
+			color: #000000;}
 
-.btn-primary {
-	background-color: #333333;
-	border-color: #000000;
-	border-radius: 0;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	color: #ffffff;
-}
+	/* Editor Page Styling */
 
-.btn-primary:hover, .btn-primary:focus {
-	background-color: #777;
-	border-color: #000000;
-}
-.btn-default {
-	background-color: #ffffff;
-	border-color: #000000;
-	border-radius: 0;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	color: #000000;
-}
+		.editor {
+			resize: none;
+			min-height: 400px;}
+		.editor-render {
+			background-color: #ffffff;
+			max-height: 850px;
+			min-height: 850px;
+			overflow: scroll;
+			padding-left: 50px;}
+		.sheet-music {
+			margin: auto;}
 
-/* Editor Page Styling */
+	/* Profile Page Styling */
 
-.editor {
-	resize: none;
-	min-height: 400px;
-}
+		.data {
+			background-color: #ffffff;
+			border-radius: 4px;
+			padding: 1%;}
 
-.editor-render {
-	background-color: #ffffff;
-	max-height: 850px;
-	min-height: 850px;
-	overflow: scroll;
-	padding-left: 50px;
-}
+		.personal-info {
+			padding: 0;}
 
-.sheet-music {
-	margin: auto;
-}
+		.input-group {
+			margin-bottom: 10px;}
+		
+		.profile-form {
+			border-radius: 0px;
+			border-color: #000000;}
+
+		.profile-btn:hover, .profile-btn:focus, .profile-btn:active {
+			border-color: rgba(255, 0, 0, 0.8);
+  			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(150, 0, 0, 0.6);
+  			outline: 0 none;}

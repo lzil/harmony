@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Dashboard</title>
+  <title>Profile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="show.js"></script> 
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -53,6 +54,20 @@
     </div>
     <!--Contents-->
     <div class="col-md-9 data">
+      <div class="col-md-8 personal-info">
+        <div class="input-group">
+          <input type = "text" class="form-control profile-form" placeholder="Personal Info Field 1" aria-describedby="username">
+          <span class="input-group-btn">
+            <button class="btn btn-default profile-btn" type="button" id="edit-btn">
+              <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="profile-picture">
+        </div>
+      </div>
     </div>
 </div>
 </body>
