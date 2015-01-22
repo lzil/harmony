@@ -10,9 +10,6 @@ class StaticPagesController < ApplicationController
   def about
   end
 
-  def dashboard
-  end
-
   def playground
   end
 
