@@ -4,14 +4,21 @@
 		<title>API practice</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="abcjs_editor_1.12-min.js" type="text/javascript"></script>
-        <script type='text/javascript' src='http://midijs.net/lib/midi.js'></script>
+        <script type='text/javascript' src='MIDI.js'></script>
         <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script> 
         <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
         <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script> 
         <script type='text/javascript' src='FileSaver.min.js'></script>
-        <Script type='text/javascript' src='canvas-toBlob.js'></script>
+        <script type='text/javascript' src='MIDI.js-master/js/MIDI/AudioDetext.js'></script>
+        <script type='text/javascript' src='MIDI.js-master/inc/jasmid/replayer.js'></script>
+        <script type='text/javascript' src='MIDI.js-master/inc/jasmid/stream.js'></script>
+        <script type='text/javascript' src='MIDI.js-master/inc/jasmid/midifile.js'></script>
+        <script type='text/javascript' src='MIDI.js-master/js/Window/Event.js'></script>
+        <script type='text/javascript' src='MIDI.js-master/js/Window/DOMLoader.XML'></script>
+        <script src='text/javascript' src='MIDI.js-master/inc/Base64.js'></script>
+        <script src='text/javascript' src='MIDI.js-master/inc/base64binary.js'></script>
+        <script type='text/javascript' src='canvas-toBlob.js'></script>
         <script type='text/javascript' src='PDFmaker.js'></script>
-        <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <link type="text/css" rel="stylesheet" href="midiButton.css"/>
 	</head>
 	<body>
@@ -25,25 +32,9 @@
         <div id="canvas0"></div>
         <div id="midiPlay">Play</div>
         <div id="midiPause">Pause</div>
-        <div id="midi"></div>
+        <div id="midi" hidden="true"></div>
         <div id="warnings"></div>
     </div>
-    <!---->
-
-
-    <!--Firebase implementation?-->
-    <script>
-        var myDataRef = new Firebase('https://shining-heat-7731.firebaseio.com/');
-        var textAreaMusic = $('#abc').val();
-        $('#abc').keypress(function() {
-          myDataRef.set(textAreaMusic);
-        });
-
-        myDataRef.on('child_added', function(snapshot) {
-            var message = snapshot.val();
-            $('#abc').val(message)
-        })
-    </script>
     <!---->
 
     <!--PNG making-->
@@ -52,22 +43,41 @@
     <button id="cmd">generate PNG</button> 
     <!---->
 
+    <!--most inefficient MIDI downloader ever-->
+    <a id="MIDIdown" href="">download midi</a>
+    <script>
+    $(document).ready(function() {
+      $('#MIDIdown').hover(function() {
+        var url = document.getElementsByTagName("a")[0].getAttribute("href");
+        document.getElementById("MIDIdown").setAttribute("href", url);
+        document.getElementById("MIDIdown").setAttribute("download", "music");
+      });
+    });
+    </script>
+    <!---->
+
     <!--Functionality javascript-->
     <script type="text/javascript">
         //hides Quicktime and creates the ABC editor functionality
         window.onload = function() {
           abc_editor = new ABCJS.Editor("abc", { canvas_id: "canvas0", warnings_id:"warnings", midi_id:"midi"});
-          document.getElementById("midi").setAttribute("hidden", "true");
         } 
+
 
         // midi playback functionality
         $(document).ready(function() {   
           $('#midiPlay').click(function() {
             var url = document.getElementsByTagName("a")[0].getAttribute("href");
-            MIDIjs.play(url);
+            MIDI.loadPlugin({
+              callback: function() {
+                player = MIDI.player;
+                player.timeWarp =1;
+                MIDI.Player.loadFile(url, player.start);
+              }
+            });
           });
           $('#midiPause').click(function() {
-            MIDIjs.stop();
+            MIDI.Player.pause();
           });
         });
 
