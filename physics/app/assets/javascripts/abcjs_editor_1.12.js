@@ -19064,14 +19064,14 @@ window.ABCJS.edit.EditArea.prototype.addChangeListener = function(a) {
     };
     this.textarea.onmousedown = function() {
         this.isDragging = true;
-        a.fireSelectionChanged()
+        a.fireSelectionChanged();
     };
     this.textarea.onmouseup = function() {
         this.isDragging = false;
-        a.fireChanged()
+        a.fireChanged();
     };
     this.textarea.onchange = function() {
-        a.fireChanged()
+        a.fireChanged();
     }
 };
 window.ABCJS.edit.EditArea.prototype.getSelection = function() {
