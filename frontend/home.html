@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Home Page</title>
+  <title>Dashboard</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="body-home">
 <div class="container">
   <!--Large Poster-->
@@ -18,10 +18,10 @@
     <!--Empty row-->
     <div class="col-md-3 col-sm-3"></div>
     <!--Center row-->
-    <center class="col-md-6 col-sm-3">
+    <center class="col-md-6 col-sm-3 heading-home">
       <!--Heading-->
-        <h1 class="title">i has physics</h1>
-        <h2 class="subtitle">Make music with others.</h2>
+        <h1 class="title">I HAS PHYSICS</h1>
+        <h2 class="subtitle">Collaborate on sheet music worldwide.</h2>
     </center>
   </div>
   <!--Login Sign Up Widget-->
@@ -37,7 +37,7 @@
           <!--Panel Heading-->
           <div class="panel-heading">
             <h1 class="panel-title">
-              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#login">Login</a>
+              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#login">LOGIN</a>
             </h1>
           </div>
           <!--Panel Content-->
@@ -46,7 +46,7 @@
               <!--Login Form-->
               <form role="form" accept-charset="UTF-8" action="/login" method="post">
                 <input name="utf8" type="hidden" value="&#x2713;" />
-                <%= token_tag nil %>
+                <!--<%= token_tag nil %>-->
                 <!--Username-->
                 <div class="form-group">
                   <label class="sr-only" for="session_username">Username:</label>
@@ -58,7 +58,7 @@
                   <input type="password" class="form-control input" id="session_password" placeholder="Enter Password">
                 </div>
                 <!--Login Button-->
-                <button type="submit" class="btn btn-primary btn-block" name="commit">Login
+                <button type="submit" class="btn btn-primary btn-block" name="commit">LOGIN
                 </button>
               </form>
             </div>
@@ -69,7 +69,7 @@
           <!--Panel Heading-->
           <div class="panel-heading">
             <h1 class="panel-title">
-              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#signup">Sign Up</a>
+              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#signup">SIGN UP</a>
             </h1>
           </div>
           <!--Panel Content-->
@@ -78,7 +78,7 @@
               <!--Sign Up Form-->
               <form role="form" action="/users" class="new_user" id="new_user" method="post">
                 <input name="utf8" type="hidden" value="&#x2713;" />
-                  <%= token_tag nil %>
+                  <!--<%= token_tag nil %>-->
                 <!--Username-->
                 <div class="form-group">
                   <label class="sr-only" for="user_name">Username:</label>
@@ -100,7 +100,7 @@
                   <input type="password" class="form-control input" id="user_password_confirmation" placeholder="Re-Enter Password" name="user[password_confirmation">
                 </div>
                 <!--Sign Up Button-->
-                <button type="submit" class="btn btn-primary btn-block" name="commit">Sign Up
+                <button type="submit" class="btn btn-primary btn-block" name="commit">SIGN UP
                 </button>
               </form>
             </div>

@@ -2,21 +2,19 @@
 <html lang="en">
 <head>
   <title>Dashboard</title>
-  <!--<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="body-main">
 <!--Navbar-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-controls">
         <span class="sr-only">Toggle navigation</span>
@@ -28,7 +26,7 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="glyphicon glyphicon-chevron-down"></span>
       </button>
-      <a class="navbar-brand" href="#">i can physics</a>
+      <a class="navbar-brand" href="#">I CAN PHYSICS</a>
     </div>
     <div class="collapse navbar-collapse" id="user-controls">
       <ul class="nav navbar-nav navbar-right">
@@ -42,19 +40,21 @@
 </nav>
 <!--Container-->
 <div class="container-fluid">
-  <!--News Feed-->
+  <!--Body-->
   <div class="col-md-12 contents">
-    <!--Left Menu-->
-    <div class="col-md-3 menu">
+    <!--Tabs-->
+    <div class="col-md-3 tabs">
       <div class="list-group collapse navbar-collapse menu-list">
         <a href="#" class="list-group-item">News Feed</a>
-        <a href="#" class="list-group-item disabled">Manage My Projects</a>
-        <a href="#" class="list-group-item disabled">Browse Completed Pieces</a>
-        <a href="#" class="list-group-item list-group-item-danger">Create New Project</a>
+        <a href="#" class="list-group-item">Manage My Projects</a>
+        <a href="#" class="list-group-item">Browse Completed Pieces</a>
+      </div>
+      <div class="list-group collapse navbar-collapse menu-list">
+        <a href="#" class="list-group-item">Create New Project</a>
       </div>
     </div>
-    <!--Updates-->
-    <div class="col-md-9 updates">
+    <!--Contents-->
+    <div class="col-md-9 data">
       <div class="col-md-4">
         <!--Post-->
         <div class="thumbnail">
@@ -64,7 +64,7 @@
           <div class="caption">
             <h3 class="caption-text">Piano exercise</h3>
             <p>Are you guys ready for the "Animenz challenge"?<br/>Go and find it out how tough you really are on the piano!</p>
-            <p><a href="#" class="btn btn-primary" role="button" disabled="disabled">View</a> <a href="#" class="btn btn-default" role="button" disabled="disabled">Send Request</a></p>
+            <p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Send Request</a></p>
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@
           <div class="caption">
             <h3 class="caption-text">Piano exercise</h3>
             <p>Are you guys ready for the "Animenz challenge"?<br/>Go and find it out how tough you really are on the piano!</p>
-            <p><a href="#" class="btn btn-primary" role="button" disabled="disabled">View</a> <a href="#" class="btn btn-default" role="button" disabled="disabled">Send Request</a></p>
+            <p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Send Request</a></p>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
           <div class="caption">
             <h3 class="caption-text">Piano exercise</h3>
             <p>Are you guys ready for the "Animenz challenge"?<br/>Go and find it out how tough you really are on the piano!</p>
-            <p><a href="#" class="btn btn-primary" role="button" disabled="disabled">View</a> <a href="#" class="btn btn-default" role="button" disabled="disabled">Send Request</a></p>
+            <p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Send Request</a></p>
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@
           <div class="caption">
             <h3 class="caption-text">Piano exercise</h3>
             <p>Are you guys ready for the "Animenz challenge"?<br/>Go and find it out how tough you really are on the piano!</p>
-            <p><a href="#" class="btn btn-primary" role="button" disabled="disabled">View</a> <a href="#" class="btn btn-default" role="button" disabled="disabled">Send Request</a></p>
+            <p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Send Request</a></p>
           </div>
         </div>
       </div>
