@@ -1,9 +1,28 @@
-<% provide(:title, "Editor") %>
-
 <body class="body-main">
 <!--Navbar-->
 <%= render "layouts/header" %>
 <div class="container-fluid">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @project.owner_id %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+<% provide(:title, "Editor") %>
+
   <div class="col-md-4">
     <!--Editor-->
     <div class="col-md-12">

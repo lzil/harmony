@@ -9,27 +9,20 @@
   </head>
   <body>
     <div id='messagesDiv'></div>
-    <input type='text' id='nameInput' placeholder='Name'>
     <textarea type='text' id='messageInput' placeholder='Message'></textarea>
 
     <script>
       var myDataRef = new Firebase('https://brilliant-fire-2071.firebaseio.com/');
-      $('#messageInput').keypress(function (e) {
-        if (e.keyCode > 0) {
-          var name = $('#nameInput').val();
-          var text = $('#messageInput').val();
-          myDataRef.push({name: name, text: text});
-          $('#messageInput').val('');
-        }
+
+      $('#messageInput').on('input', function() {
+        var text = $('#messageInput').val();
+        myDataRef.push({text: text});
       });
+
       myDataRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
-        displayChatMessage(message.name, message.text);
+        $('#messageInput').val(message.text).change();
       });
-      function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-      };
     </script>
 
     <textarea id="abc" rows="4" cols="50"></textarea>

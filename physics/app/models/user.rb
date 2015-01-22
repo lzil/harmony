@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :permissions
+  has_many :projects, through: :permissions
+
   before_save { self.email = email.downcase }
   validates :username, presence: true, length: { maximum: 20 }, uniqueness: {case_sensitive: false}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
