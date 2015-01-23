@@ -13,6 +13,7 @@
 </head>
 
 <body class="body-main">
+<script type="text/javascript">$(document).ready(main);</script>
 <!--Navbar-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -27,7 +28,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">I CAN PHYSICS</a>
+        <a class="navbar-brand" href="#">HARMONY</a>
       </div>
       <div class="collapse navbar-collapse" id="user-controls">
         <ul class="nav navbar-nav navbar-right">
@@ -106,14 +107,16 @@
       </div>
       <!--Account-->
       <div class="col-md-8 data-2">
+        <!--<%= form_for(@user) do |f| %>-->
+        <div class="alert alert-warning account-fail"><!--<%= render 'shared/error_messages' %>--></div>
         <table class="table-hover">
           <tbody>
             <tr>
               <td>
-                <p>Account Field 1</p>
+                <p>Email</p>
               <td>  
                 <div class="input-group profile-group">
-                  <input type = "text" class="form-control profile-form" placeholder="Account Field 1" aria-describedby="Persona-info-field-1" disabled="disabled">
+                  <input type = "text" class="form-control profile-form" placeholder="Enter New Email" aria-describedby="New-Email" disabled="disabled">
                   <span class="input-group-btn">
                     <button class="btn btn-default profile-btn" type="button">
                       <span class="glyphicon glyphicon-pencil form-group-addon"></span>
@@ -124,10 +127,10 @@
             </tr>
             <tr>
               <td>
-                <p>Account Field 2</p>
+                <p>New Password</p>
               <td>  
                 <div class="input-group profile-group">
-                  <input type = "text" class="form-control profile-form" placeholder="Account Field 1" aria-describedby="Persona-info-field-2" disabled="disabled">
+                  <input type = "text" class="form-control profile-form" placeholder="Enter New Password" aria-describedby="New-Password" disabled="disabled">
                   <span class="input-group-btn">
                     <button class="btn btn-default profile-btn" type="button">
                       <span class="glyphicon glyphicon-pencil form-group-addon"></span>
@@ -138,10 +141,10 @@
             </tr>
             <tr>
               <td>
-                <p>Account Field 3</p>
+                <p>Confirm New Password</p>
               <td>  
                 <div class="input-group profile-group">
-                  <input type = "text" class="form-control profile-form" placeholder="Account Field 1" aria-describedby="Persona-info-field-3" disabled="disabled">
+                  <input type = "text" class="form-control profile-form" placeholder="Re-enter New Password" aria-describedby="Confirm-Password" disabled="disabled">
                   <span class="input-group-btn">
                     <button class="btn btn-default profile-btn" type="button">
                       <span class="glyphicon glyphicon-pencil form-group-addon"></span>
@@ -152,6 +155,12 @@
             </tr>
           </tbody>
         </table>
+        <div>
+            <button type="submit" class="btn btn-primary" name="commit">Save Changes
+            </button>
+            <button type="cancel" class="btn btn-default clear-inputs">Clear
+            </button>
+        </div>
       </div>
     </div>
 </div>
