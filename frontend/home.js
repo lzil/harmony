@@ -1,4 +1,4 @@
-var main = function() {
+var home = function() {
 	if($('.login-fail').text() === '') {
 		$('.login-fail').hide();
 	};
@@ -7,4 +7,4 @@ var main = function() {
 	};
 };
 
-$(document).ready(main);
+$(document).ready(home);
