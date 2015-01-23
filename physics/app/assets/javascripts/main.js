@@ -1,7 +1,4 @@
 var main = function() {
-	if($('.account-fail').text() === '') {
-		$('.account-fail').hide();
-	};
 	$('.data-2').hide();
 	$('.data-3').hide();
 	$('.profile-btn').click(function() {
@@ -12,7 +9,6 @@ var main = function() {
 			$('.profile-form').attr('disabled','disabled');
 			$parent.addClass('enabled');
 			$child.removeAttr('disabled');
-			$child.focus();
 		}
 		else {
 			$parent.removeClass('enabled');
@@ -23,9 +19,8 @@ var main = function() {
 	$('.tab-1').click(function() {
 		$('.data').slideUp(300);
 		setTimeout(function() {
-			$('.profile-form').val('');
-			$('.data-2').hide();
-			$('.data-1').show();
+			$('.data-2').delay(300).hide();
+			$('.data-1').delay(300).show();
 		}, 300);
 		$('.data').slideDown(300);
 		$('.tab-2').removeClass('active');
@@ -34,9 +29,8 @@ var main = function() {
 	$('.tab-2').click(function() {
 		$('.data').slideUp(300);
 		setTimeout(function() {
-			$('.profile-form').val('');
-			$('.data-1').hide();
-			$('.data-2').show();
+			$('.data-1').delay(300).hide();
+			$('.data-2').delay(300).show();
 		}, 300);
 		$('.data').slideDown(300);
 		$('.tab-1').removeClass('active');
@@ -45,7 +39,6 @@ var main = function() {
 	$('.modal-cancel').click(function() {
 		$('#new-proj').modal('hide');
 	});
-	$('.clear-inputs').click(function() {
-		$('.profile-form').val('');
-	});
-};
+}
+
+$(document).ready(main);

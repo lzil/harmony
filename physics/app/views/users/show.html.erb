@@ -1,38 +1,130 @@
 <% provide(:title, "Profile") %>
 <body class="profile body-main">
+<script type="text/javascript">$(document).ready(main);</script>
 <!--Navbar-->
 <%= render "layouts/header" %>
 <!--Container-->
 <div class="container-fluid">
+  <!--Empty Coloumn-->
+  <div class="col-md-1"></div>
   <!--Body-->
-  <div class="col-md-12 tabs">
+  <div class="col-md-10">
     <!--Tabs-->
-    <div class="col-md-3 tabs">
-      <div class="list-group collapse navbar-collapse menu-list">
-        <a href="#" class="list-group-item">Personal Info</a>
-        <a href="#" class="list-group-item">Music Background</a>
-        <a href="#" class="list-group-item">Preferences</a>
-        <a href="#" class="list-group-item">Account Settings</a>
+    <div class="col-md-3">
+      <div class="list-group">
+        <a href="#" class="list-group-item tab-1 active">Profile</a>
+        <a href="#" class="list-group-item tab-2">Account Settings</a>
       </div>
     </div>
     <!--Contents-->
     <div class="col-md-9 data">
-      <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
-      <% end %>
+      <!--Profile-->
+      <div class="col-md-8 data-1">
+        <table class="table-hover">
+          <tbody>
+            <tr>
+              <td>
+                <p>Profile Field 1</p>
+              <td>  
+                <div class="input-group profile-group">
+                  <input type = "text" class="form-control profile-form" placeholder="Profile Field 1" aria-describedby="Persona-info-field-1" disabled="disabled">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Profile Field 2</p>
+              <td>  
+                <div class="input-group profile-group">
+                  <input type = "text" class="form-control profile-form" placeholder="Profile Field 1" aria-describedby="Persona-info-field-2" disabled="disabled">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Profile Field 3</p>
+              <td>  
+                <div class="input-group profile-group">
+                  <input type = "text" class="form-control profile-form" placeholder="Profile Field 1" aria-describedby="Persona-info-field-3" disabled="disabled">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--Account-->
+      <div class="col-md-8 data-2">
+        <%= form_for(@user) do |f| %>
+        <div class="alert alert-warning account-fail"><%= render 'shared/error_messages' %></div>
+        <table class="table-hover">
+          <tbody>
+            <tr>
+              <td>
+                <p><%= f.label :email %></p>
+              <td>  
+                <div class="input-group profile-group">
+                  <%= f.email_field :email, class: 'form-control profile-form', placeholder: "Enter New Email", aria-describedby: "New-Email", disabled: "disabled"%>
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><%= f.label :password %></p>
+              <td>  
+                <div class="input-group-btnup profile-group">
+                  <%= f.password_field :password, class: 'form-control profile-form', placeholder: "Enter New Password", aria-describedby: "New-Password", disabled: "disabled"%>
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><%= f.label :password_confirmation, "Confirmation" %></p>
+              <td>  
+                <div class="input-group profile-group">
+                  <%= f.password_field :password_confirmation, class: 'form-control profile-form', placeholder: "Re-enter New Password", aria-describedby: "Confirm-Password", disabled: "disabled"%>
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+            <%= f.submit "Save changes", class: "btn btn-primary" %>
+            <% end %>
+            <button type="cancel" class="btn btn-default clear-inputs">Clear
+            </button>
+        </div>
+      </div>
     </div>
-  </div>
 </div>
 </body>
 </html>
