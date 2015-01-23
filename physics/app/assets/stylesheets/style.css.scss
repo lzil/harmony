@@ -2,118 +2,167 @@
 @import "bootstrap";
 
 /* General Styling */
-.btn-block {
-	background-color: #333333;
-	border-color: #000000;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-}
 
-.btn-block:hover, .btn-block:focus {
-	background-color: #777;
-	border-color: #000000;
-}
-
-/* Home Page Styling */
-.body-home {
-	background: url("background.jpg") fixed no-repeat center;
-	background-size: cover;
-}
-
-.heading-home {
-	padding-top: 5%;
-}
-
-.title {
-	font-family: 'Raleway', sans-serif;
-	font-size: 60px;
-	font-weight: 300;
-	color: #ffffff;
-}
-
-.subtitle {
-	font-family: 'Raleway', sans-serif;
-	font-size: 20px;
-	font-weight: 400;
-	color: #777;
-}
-
-.center-home {
-	padding-top: 5%;
-	opacity: 0.8;
-}
-
-.log-sign .log-sign:link, .log-sign:active, .log-sign:visited, .log-sign:hover, .log-sign:focus{
-	text-decoration: none;
-	font-size: 16px;
-}
+	/* Element Styling */
+  		p {
+  			font-family: 'Raleway', sans-serif;
+  			font-weight: 400;
+  			padding-top: 10px;
+  			padding-right: 10px;
+  			text-align: right;}
+  		input {
+  			font-family: 'Raleway', sans-serif;
+  			font-weight: 400;}
+	/* Button Styling */
+		.btn-block {
+			background-color: #333333;
+			border-color: #000000;
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;}
+		.btn-block:hover, .btn-block:focus {
+			background-color: #777;
+			border-color: #000000;}
+		.btn-primary {
+			background-color: #333333;
+			border-color: #000000;
+			border-radius: 0;
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
+			color: #ffffff;}
+		.btn-primary:hover, .btn-primary:focus {
+			background-color: #777;
+			border-color: #000000;}
+		.btn-default {
+			background-color: #ffffff;
+			border-color: #000000;
+			border-radius: 0;
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
+			color: #000000;}
+	/* Link Styling */
+		.list-group-item {
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
+			color: #000000;}
+		.list-group-item:hover, .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+			background-color: #DCDCDC;
+			border-color: rgba(255, 0, 0, 0.8);
+  			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(150, 0, 0, 0.6);
+  			color: #333333;
+  			outline: 0 none;}
+  		.list-group-item:focus {
+  			border-color: rgba(255, 0, 0, 0.0);
+  			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(150, 0, 0, 0.0);
+  			outline: 0 none;}
+	/* Form Styling */
+		.form-control:focus {
+			border-color: rgba(255, 0, 0, 0.8);
+  			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(150, 0, 0, 0.6);
+  			outline: 0 none;}
+  		.input-group {
+  			width: 100%;}
+  	/* Table Styling */
+  		table {
+  			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
+  			table-layout: fixed;
+  			width: 100%;}
+  		tr {height: 60px;}
+  		td:nth-child(1) {
+  			width: 30%;}
+  		td:nth-child(2) {
+  			width: 70%;}
 
 /* Header Styling */
-nav {
-	padding: 0 3% 0 2%;
-}
+	nav {padding: 0 3% 0 2%;}
+	.navbar-inverse .navbar-brand, .navbar-inverse .navbar-right {
+		font-family: 'Raleway', sans-serif;
+		font-weight: 400;}
+	.body-main {
+		padding-top: 70px;
+		background-color: #DCDCDC;}
 
-.navbar-inverse .navbar-brand, .navbar-inverse .navbar-right {
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-}
+/* Pages */
 
-.body-main {
-	padding-top: 70px;
-	background-color: #DCDCDC;;
-}
+	/* Home Page Styling */
+		.body-home {
+			background: url("background.jpg") fixed no-repeat center;
+			background-size: cover;}
+		.heading-home {
+			padding-top: 5%;}
+		.title {
+			font-family: 'Raleway', sans-serif;
+			font-size: 60px;
+			font-weight: 300;
+			color: #ffffff;}
+		.subtitle {
+			font-family: 'Raleway', sans-serif;
+			font-size: 20px;
+			font-weight: 400;
+			color: #777;}
+		.center-home {
+			padding-top: 5%;
+			opacity: 0.8;}
+		.alert-warning {
+			background-color: #cc9900;
+			color: #663300;
+			font-family: 'Raleway', sans-serif;}
+		.log-sign .log-sign:link, .log-sign:active, .log-sign:visited, .log-sign:hover, .log-sign:focus{
+			text-decoration: none;
+			font-size: 16px;}
 
-/* Dashboard Styling */
+	/* Editor Page Styling */
 
-a.list-group-item {
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	color: #000000;
-}
+		.editor {
+			resize: none;
+			min-height: 400px;}
+		.editor-render {
+			background-color: #ffffff;
+			max-height: 850px;
+			min-height: 850px;
+			overflow: scroll;
+			padding-left: 50px;}
+		.sheet-music {
+			margin: auto;}
 
-.btn-primary {
-	background-color: #333333;
-	border-color: #000000;
-	border-radius: 0;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	color: #ffffff;
-}
+	/* Show Page Styling */
 
-.btn-primary:hover, .btn-primaryy:focus {
-	background-color: #777;
-	border-color: #000000;
-}
+		.data {
+			background-color: #ffffff;
+			border-radius: 4px;
+			padding: 1%;}
+		.profile-form {
+			border-radius: 0px;
+			border-color: #000000;}
+		.profile-btn:hover, .profile-btn:focus, .profile-btn:active, .profile-btn:visited, .profile-btn:link {
+			border-color: rgba(255, 0, 0, 0.8);
+  			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(150, 0, 0, 0.6);
+  			outline: 0 none;}
 
-.btn-default {
-	background-color: #ffffff;
-	border-color: #000000;
-	border-radius: 0;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	color: #000000;
-}
+  	/* Dashboard Page Styling */
 
-/* Editor Page Styling */
+  		.modal-content {
+  			border-radius: 0px;
+  			font-family: 'Raleway', sans-serif;
+  			font-size: 14px;
+  			font-weight: 400;
+  		}
+  		.modal-title {
+  			font-size: 18px;
+  			font-weight: 300;
+  			text-align: center;
+  		}
+  		.profile-form {
+			border-radius: 0px;
+			border-color: #000000;}
+		.img-crop {
+  			max-height: 250px;
+  			overflow: hidden;}
+		.img-crop img {
+			margin-bottom: -200px;}
 
-.editor {
-	resize: none;
-	min-height: 400px;
-}
 
-.editor-render {
-	background-color: #ffffff;
-	max-height: 850px;
-	min-height: 850px;
-	height: 850px;
-	overflow: scroll;
-	padding-left: 50px;
-}
-
-.sheet-music {
-	margin: auto;
-}
-
+			
 /* Error page */
 
 #error_explanation {

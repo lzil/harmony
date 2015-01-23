@@ -1,26 +1,13 @@
 var main = function() {
+	// General
 	$('.data-2').hide();
 	$('.data-3').hide();
-	$('.profile-btn').click(function() {
-		var $parent = $(this).parent().parent();
-		var $child = $parent.children('.profile-form');
-		if(!$parent.hasClass('enabled')) {
-			$('.profile-group').removeClass('enabled');
-			$('.profile-form').attr('disabled','disabled');
-			$parent.addClass('enabled');
-			$child.removeAttr('disabled');
-		}
-		else {
-			$parent.removeClass('enabled');
-			$child.attr('disabled','disabled');
-			$(this).blur();
-		};
-	});
 	$('.tab-1').click(function() {
 		$('.data').slideUp(300);
 		setTimeout(function() {
-			$('.data-2').delay(300).hide();
-			$('.data-1').delay(300).show();
+			$('.profile-form').val('');
+			$('.data-2').hide();
+			$('.data-1').show();
 		}, 300);
 		$('.data').slideDown(300);
 		$('.tab-2').removeClass('active');
@@ -29,16 +16,40 @@ var main = function() {
 	$('.tab-2').click(function() {
 		$('.data').slideUp(300);
 		setTimeout(function() {
-			$('.data-1').delay(300).hide();
-			$('.data-2').delay(300).show();
+			$('.profile-form').val('');
+			$('.data-1').hide();
+			$('.data-2').show();
 		}, 300);
 		$('.data').slideDown(300);
 		$('.tab-1').removeClass('active');
 		$('.tab-2').addClass('active');
 	});
+	// For Dashboard
 	$('.modal-cancel').click(function() {
 		$('#new-proj').modal('hide');
+		$('.form-control').val('');
 	});
-}
-
-$(document).ready(main);
+	// For Show
+	if($('.account-fail').text() === '') {
+		$('.account-fail').hide();
+	};
+	$('.clear-inputs').click(function() {
+		$('.profile-form').val('');
+	});
+		$('.profile-btn').click(function() {
+		var $parent = $(this).parent().parent();
+		var $child = $parent.children('.profile-form');
+		if(!$parent.hasClass('enabled')) {
+			$('.profile-group').removeClass('enabled');
+			$('.profile-form').attr('disabled','disabled');
+			$parent.addClass('enabled');
+			$child.removeAttr('disabled');
+			$child.focus();
+		}
+		else {
+			$parent.removeClass('enabled');
+			$child.attr('disabled','disabled');
+			$(this).blur();
+		};
+	});
+};

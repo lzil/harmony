@@ -1,5 +1,6 @@
 <% provide(:title, "Dashboard") %>
 <body class="body-main">
+<script type="text/javascript">$(document).ready(main);</script>
 <!--Navbar-->
 <%= render "layouts/header" %>
 <!--Container-->
@@ -7,26 +8,28 @@
   <!--Empty Coloumn-->
   <div class="col-md-1"></div>
   <!--Body-->
-  <div class="col-md-12 contents">
+  <div class="col-md-10 contents">
     <!--Tabs-->
     <div class="col-md-3 tabs">
       <div class="list-group">
-        <a href="#" class="list-group-item">My Projects</a>
-        <%= link_to "Browse All Projects", projects_path, class: "list-group-item" %>
+        <a href="#" class="list-group-item tab-1 active">My Projects</a>
+        <%= link_to "Browse All Projects", projects_path, class: "list-group-item tab-2" %>
       </div>
-      <div class="list-group collapse navbar-collapse menu-list">
-        <%= link_to "Create New Project", new_project_path, class: "list-group-item" %>
+      <div class="list-group">
+        <%= link_to "Create New Project", new_project_path, role:"button", class: "list-group-item", data-toggle: "modal", data-target: "#new-prof"%> 
       </div>
     </div>
     <!--Contents-->
-    <div class="col-md-9">
-      <!--Tab 1-->
-      <div class="col-md-12 data">
+    <div class="col-md-9 data">
+      <!--My tab-->
+      <div class="col-md-12 data-1">
         <div class="col-md-4">
           <!--Post-->
           <div class="thumbnail">
             <!--Thumbnail-->
-            <%= image_tag "thumbnail.jpg", alt: "Lorem Ipsum", class: "img-responsive" %>
+            <div class="img-crop">
+              <%= image_tag "thumbnail.jpg", alt: "Lorem Ipsum", class: "img-responsive" %>
+            </div>
             <!--Caption-->
             <div class="caption">
               <h3 class="caption-text">Piano exercise</h3>
@@ -39,7 +42,9 @@
           <!--Post-->
           <div class="thumbnail">
             <!--Thumbnail-->
-            <%= image_tag "thumbnail.jpg", alt: "Lorem Ipsum", class: "img-responsive" %>
+            <div class="img-crop">
+              <%= image_tag "thumbnail.jpg", alt: "Lorem Ipsum", class: "img-responsive" %>
+            </div>
             <!--Caption-->
             <div class="caption">
               <h3 class="caption-text">Piano exercise</h3>
@@ -52,7 +57,9 @@
           <!--Post-->
           <div class="thumbnail">
             <!--Thumbnail-->
-            <%= image_tag "thumbnail.jpg", alt: "Lorem Ipsum", class: "img-responsive" %>
+            <div class="img-crop">
+              <%= image_tag "thumbnail.jpg", alt: "Lorem Ipsum", class: "img-responsive" %>
+            </div>
             <!--Caption-->
             <div class="caption">
               <h3 class="caption-text">Piano exercise</h3>
@@ -65,7 +72,9 @@
           <!--Post-->
           <div class="thumbnail">
             <!--Thumbnail-->
-            <%= image_tag "thumbnail.jpg", alt: "Lorem Ipsum", class: "img-responsive" %>
+            <div class="img-crop">
+              <%= image_tag "thumbnail.jpg", alt: "Lorem Ipsum", class: "img-responsive" %>
+            </div>
             <!--Caption-->
             <div class="caption">
               <h3 class="caption-text">Piano exercise</h3>
@@ -75,48 +84,69 @@
           </div>
         </div>
       </div>
-      <!--Tab 2-->
-      <div class="col-md-12 data">
-        <h1>Listing Projects</h1>
-        <table>
-            <thead>
+      <!--All tab-->
+      <div class="col-md-12 data-2">
+        <table class="table-hover">
+          <thead>
+            <tr>
+              <th>NAME</th>
+              <th>DESCRIPTION</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @projects.each do |project| %>
               <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th colspan="3"></th>
+                <td><%= project.name %></td>
+                <td><%= project.description %></td>
+                <td><%= link_to 'Show', project %></td>
+                <td><%= link_to 'Edit', edit_project_path(project) %></td>
+                <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
-            </thead>
-
-            <tbody>
-              <% @projects.each do |project| %>
-                <tr>
-                  <td><%= project.name %></td>
-                  <td><%= project.description %></td>
-                  <td><%= link_to 'Show', project %></td>
-                  <td><%= link_to 'Edit', edit_project_path(project) %></td>
-                  <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                </tr>
-              <% end %>
-            </tbody>
+            <% end %>
+          </tbody>
         </table>
       </div>
-      <!--Tab 3-->
-      <div class="col-md-12 data">
-        <% @project = Project.new %>
-        <%= form_for(@project) do |f| %>
-
-          <div class="field">
-            <%= f.label :name %><br>
-            <%= f.text_field :name %>
+      <!--Create tab-->
+      <div class="col-md-12 data-3 modal fade" id="new-proj" tabindex="-1" role="dialog" aria-labelledby="Create New Project" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Create New Project</h4>
+            </div>
+            <div class="modal-body">
+              <% @project = Project.new %>
+              <%= form_for(@project) do |f| %>
+              <table class="table-hover">
+          <tbody>
+            <tr>
+              <td>
+                <p><%= f.label :name %></p>
+              <td>  
+                <div class="input-group">
+                  <%= f.text_field :name, class: "form-control", placeholder: "Project Name", aria-describedby: "Project Name" %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><%= f.label :description %></p>
+              <td>  
+                <div class="input-group">
+                  <%= f.text_area :description, class: "form-control", placeholder: "Project Description", aria-describedby: "Project Description" %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+            <div class="modal-footer">
+              <%= f.submit class="btn btn-primary btn-block"%>
+              <% end %>-->
+              <button type="cancel" class="btn btn-default btn-block modal-cancel">CANCEL
+              </button>
+            </div>
           </div>
-          <div class="field">
-            <%= f.label :description %><br>
-            <%= f.text_area :description %>
-          </div>
-          <div class="actions">
-            <%= f.submit %>
-          </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>

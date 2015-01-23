@@ -6,5 +6,3 @@ var home = function() {
 		$('.signup-fail').hide();
 	};
 };
-
-$(document).ready(home);
