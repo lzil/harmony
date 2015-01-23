@@ -19,7 +19,7 @@
         <script type='text/javascript' src='MIDI.js-master/inc/Base64.js'></script>
         <script type='text/javascript' src='MIDI.js-master/js/Window/Event.js'></script>
         <script type='text/javascript' src='MIDI.js-master/inc/base64binary.js'></script>
-        <link type="text/css" rel="stylesheet" href="static "midiButton.css""/>
+        <link type="text/css" rel="stylesheet" href="midiButton.css"/>
   </head>
   <body>
    
@@ -103,7 +103,7 @@
             time2.innerHTML = "-" + timeFormatting(end - now + 1);
           });
         };
-        
+
         $(document).ready(function() {   
           var player = MIDI.Player;
           MIDI.loadPlugin(function() {
