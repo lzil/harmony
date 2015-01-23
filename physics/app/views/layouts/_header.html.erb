@@ -21,9 +21,8 @@
           <%= link_to user_path(current_user) do %><span class="glyphicon glyphicon-user"></span><span> Profile</span><% end %>
           </li>
           <li>
-            <% if logged_in? %>
             <%= link_to logout_path, method: "delete" do %> <span class="glyphicon glyphicon-log-out"></span><span> Log Out</span>
-           <% end %>
+            <% end %>
           </li>
         </ul>
       </div>

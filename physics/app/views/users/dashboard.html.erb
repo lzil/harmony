@@ -16,7 +16,7 @@
         <%= link_to "Browse All Projects", projects_path, class: "list-group-item tab-2" %>
       </div>
       <div class="list-group">
-        <%= link_to "Create New Project", new_project_path, role:"button", class: "list-group-item", data-toggle: "modal", data-target: "#new-prof"%> 
+        <%= link_to "Create New Project", new_project_path, class: "list-group-item", data-toggle => "modal", data-target => "#new-prof", role => "button" %> 
       </div>
     </div>
     <!--Contents-->
@@ -124,7 +124,7 @@
                 <p><%= f.label :name %></p>
               <td>  
                 <div class="input-group">
-                  <%= f.text_field :name, class: "form-control", placeholder: "Project Name", aria-describedby: "Project Name" %>
+                  <%= f.text_field :name, class: "form-control", placeholder: "Project Name", aria-describedby => "Project Name" %>
                 </div>
               </td>
             </tr>
@@ -133,14 +133,14 @@
                 <p><%= f.label :description %></p>
               <td>  
                 <div class="input-group">
-                  <%= f.text_area :description, class: "form-control", placeholder: "Project Description", aria-describedby: "Project Description" %>
+                  <%= f.text_area :description, class: "form-control", placeholder: "Project Description", aria-describedby => "Project Description" %>
                 </div>
               </td>
             </tr>
           </tbody>
         </table>
             <div class="modal-footer">
-              <%= f.submit class="btn btn-primary btn-block"%>
+              <%= f.submit class:"btn btn-primary btn-block"%>
               <% end %>-->
               <button type="cancel" class="btn btn-default btn-block modal-cancel">CANCEL
               </button>
