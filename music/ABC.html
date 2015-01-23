@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>API practice</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="abcjs_editor_1.12-min.js" type="text/javascript"></script>
+  <head>
+    <title>API practice</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="abcjs_editor_1.12-min.js" type="text/javascript"></script>
         <script type='text/javascript' src='MIDI.js'></script>
-        <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script> 
-        <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
-        <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script> 
+        <script type='text/javascript' src='MIDI.js-master/js/Widgets/Loader.js'></script>
+        <script type="text/javascript" src="https://gabelerner.github.io/canvg/rgbcolor.js"></script> 
+        <script type="text/javascript" src="https://gabelerner.github.io/canvg/StackBlur.js"></script>
+        <script type="text/javascript" src="https://gabelerner.github.io/canvg/canvg.js"></script> 
         <script type='text/javascript' src='FileSaver.min.js'></script>
-        <script type='text/javascript' src='MIDI.js-master/js/MIDI/AudioDetect.js'></script>
-        <script type='text/javascript' src='MIDI.js-master/inc/jasmid/replayer.js'></script>
-        <script type='text/javascript' src='MIDI.js-master/inc/jasmid/stream.js'></script>
-        <script type='text/javascript' src='MIDI.js-master/inc/jasmid/midifile.js'></script>
-        <script type='text/javascript' src='MIDI.js-master/js/Window/Event.js'></script>
-        <script type='text/javascript' src='MIDI.js-master/js/Window/DOMLoader.XMLHttp'></script>
-        <script src='text/javascript' src='MIDI.js-master/inc/Base64.js'></script>
-        <script src='text/javascript' src='MIDI.js-master/inc/base64binary.js'></script>
+        <script type='text/javascript' src='jasmid-master/replayer.js'></script>
+        <script type='text/javascript' src='jasmid-master/stream.js'></script>
+        <script type='text/javascript' src='jasmid-master/midifile.js'></script>
         <script type='text/javascript' src='canvas-toBlob.js'></script>
         <script type='text/javascript' src='PDFmaker.js'></script>
-        <link type="text/css" rel="stylesheet" href="midiButton.css"/>
-	</head>
-	<body>
+        <script type='text/javascript' src='MIDI.js-master/js/Window/DOMLoader.XMLHttp.js'></script>
+        <script type='text/javascript' src='MIDI.js-master/inc/Base64.js'></script>
+        <script type='text/javascript' src='MIDI.js-master/js/Window/Event.js'></script>
+        <script type='text/javascript' src='MIDI.js-master/inc/base64binary.js'></script>
+        <link type="text/css" rel="stylesheet" href="static "midiButton.css""/>
+  </head>
+  <body>
    
     <!--textarea for ABC text input-->
     <textarea id="abc" rows="4" cols="50"> </textarea>
@@ -32,17 +32,104 @@
         <div id="canvas0"></div>
         <div id="midiPlay">Play</div>
         <div id="midiPause">Pause</div>
-        <div id="midi" hidden="true"></div>
+        <div id="midiStop">Stop</div>
+        <div id="midi"></div>
         <div id="warnings"></div>
     </div>
     <!---->
+
 
     <!--PNG making-->
     <canvas id="PDFcanvas" width="1000px" height="600px" hidden="true"></canvas> 
     <div id="editor"></div> 
     <button id="cmd">generate PNG</button> 
     <!---->
+    <div class="player" style="height: 42px; box-shadow: 0 -1px #000; margin-bottom: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
+      <div style="margin: 0 auto; width: 160px; float: right;">
+    </div>
+    <div class="time-controls" style="float: left; margin: 0; position: relative; top: 5px;">
+     <span id="time1" class="time">0:00</span>
+     <span id="capsule">
+      <span id="cursor"></span>
+     </span>
+     <span id="time2" class="time" style="text-align: left;">-0:00</span>
+    </div>
+   
 
+    <!--Functionality javascript-->
+    <script type="text/javascript">
+        //hides Quicktime and creates the ABC editor functionality
+        
+        var MIDIPlayerPercentage = function(player) {
+          // update the timestamp
+          var time1 = document.getElementById("time1");
+          var time2 = document.getElementById("time2");
+          var capsule = document.getElementById("capsule");
+          var timeCursor = document.getElementById("cursor");
+          //
+          eventjs.add(capsule, "drag", function (event, self) {
+            eventjs.cancel(event);
+            player.currentTime = (self.x) / 420 * player.endTime;
+            if (player.currentTime <= 0) player.currentTime = 0;
+            if (player.currentTime > player.endTime) player.currentTime = player.endTime;
+            if (self.state === "down") {
+              player.pause(true);
+            } else if (self.state === "up") {
+              player.resume();
+            }
+          });
+          //
+          function timeFormatting(n) {
+            var minutes = n / 60 >> 0; 
+            var seconds = String(n - (minutes * 60) >> 0);
+            if (seconds.length == 1) seconds = "0" + seconds;
+            return minutes + ":" + seconds;
+          };
+          
+          player.setAnimation(function(data, element) {
+            var percent = data.now / data.end;
+            var now = data.now >> 0; // where we are now
+            var end = data.end >> 0; // end of song
+            // display the information to the user
+            timeCursor.style.width = (percent * 100) + "%";
+            time1.innerHTML = timeFormatting(now);
+            time2.innerHTML = "-" + timeFormatting(end - now + 1);
+          });
+        };
+
+        window.onload = function() {
+          abc_editor = new ABCJS.Editor("abc", { canvas_id: "canvas0", warnings_id:"warnings", midi_id:"midi"});
+          document.getElementById("midi").setAttribute("hidden", "true");
+        } 
+
+        // midi playback functionality
+        $(document).ready(function() {   
+          var player = MIDI.Player;
+          MIDI.loadPlugin(function() {
+            $('#midiPlay').click(function() {
+              var url = document.getElementsByTagName("a")[0].getAttribute("href");
+              player.timeWarp =1;
+              if(player.currentTime === 0) {
+                MIDI.Player.loadFile(url, player.start);
+              }
+              else {
+                player.resume();
+              }
+              MIDIPlayerPercentage(player);
+            });
+          });
+          $('#midiPause').click(function() {
+            MIDI.Player.pause();
+          });
+          $('#midiStop').click(function() {
+            MIDI.Player.stop();
+          });
+          
+        });
+
+    </script>
+    <!---->
+  
     <!--most inefficient MIDI downloader ever-->
     <a id="MIDIdown" href="">download midi</a>
     <script>
@@ -56,35 +143,6 @@
     </script>
     <!---->
 
-    <!--Functionality javascript-->
-    <script type="text/javascript">
-        //hides Quicktime and creates the ABC editor functionality
-        window.onload = function() {
-          abc_editor = new ABCJS.Editor("abc", { canvas_id: "canvas0", warnings_id:"warnings", midi_id:"midi"});
-        } 
-
-
-        // midi playback functionality
-        $(document).ready(function() {   
-          $('#midiPlay').click(function() {
-            var url = document.getElementsByTagName("a")[0].getAttribute("href");
-            MIDI.loadPlugin({
-              callback: function() {
-                player = MIDI.player;
-                player.timeWarp =1;
-                MIDI.Player.loadFile(url, player.start);
-              }
-            });
-          });
-          $('#midiPause').click(function() {
-            MIDI.Player.pause();
-          });
-        });
-
-    </script>
-    <!---->
-
-
-	</body>
+  </body>
 </html>
 
