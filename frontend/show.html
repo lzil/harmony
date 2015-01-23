@@ -16,57 +16,140 @@
 <!--Navbar-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-controls">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#left-menu-list">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="glyphicon glyphicon-chevron-down"></span>
-      </button>
-      <a class="navbar-brand" href="#">I CAN PHYSICS</a>
-    </div>
-    <div class="collapse navbar-collapse" id="user-controls">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span><span> Profile</span></a>
-        </li>
-        <li><a rel="nofollow" data-method="delete" href="/logout"><span class="glyphicon glyphicon-log-out"></span><span class="hidden-md hidden-lg"></span></a>
-        </li>
-      </ul>
+    <!--Empty Coloumn-->
+    <div class="col-md-1"></div>
+    <!--Main Coloumn-->
+    <div class="col-md-10">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-controls">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">I CAN PHYSICS</a>
+      </div>
+      <div class="collapse navbar-collapse" id="user-controls">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span><span> Profile</span></a>
+          </li>
+          <li><a rel="nofollow" data-method="delete" href="/logout">Log Out <span class="glyphicon glyphicon-log-out"></span></a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
 <!--Container-->
 <div class="container-fluid">
+  <!--Empty Coloumn-->
+  <div class="col-md-1"></div>
   <!--Body-->
-  <div class="col-md-12 tabs">
+  <div class="col-md-10">
     <!--Tabs-->
-    <div class="col-md-3 tabs">
-      <div class="list-group collapse navbar-collapse menu-list">
-        <a href="#" class="list-group-item">Personal Info</a>
-        <a href="#" class="list-group-item">Music Background</a>
-        <a href="#" class="list-group-item">Preferences</a>
-        <a href="#" class="list-group-item">Account Settings</a>
+    <div class="col-md-3">
+      <div class="list-group">
+        <a href="#" class="list-group-item profile-tab active">Profile</a>
+        <a href="#" class="list-group-item account-tab">Account Settings</a>
       </div>
     </div>
     <!--Contents-->
     <div class="col-md-9 data">
-      <div class="col-md-8 personal-info">
-        <div class="input-group">
-          <input type = "text" class="form-control profile-form" placeholder="Personal Info Field 1" aria-describedby="username" disabled="disabled">
-          <span class="input-group-btn">
-            <button class="btn btn-default profile-btn" type="button" id="edit-btn">
-              <span class="glyphicon glyphicon-pencil form-group-addon"></span>
-            </button>
-          </span>
-        </div>
+      <div class="col-md-8 profile">
+        <table class="table-hover">
+          <tbody>
+            <tr>
+              <td>
+                <p>Profile Field 1</p>
+              <td>  
+                <div class="input-group profile-group">
+                  <input type = "text" class="form-control profile-form" placeholder="Profile Field 1" aria-describedby="Persona-info-field-1" disabled="disabled">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Profile Field 2</p>
+              <td>  
+                <div class="input-group profile-group">
+                  <input type = "text" class="form-control profile-form" placeholder="Profile Field 1" aria-describedby="Persona-info-field-2" disabled="disabled">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Profile Field 3</p>
+              <td>  
+                <div class="input-group profile-group">
+                  <input type = "text" class="form-control profile-form" placeholder="Profile Field 1" aria-describedby="Persona-info-field-3" disabled="disabled">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="col-md-4">
-        <div class="profile-picture">
-        </div>
+      <div class="col-md-8 account">
+        <table class="table-hover">
+          <tbody>
+            <tr>
+              <td>
+                <p>Account Field 1</p>
+              <td>  
+                <div class="input-group profile-group">
+                  <input type = "text" class="form-control profile-form" placeholder="Account Field 1" aria-describedby="Persona-info-field-1" disabled="disabled">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Account Field 2</p>
+              <td>  
+                <div class="input-group profile-group">
+                  <input type = "text" class="form-control profile-form" placeholder="Account Field 1" aria-describedby="Persona-info-field-2" disabled="disabled">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Account Field 3</p>
+              <td>  
+                <div class="input-group profile-group">
+                  <input type = "text" class="form-control profile-form" placeholder="Account Field 1" aria-describedby="Persona-info-field-3" disabled="disabled">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default profile-btn" type="button">
+                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 </div>
