@@ -4,4 +4,6 @@ $(document).ready(function() {
     var url = document.URL;
     MIDIjs.play(url)
   });
+
 });
+

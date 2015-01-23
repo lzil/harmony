@@ -20,7 +20,7 @@
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'List of Projects', projects_path %>
 <% provide(:title, "Editor") %>
 
   <div class="col-md-4">
@@ -28,6 +28,20 @@
     <div class="col-md-12">
       <textarea class="form-control editor" id="editor-input"></textarea>
     </div>
+<script>
+
+	var myDataRef = new Firebase('https://brilliant-fire-2071.firebaseio.com/');
+
+	$('#editor-input').on('input', function() {
+	  	var text = $('#editor-input').val();
+		myDataRef.push({text: text});
+	});
+
+	myDataRef.on('child_added', function(snapshot) {
+	var message = snapshot.val();
+	$('#editor-input').val(message.text).change();
+	});
+</script>
     <!--Chatbox-->
     <div class="col-md-12">
       <!--Chatlog-->
@@ -44,11 +58,17 @@
   <div class="col-md-1">
   </div>
   <!--Editor Render-->
-
+<script>
+	
+</script>
   <div class="col-md-6 editor-render">
+
     <div class="sheet-music" id="sheet-music"></div>
+ 
     <div id="warnings"></div>
+
   </div>
+
 </div>
 </body>
 </html>

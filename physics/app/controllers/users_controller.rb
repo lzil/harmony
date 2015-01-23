@@ -10,6 +10,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def dashboard
+    @user = current_user
+    @projects = @user.projects.all
+  end
+
   def new
     @user = User.new
     render "static_pages/home"

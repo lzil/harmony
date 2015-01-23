@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :projects
+  resources :users
 
-  get 'projects/default'
+  get 'projects/new'
 
   root      'static_pages#home'
   get       'login'      => 'sessions#new'
@@ -10,8 +11,7 @@ Rails.application.routes.draw do
   get       'signup'     => 'static_pages#home'
   get       'about'      => 'static_pages#about'
   get       'editor'     => 'static_pages#editor'
-  get       'dashboard'  => 'static_pages#dashboard'
-  resources :users
+  get       'dashboard'  => 'users#dashboard'
 
   get       'playground' => 'static_pages#playground'
   # The priority is based upon order of creation: first created -> highest priority.

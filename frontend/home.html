@@ -9,6 +9,7 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="home.js"></script>
 </head>
 
 <body class="body-home">
@@ -44,9 +45,8 @@
           <div id="login" class="panel-collapse collapse in">
             <div class="panel-body">
               <!--Login Form-->
+              <div class="alert alert-warning login-fail"></div>
               <form role="form" accept-charset="UTF-8" action="/login" method="post">
-                <input name="utf8" type="hidden" value="&#x2713;" />
-                <!--<%= token_tag nil %>-->
                 <!--Username-->
                 <div class="form-group">
                   <label class="sr-only" for="session_username">Username:</label>
@@ -78,7 +78,7 @@
               <!--Sign Up Form-->
               <form role="form" action="/users" class="new_user" id="new_user" method="post">
                 <input name="utf8" type="hidden" value="&#x2713;" />
-                  <!--<%= token_tag nil %>-->
+                  <div class="alert alert-warning signup-fail"></div>
                 <!--Username-->
                 <div class="form-group">
                   <label class="sr-only" for="user_name">Username:</label>
