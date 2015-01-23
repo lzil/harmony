@@ -33,6 +33,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def cperm
+    @permission = Permission.new(permission_params)
+  end
+
   def update
     respond_to do |format|
       if @project.update(project_params)
@@ -65,5 +69,9 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
       @permission = Permission.find_by(user_id: current_user.id, project_id: @project.id)
       redirect_to(dashboard_path) unless @permission
+    end
+    
+    def permission_params
+      params.require(:permission).permit(:project_id, :permission_id)
     end
 end

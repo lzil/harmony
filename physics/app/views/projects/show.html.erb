@@ -28,13 +28,15 @@
     <div class="col-md-12">
       <textarea class="form-control editor" id="editor-input"></textarea>
     </div>
+
+
 <script>
 
-	var myDataRef = new Firebase('https://brilliant-fire-2071.firebaseio.com/');
+	var myDataRef = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("project".concat(String(<%= @project.id %>))));
 
 	$('#editor-input').on('input', function() {
 	  	var text = $('#editor-input').val();
-		myDataRef.push({text: text});
+		myDataRef.push().set({text: text});
 	});
 
 	myDataRef.on('child_added', function(snapshot) {

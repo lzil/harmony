@@ -2,7 +2,7 @@
 
 <%= render 'form' %>
 <script>
-var fBaseRef = new Firebase('https://brilliant-fire-2071.firebaseio.com/')
+var fBaseRef = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects'.concat("project".concat(String(<%= @project.id %>))))
 var newProjectRef = fBaseRef.push();
 newProjectRef.set({'text': 'T: Random title'});
 var path = newProjectRef.toString()
