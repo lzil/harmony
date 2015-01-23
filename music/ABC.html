@@ -59,7 +59,14 @@
     <!--Functionality javascript-->
     <script type="text/javascript">
         //hides Quicktime and creates the ABC editor functionality
-        
+
+        window.onload = function() {
+          abc_editor = new ABCJS.Editor("abc", { canvas_id: "canvas0", warnings_id:"warnings", midi_id:"midi"});
+          document.getElementById("midi").setAttribute("hidden", "true");
+        } 
+
+        // midi playback functionality
+
         var MIDIPlayerPercentage = function(player) {
           // update the timestamp
           var time1 = document.getElementById("time1");
@@ -96,13 +103,7 @@
             time2.innerHTML = "-" + timeFormatting(end - now + 1);
           });
         };
-
-        window.onload = function() {
-          abc_editor = new ABCJS.Editor("abc", { canvas_id: "canvas0", warnings_id:"warnings", midi_id:"midi"});
-          document.getElementById("midi").setAttribute("hidden", "true");
-        } 
-
-        // midi playback functionality
+        
         $(document).ready(function() {   
           var player = MIDI.Player;
           MIDI.loadPlugin(function() {
