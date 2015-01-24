@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Dashboard</title>
+  <title>Project/Show</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -39,16 +39,81 @@
     </div>
   </div>
 </nav>
+<!--Contents-->
 <div class="container-fluid">
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+<%= form_for @project do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit class:"btn btn-primary btn-block" %>
+  <% end %>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+<%= form_for @project do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.submit class:"btn btn-primary btn-block" %>
+  <% end %>
+  <%= link_to 'Destroy this project', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @project.owner_id %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'List of Projects', projects_path %>
+<% provide(:title, "Editor") %>
+
   <div class="col-md-4">
     <!--Editor-->
     <div class="col-md-12">
       <textarea class="form-control editor" id="editor-input"></textarea>
     </div>
+    <script>
+      var project = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("project".concat(String(<%= @project.id %>))));
+
+      $('#editor-input').on('input', function() {
+          var text = $('#editor-input').val();
+        project.push().set({text: text});
+      });
+
+      project.on('child_added', function(snapshot) {
+      var message = snapshot.val();
+      $('#editor-input').val(message.text).change();
+      });
+    </script>
     <!--Chatbox-->
     <div class="col-md-12">
       <!--Chatlog-->
-      <div>
+      <div id='messagesDiv'>
+        <input type='text' id='messageInput' placeholder='Message'>
+        <script>
+          var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chat".concat(String(<%= @project.id %>))));
+          $('#messageInput').keypress(function (e) {
+            if (e.keyCode == 13) {
+              var name = <%= current_user.id %>;
+              var text = $('#messageInput').val();
+              chat.push({name: name, text: text});
+              $('#messageInput').val('');
+            }
+          });
+          chat.on('child_added', function(snapshot) {
+            var message = snapshot.val();
+            displayChatMessage(message.name, message.text);
+          });
+          function displayChatMessage(name, text) {
+            $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+            $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+          };
+        </script>
       </div>
     </div>
     <div class="col-md-12">
@@ -65,6 +130,16 @@
     <div class="sheet-music" id="sheet-music"></div>
     <div id="warnings"></div>
   </div>
+</div>
+<!-- Editing tab -->
+<div>
+  Users with access to this 
+  <% if @project.owner_id == current_user.id %>
+    <% @user = @project.users %>
+    <% @user.each do |f| %>
+      <%= link_to user_path(f) do %><%= f.username %><% end %>
+    <% end %>
+  <% end %>
 </div>
 </body>
 </html>
