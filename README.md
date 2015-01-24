@@ -4,24 +4,19 @@
 To build a website that allows users to compose and edit music together and at the same time.
 
 #TO-DO:
+-fix jquery bug
 -Firebase security
--Figure out Project structure (ASK)
--Form for creating new Project
 -Inviting other users to Project
 -download MIDI
 -replay score
 -profile editing
--search for users
--search for Projects
 -download score as PDF
--saving Projects (ASK)
--chatbox
 -tutorial
 -remove textbox => buttons
--logo + name
 -all the other UI/CSS stuff
 -database of music
 -who is editing
+-editor page
 
 
 #PATHS:

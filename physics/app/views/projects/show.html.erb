@@ -8,11 +8,22 @@
   <strong>Name:</strong>
   <%= @project.name %>
 </p>
+<%= form_for @project do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit class:"btn btn-primary btn-block" %>
+  <% end %>
 
 <p>
   <strong>Description:</strong>
   <%= @project.description %>
 </p>
+<%= form_for @project do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.submit class:"btn btn-primary btn-block" %>
+  <% end %>
+  <%= link_to 'Destroy this project', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <p>
   <strong>Owner:</strong>
@@ -32,18 +43,21 @@
 
 <script>
 
-	var myDataRef = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("project".concat(String(<%= @project.id %>))));
+	var project = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("project".concat(String(<%= @project.id %>))));
 
 	$('#editor-input').on('input', function() {
 	  	var text = $('#editor-input').val();
-		myDataRef.push().set({text: text});
+		project.push().set({text: text});
 	});
 
-	myDataRef.on('child_added', function(snapshot) {
+	project.on('child_added', function(snapshot) {
 	var message = snapshot.val();
 	$('#editor-input').val(message.text).change();
 	});
 </script>
+
+
+
     <!--Chatbox-->
     <div class="col-md-12">
       <!--Chatlog-->
@@ -51,16 +65,16 @@
       <div id='messagesDiv'>
     <input type='text' id='messageInput' placeholder='Message'>
     <script>
-      var myDataRef = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chat".concat(String(<%= @project.id %>))));
+      var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chat".concat(String(<%= @project.id %>))));
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = <%= current_user.id %>;
           var text = $('#messageInput').val();
-          myDataRef.push({name: name, text: text});
+          chat.push({name: name, text: text});
           $('#messageInput').val('');
         }
       });
-      myDataRef.on('child_added', function(snapshot) {
+      chat.on('child_added', function(snapshot) {
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
       });
@@ -71,6 +85,10 @@
     </script>
       </div>
     </div>
+
+
+
+
     <div class="col-md-12">
       <!--SMS-->
       <div>
@@ -92,6 +110,16 @@
 
   </div>
 
+</div>
+<!-- Editing tab -->
+<div>
+Users with access to this 
+<% if @project.owner_id == current_user.id %>
+  <% @user = @project.users %>
+  <% @user.each do |f| %>
+    <%= link_to user_path(f) do %><%= f.username %><% end %>
+  <% end %>
+<% end %>
 </div>
 </body>
 </html>

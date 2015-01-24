@@ -78,7 +78,7 @@
                 <p><%= f.label :email %></p>
               <td>  
                 <div class="input-group profile-group">
-                  <%= f.email_field :email, class: 'form-control profile-form', placeholder: "Enter New Email", aria-describedby: "New-Email", disabled: "disabled"%>
+                  <%= f.email_field :email, :html => {class: 'form-control profile-form', placeholder: "Enter New Email", 'aria-describedby' => "New-Email", disabled: "disabled"} %>
                   <span class="input-group-btn">
                     <button class="btn btn-default profile-btn" type="button">
                       <span class="glyphicon glyphicon-pencil form-group-addon"></span>
@@ -92,7 +92,7 @@
                 <p><%= f.label :password %></p>
               <td>  
                 <div class="input-group-btnup profile-group">
-                  <%= f.password_field :password, class: 'form-control profile-form', placeholder: "Enter New Password", aria-describedby: "New-Password", disabled: "disabled"%>
+                  <%= f.password_field :password, class: 'form-control profile-form', placeholder: "Enter New Password", 'aria-describedby' => "New-Password", disabled: "disabled"%>
                   <span class="input-group-btn">
                     <button class="btn btn-default profile-btn" type="button">
                       <span class="glyphicon glyphicon-pencil form-group-addon"></span>
@@ -106,7 +106,7 @@
                 <p><%= f.label :password_confirmation, "Confirmation" %></p>
               <td>  
                 <div class="input-group profile-group">
-                  <%= f.password_field :password_confirmation, class: 'form-control profile-form', placeholder: "Re-enter New Password", aria-describedby: "Confirm-Password", disabled: "disabled"%>
+                  <%= f.password_field :password_confirmation, class: 'form-control profile-form', placeholder: "Re-enter New Password", 'aria-describedby' => "Confirm-Password", disabled: "disabled"%>
                   <span class="input-group-btn">
                     <button class="btn btn-default profile-btn" type="button">
                       <span class="glyphicon glyphicon-pencil form-group-addon"></span>

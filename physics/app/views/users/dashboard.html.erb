@@ -13,10 +13,10 @@
     <div class="col-md-3 tabs">
       <div class="list-group">
         <a href="#" class="list-group-item tab-1 active">My Projects</a>
-        <%= link_to "Browse All Projects", projects_path, class: "list-group-item tab-2" %>
+        <a href="#" class="list-group-item tab-2">Browse All Projects</a>
       </div>
       <div class="list-group">
-        <%= link_to "Create New Project", new_project_path, class: "list-group-item", data-toggle => "modal", data-target => "#new-prof", role => "button" %> 
+        <a href='#' role="button" class="list-group-item" data-toggle="modal" data-target="#new-proj">Create New Project</a>
       </div>
     </div>
     <!--Contents-->
@@ -124,7 +124,7 @@
                 <p><%= f.label :name %></p>
               <td>  
                 <div class="input-group">
-                  <%= f.text_field :name, class: "form-control", placeholder: "Project Name", aria-describedby => "Project Name" %>
+                  <%= f.text_field :name, placeholder: "Project Name", class: "form-control" %>
                 </div>
               </td>
             </tr>
@@ -133,7 +133,7 @@
                 <p><%= f.label :description %></p>
               <td>  
                 <div class="input-group">
-                  <%= f.text_area :description, class: "form-control", placeholder: "Project Description", aria-describedby => "Project Description" %>
+                  <%= f.text_area :description, placeholder: "Project Description", class: "form-control" %>
                 </div>
               </td>
             </tr>
@@ -141,7 +141,7 @@
         </table>
             <div class="modal-footer">
               <%= f.submit class:"btn btn-primary btn-block"%>
-              <% end %>-->
+              <% end %>
               <button type="cancel" class="btn btn-default btn-block modal-cancel">CANCEL
               </button>
             </div>

@@ -16,6 +16,14 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+  def gperm(other_user)
+    permissions.create(project_id: @project.id, user_id: @other_user.id)
+  end
+
+  def rperm(other_user)
+    permissions.find_by(project_id: @project.id, user_id: @other_user.id).destroy
+  end
+
   def create
     @project = Project.new(project_params)
     @project.owner_id = current_user.id
@@ -50,7 +58,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Project was successfully destroyed.' }
     end
   end
 
@@ -71,7 +79,5 @@ class ProjectsController < ApplicationController
       redirect_to(dashboard_path) unless @permission
     end
     
-    def permission_params
-      params.require(:permission).permit(:project_id, :permission_id)
-    end
+
 end

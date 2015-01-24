@@ -1,5 +1,4 @@
-var main = function() {
-	// General
+var main = function() {	// General
 	$('.data-2').hide();
 	$('.data-3').hide();
 	$('.tab-1').click(function() {
