@@ -19191,7 +19191,7 @@ window.ABCJS.Editor.prototype.renderTune = function(a, g, h) {
 };
 window.ABCJS.Editor.prototype.modelChanged = function() {
     if (this.tunes === undefined) {
-        if (this.mididiv !== undefined && this.mididiv !== this.div) {
+        if (this.mididiv !== undefined && this.mididiv !== this.div ) {
             this.mididiv.innerHTML = ""
         }
         this.div.innerHTML = "";
