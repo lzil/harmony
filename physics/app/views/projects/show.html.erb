@@ -10,18 +10,6 @@
           <tr>
             <%= form_for @project do |f| %>
             <td>
-              <p>Profile Field 1</p>
-            <td>  
-              <div class="input-group profile-group">
-                <input type = "text" class="form-control profile-form" placeholder="Profile Field 1" aria-describedby="Persona-info-field-1" disabled="disabled">
-                <span class="input-group-btn">
-                  <button class="btn btn-default profile-btn" type="button">
-                    <span class="glyphicon glyphicon-pencil form-group-addon"></span>
-                  </button>
-                </span>
-              </div>
-            </td>
-            <td>
               <p><%= f.label :name %></p>
             </td>
             <td>  
@@ -38,6 +26,7 @@
             <%= form_for @project do |f| %>
             <td>
               <p><%= f.label :description %></p>
+            </td>
             <td>  
               <div class="input-group profile-group">
                 <%= f.text_field :description, class: 'form-control profile-form', placeholder: "Enter Description", 'aria-describedby' => "New-Password"%>

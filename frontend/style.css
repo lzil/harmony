@@ -1,12 +1,19 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 /* General Styling */
 
 	/* Element Styling */
-  		p {
+  		p, p label {
   			font-family: 'Raleway', sans-serif;
   			font-weight: 400;
   			padding-top: 10px;
   			padding-right: 10px;
   			text-align: right;}
+  		p label {
+  			padding: 0px;
+  			margin: 0px;
+  		}
   		input {
   			font-family: 'Raleway', sans-serif;
   			font-weight: 400;}
@@ -66,8 +73,10 @@
   			width: 100%;}
   		tr {height: 60px;}
   		td:nth-child(1) {
+  			min-width: 30%;
   			width: 30%;}
   		td:nth-child(2) {
+  			mind-width: 70%;
   			width: 70%;}
 
 /* Header Styling */
@@ -157,3 +166,27 @@
   			overflow: hidden;}
 		.img-crop img {
 			margin-bottom: -200px;}
+
+
+			
+/* Error page */
+
+#error_explanation {
+  color: red;
+  text-align: left;
+  ul {
+    color: red;
+    margin: -10px -50px 20px -20px;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.alert-danger {
+  outline: -5px 0px -50px 0px;
+}
