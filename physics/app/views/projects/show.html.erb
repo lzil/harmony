@@ -1,4 +1,8 @@
 <body class="body-main">
+<!--Navbar-->
+<%= render "layouts/header" %>
+<div class="container-fluid">
+<p id="notice"><%= notice %></p>
 
 <script>
 $(document).ready(function() {   
@@ -11,56 +15,28 @@ $(document).ready(function() {
 });
 </script>
 
-<!--Navbar-->
-<%= render "layouts/header" %>
-<div class="container-fluid">
-  <div class="col-md-12">
-    <div class="col-md-4">
-      <table class="table-hover">
-        <tbody>
+<div id="midi"></div>
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+<%= form_for @project do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit class:"btn btn-primary btn-block" %>
+  <% end %>
 
-          <tr>
-            <%= form_for @project do |f| %>
-            <td>
-              <p><%= f.label :name %></p>
-            </td>
-            <td>  
-              <div class="input-group profile-group">
-                <%= f.text_field :name, class: 'form-control profile-form', placeholder: "Enter Project Name", 'aria-describedby' => "New-Email"%>
-                <span class="input-group-btn">
-                  <%= f.submit class:"btn btn-primary profile-btn", value: "test" %>
-                </span>
-              </div>
-            </td>
-            <% end %>
-          </tr>
-          <tr>
-            <%= form_for @project do |f| %>
-            <td>
-              <p><%= f.label :description %></p>
-            </td>
-            <td>  
-              <div class="input-group profile-group">
-                <%= f.text_field :description, class: 'form-control profile-form', placeholder: "Enter Description", 'aria-describedby' => "New-Password"%>
-                <span class="input-group-btn">
-                  <%= f.submit class:"btn btn-primary profile-btn" %>
-                </span>
-              </div>
-            </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-md-6"></div>
-    <div class="col-md-4">
-      <p id="notice"><%= notice %></p>
-      <p><strong>Name:</strong><%= @project.name %></p>
-      <p><strong>Description:</strong><%= @project.description %></p>
-      <%= link_to 'Destroy this project', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-  </div>
-  <div class="col-md-12">
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+<%= form_for @project do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.submit class:"btn btn-primary btn-block" %>
+  <% end %>
+  <%= link_to 'Destroy this project', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
+
 <p>
   <strong>Owner:</strong>
   <%= @project.owner_id %>
