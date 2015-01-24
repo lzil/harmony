@@ -39,7 +39,12 @@ $(document).ready(function() {
 
 <p>
   <strong>Owner:</strong>
-  <%= @project.owner_id %>
+  <% @permission = @project.permissions %>
+  <% @permission.each do |f| %>
+    <% if f.level == 'owner' %>
+      <%= f.user_id %>
+    <% end %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
@@ -80,7 +85,7 @@ $(document).ready(function() {
       var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chat".concat(String(<%= @project.id %>))));
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
-          var name = <%= current_user.id %>;
+          var name = "<%= current_user.username %>";
           var text = $('#messageInput').val();
           chat.push({name: name, text: text});
           $('#messageInput').val('');
@@ -126,10 +131,14 @@ $(document).ready(function() {
 <!-- Editing tab -->
 <div>
 Users with access to this 
-<% if @project.owner_id == current_user.id %>
-  <% @user = @project.users %>
-  <% @user.each do |f| %>
-    <%= link_to user_path(f) do %><%= f.username %><% end %>
+<% @permission = @project.permissions %>
+<% @permission.each do |f| %>
+  <% @user = User.find_by(id: f.user_id) %>
+  <%= link_to user_path(@user) do %>
+    <%= @user.username %>
+  <% end %>
+  <% if f.level == 'owner' %>
+    <%= " IS OWNER" %>
   <% end %>
 <% end %>
 </div>

@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122004341) do
+ActiveRecord::Schema.define(version: 20150124204850) do
 
   create_table "permissions", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "project_id"
+    t.string  "level"
   end
 
   add_index "permissions", ["project_id"], name: "index_permissions_on_project_id"
@@ -26,7 +27,6 @@ ActiveRecord::Schema.define(version: 20150122004341) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "owner_id"
     t.boolean  "public"
   end
 

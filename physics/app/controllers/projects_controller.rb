@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :has_permission, only: [:show, :edit, :update, :destroy]
+  before_action :has_permission, only: [:show]
+  before_action :is_owner, only: [:destroy, :edit, :update]
 
   def index
     @projects = Project.all
@@ -26,13 +27,13 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.owner_id = current_user.id
 
     respond_to do |format|
       if @project.save
         @permission = Permission.new
         @permission.user_id = current_user.id
         @permission.project_id = @project.id
+        @permission.level = "owner"
         @permission.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
       else
@@ -78,6 +79,11 @@ class ProjectsController < ApplicationController
       @permission = Permission.find_by(user_id: current_user.id, project_id: @project.id)
       redirect_to(dashboard_path) unless @permission
     end
-    
+
+    def is_owner
+      @project = Project.find(params[:id])
+      @permission = Permission.find_by(user_id: current_user.id, project_id: @project.id)
+      redirect_to(dashboard_path) unless @permission.level == "owner"
+    end
 
 end
