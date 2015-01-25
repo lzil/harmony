@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :show, :update]
-  before_action :correct_user, only: [:show,:update]
+  before_action :correct_user, only: [:update]
   
   def index
     @users = User.all
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation, :name, :location, :description)
     end
 
     def logged_in_user
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(dashboard_path) unless current_user?(@user)
+      redirect_to user_path(@user) unless current_user?(@user)
     end
 end
 

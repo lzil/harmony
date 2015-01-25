@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
         @permission.user_id = @user.id
         @permission.project_id = @project.id
         @permission.level = "editor"
+        @permission.save
         format.html {redirect_to @project, notice: 'Added!' }
       else
         format.html {redirect_to @project, notice: 'Failed!'}

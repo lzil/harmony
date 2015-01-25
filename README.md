@@ -5,15 +5,14 @@ To build a website that allows users to compose and edit music together and at t
 
 #TO-DO:
 -Firebase security
--profile editing
 -download score as PDF
 -tutorial
 -remove textbox => buttons
 -all the other UI/CSS stuff
 -database of music
 -who is editing
--editor page
 -deleting other users from project
+-about us
 
 
 #PATHS:
