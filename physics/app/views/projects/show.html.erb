@@ -6,95 +6,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
   <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
-      <script type="text/javascript" src="https://gabelerner.github.io/canvg/rgbcolor.js"></script> 
-    <script type="text/javascript" src="https://gabelerner.github.io/canvg/StackBlur.js"></script>
-    <script type="text/javascript" src="https://gabelerner.github.io/canvg/canvg.js"></script> 
+  <script type="text/javascript" src="https://gabelerner.github.io/canvg/rgbcolor.js"></script> 
+  <script type="text/javascript" src="https://gabelerner.github.io/canvg/StackBlur.js"></script>
+  <script type="text/javascript" src="https://gabelerner.github.io/canvg/canvg.js"></script> 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script type="application/javascript">
         function start() {
-            //console.time('foo');
             initialize();
             var sequencer = new Sequencer();
-            //console.timeEnd('foo'); 
         }
-        </script>
+  </script>
 </head>
 
 
 <body class="body-main" onload='start()'>
 <!--Navbar-->
 <%= render "layouts/header" %>
+
 <div class="container-fluid">
-<p id="notice"><%= notice %></p>
-
-<script>
-
-</script>
+  <p id="notice"><%= notice %></p>
 
 <!--ALL THE RANDOM STUFF THAT GOES IN A MODAL -->
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-<%= form_for @project do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit class:"btn btn-primary btn-block" %>
-  <% end %>
+  <p>
+    <strong>Name:</strong>
+    <%= @project.name %>
+  </p>
+  <%= form_for @project do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit class:"btn btn-primary btn-block" %>
+    <% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
-<%= form_for @project do |f| %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.submit class:"btn btn-primary btn-block" %>
-  <% end %>
-  <%= link_to 'Destroy this project', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <p>
+    <strong>Description:</strong>
+    <%= @project.description %>
+  </p>
+  <%= form_for @project do |f| %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.submit class:"btn btn-primary btn-block" %>
+    <% end %>
+    <%= link_to 'Destroy this project', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
 
-<p>
-  <strong>Owner:</strong>
-  <% @perm1 = @project.permissions %>
-  <% @perm1.each do |f| %>
+  <p>
+    <strong>Owner:</strong>
+    <% @perm1 = @project.permissions %>
+    <% @perm1.each do |f| %>
+      <% if f.level == 'owner' %>
+        <%= f.user_id %>
+      <% end %>
+    <% end %>
+  </p>
+  <div>
+  Users with access to this 
+  <% @perms = @project.permissions %>
+  <% @perms.each do |f| %>
+    <% @user = User.find_by(id: f.user_id) %>
+    <%= link_to user_path(@user) do %>
+      <%= @user.username %>
+    <% end %>
     <% if f.level == 'owner' %>
-      <%= f.user_id %>
+      <%= " IS OWNER" %>
     <% end %>
   <% end %>
-</p>
-<div>
-Users with access to this 
-<% @perms = @project.permissions %>
-<% @perms.each do |f| %>
-  <% @user = User.find_by(id: f.user_id) %>
-  <%= link_to user_path(@user) do %>
-    <%= @user.username %>
+  </div>
+
+  <div>
+  Give permissions to users
+  <%= form_for @permission do |f| %>
+    <% f.label :user_id, url: {action: 'gperm'} %>
+    <%= f.text_field :user_id %>
+    <%= f.submit class:"btn btn-primary btn-block" %>
   <% end %>
-  <% if f.level == 'owner' %>
-    <%= " IS OWNER" %>
-  <% end %>
-<% end %>
-</div>
 
-<div>
-Give permissions to users
-<%= form_for @permission do |f| %>
-  <% f.label :user_id, url: {action: 'gperm'} %>
-  <%= f.text_field :user_id %>
-  <%= f.submit class:"btn btn-primary btn-block" %>
-<% end %>
+  </div>
+  <div>
+  Get rid of permissions for users
+  </div>
+  <%= link_to 'Edit', edit_project_path(@project) %> |
+  <%= link_to 'List of Projects', projects_path %>
+  <% provide(:title, "Editor") %>
 
-</div>
-<div>
-Get rid of permissions for users
-</div>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'List of Projects', projects_path %>
-<% provide(:title, "Editor") %>
-
-
+<!--END OF MODAL AREA -->
 
 
 
@@ -106,20 +101,22 @@ Get rid of permissions for users
     </div>
   </div>
 
-<script>
 
-	var project = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("project".concat(String(<%= @project.id %>))));
+<!-- FIREBASE SCRIPT FOR PROJECT -->
+  <script>
 
-	$('#editor-input').on('input', function() {
-	  	var text = $('#editor-input').val();
-		project.push().set({text: text});
-	});
+  	var project = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("project".concat(String(<%= @project.id %>))));
 
-	project.on('child_added', function(snapshot) {
-	var message = snapshot.val();
-	$('#editor-input').val(message.text).change();
-	});
-</script>
+  	$('#editor-input').on('input', function() {
+  	  	var text = $('#editor-input').val();
+  		project.push().set({text: text});
+  	});
+
+  	project.on('child_added', function(snapshot) {
+  	var message = snapshot.val();
+  	$('#editor-input').val(message.text).change();
+  	});
+  </script>
 
 
 
@@ -127,26 +124,27 @@ Get rid of permissions for users
     <div class="col-md-12">
 
       <div id='messagesDiv'>
-    <input type='text' id='messageInput' placeholder='Message'>
-    <script>
-      var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chat".concat(String(<%= @project.id %>))));
-      $('#messageInput').keypress(function (e) {
-        if (e.keyCode == 13) {
-          var name = "<%= current_user.username %>";
-          var text = $('#messageInput').val();
-          chat.push({name: name, text: text});
-          $('#messageInput').val('');
-        }
-      });
-      chat.on('child_added', function(snapshot) {
-        var message = snapshot.val();
-        displayChatMessage(message.name, message.text);
-      });
-      function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-      };
-    </script>
+        <input type='text' id='messageInput' placeholder='Message'>
+        <!--FIREBASE SCRIPT FOR CHATBOX -->
+        <script>
+          var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chat".concat(String(<%= @project.id %>))));
+          $('#messageInput').keypress(function (e) {
+            if (e.keyCode == 13) {
+              var name = "<%= current_user.username %>";
+              var text = $('#messageInput').val();
+              chat.push({name: name, text: text});
+              $('#messageInput').val('');
+            }
+          });
+          chat.on('child_added', function(snapshot) {
+            var message = snapshot.val();
+            displayChatMessage(message.name, message.text);
+          });
+          function displayChatMessage(name, text) {
+            $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+            $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+          };
+        </script>
       </div>
     </div>
 
@@ -166,6 +164,7 @@ Get rid of permissions for users
         <div id="warnings"></div> 
   </div>
 
+
 <!-- Editing tab -->
     <!--PNG making-->
     <canvas id="PDFcanvas" width="1000px" height="600px" hidden="true"></canvas> 
@@ -184,15 +183,12 @@ Get rid of permissions for users
     </div>
    
 
-    <!--Functionality javascript-->
+    <!--Functionality javascript BASICALLY A BUNCH OF SCRIPT-->
     <script type="text/javascript">
-        //hides Quicktime and creates the ABC editor functionality
-
-$(document).ready(function() {   
-  abc_editor = new ABCJS.Editor("editor-input", { canvas_id: "sheet-music", warnings_id:"warnings", midi_id:"midi"});
-
-
-});
+      //hides Quicktime and creates the ABC editor functionality
+      $(document).ready(function() {   
+        abc_editor = new ABCJS.Editor("editor-input", { canvas_id: "sheet-music", warnings_id:"warnings", midi_id:"midi"});
+      });
 
         // midi playback functionality
 
@@ -260,6 +256,10 @@ $(document).ready(function() {
 
     </script>
     <!---->
+
+
+
+
   
     <!--most inefficient MIDI downloader ever-->
     <a id="MIDIdown" href="">download midi</a>
@@ -273,10 +273,13 @@ $(document).ready(function() {
     });
     </script>
     <!---->
-
   </div>
 
+
+
+
   <div onload="start()">
+    <!-- PLAYBACK BUTTONS -->
     
     <div id="menu">
     
@@ -306,7 +309,7 @@ $(document).ready(function() {
             </div>
         </div>
     </div>
-
+<!--CONTAINS THE KEYBOARD-->
     <div id="main">
         <div id="piano-container">
             <div id="piano">
@@ -316,6 +319,7 @@ $(document).ready(function() {
         </div>
     </div>
 
-    </div>
+  </div>
+
 </body>
 </html>
