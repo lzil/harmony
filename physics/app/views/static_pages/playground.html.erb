@@ -3,23 +3,23 @@
   <head>
     <title>API practice</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="abcjs_editor_1.12-min.js" type="text/javascript"></script>
-        <script type='text/javascript' src='MIDI.js'></script>
-        <script type='text/javascript' src='MIDI.js-master/js/Widgets/Loader.js'></script>
-        <script type="text/javascript" src="https://gabelerner.github.io/canvg/rgbcolor.js"></script> 
-        <script type="text/javascript" src="https://gabelerner.github.io/canvg/StackBlur.js"></script>
-        <script type="text/javascript" src="https://gabelerner.github.io/canvg/canvg.js"></script> 
-        <script type='text/javascript' src='FileSaver.min.js'></script>
-        <script type='text/javascript' src='jasmid-master/replayer.js'></script>
-        <script type='text/javascript' src='jasmid-master/stream.js'></script>
-        <script type='text/javascript' src='jasmid-master/midifile.js'></script>
-        <script type='text/javascript' src='canvas-toBlob.js'></script>
-        <script type='text/javascript' src='PDFmaker.js'></script>
-        <script type='text/javascript' src='MIDI.js-master/js/Window/DOMLoader.XMLHttp.js'></script>
-        <script type='text/javascript' src='MIDI.js-master/inc/Base64.js'></script>
-        <script type='text/javascript' src='MIDI.js-master/js/Window/Event.js'></script>
-        <script type='text/javascript' src='MIDI.js-master/inc/base64binary.js'></script>
-        <link type="text/css" rel="stylesheet" href="midiButton.css"/>
+
+    <script type="text/javascript" src="https://gabelerner.github.io/canvg/rgbcolor.js"></script> 
+    <script type="text/javascript" src="https://gabelerner.github.io/canvg/StackBlur.js"></script>
+    <script type="text/javascript" src="https://gabelerner.github.io/canvg/canvg.js"></script> 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+ 
+        <script type="application/javascript">
+        function start() {
+            //console.time('foo');
+            initialize();
+            var sequencer = new Sequencer();
+            //console.timeEnd('foo'); 
+        }
+        </script>
+        <meta charset="utf-8" />
+        <title>PianoRoll.js</title>
   </head>
   <body>
    
@@ -109,8 +109,9 @@
           MIDI.loadPlugin(function() {
             $('#midiPlay').click(function() {
               var url = document.getElementsByTagName("a")[0].getAttribute("href");
+              console.log(url);
               player.timeWarp =1;
-              if(player.currentTime === 0) {
+              if(player.currentTime === 0 || player.currentTime === player.endTime) {
                 MIDI.Player.loadFile(url, player.start);
               }
               else {
@@ -145,5 +146,49 @@
     <!---->
 
   </body>
+
+  <body onload="start()">
+    
+    <div id="menu">
+    
+        <div id="options">
+            <div id="note-lengths">   
+              <div class="button">
+                <input type="radio" name="a" value="whole" id="whole" />
+                <label for="whole"><%= image_tag "whole-note.jpg" %></label>
+              </div>
+              <div class="button">
+                  <input type="radio" name="a" value="half" id="half" />
+                  <label for="half"><%= image_tag "half-note.jpg" %></label>
+              </div>
+              <div class="button">
+                  <input type="radio" name="a" value="quarter" id="quarter" />
+                  <label for="quarter"><%= image_tag "quarter-note.jpg" %></label>
+              </div>
+              <div class="button">
+                  <input type="radio" name="a" value="eigth" id="eigth" />
+                  <label for="eigth"><%= image_tag "eigth-note.jpg" %></label>
+              </div>
+              <div class="button">
+                  <input type="radio" name="a" value="sixteenth" id="sixteenth" />
+                  <label for="sixteenth"><%= image_tag "sixteenth-note.jpg" %></label>
+              </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="main">
+        <div id="piano-container">
+            <div id="piano">
+                 <canvas id="white-keys"  width="150"></canvas>                
+                 <canvas id="black-keys"  width="150"></canvas>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+
 </html>
 

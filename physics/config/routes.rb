@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :projects
   resources :users
 
-  
   get 'projects/new'
 
   root      'static_pages#home'
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
   get       'editor'     => 'static_pages#editor'
   get       'dashboard'  => 'users#dashboard'
   get       'tutorial'   => 'static_pages#tutorial'
-
+  post      'projects/:id/gperm' => 'projects#gperm', as: :permissions
 
 
   get       'playground' => 'static_pages#playground'

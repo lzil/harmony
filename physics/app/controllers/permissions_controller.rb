@@ -1,6 +1,8 @@
 class PermissionsController < ApplicationController
 
+  def create
     
+  end    
 
 	def update
     respond_to do |format|

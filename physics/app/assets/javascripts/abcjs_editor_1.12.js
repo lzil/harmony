@@ -7341,7 +7341,8 @@ if (!window.ABCJS.midi) {
     d.prototype.embed = function(i, h) {
         var k = "data:audio/midi,MThd%00%00%00%06%00%01" + c(this.trackcount, 4) + "%01%e0" + this.trackstrings;
         var j = a(document.createElement("a"), {
-            href: k
+            href: k,
+            id: "midifileay"
         });
         j.innerHTML = "download midi";
         i.insertBefore(j, i.firstChild);

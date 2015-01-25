@@ -1,21 +1,39 @@
-<body class="body-main">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
+  <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
+      <script type="text/javascript" src="https://gabelerner.github.io/canvg/rgbcolor.js"></script> 
+    <script type="text/javascript" src="https://gabelerner.github.io/canvg/StackBlur.js"></script>
+    <script type="text/javascript" src="https://gabelerner.github.io/canvg/canvg.js"></script> 
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script type="application/javascript">
+        function start() {
+            //console.time('foo');
+            initialize();
+            var sequencer = new Sequencer();
+            //console.timeEnd('foo'); 
+        }
+        </script>
+</head>
+
+
+<body class="body-main" onload='start()'>
 <!--Navbar-->
 <%= render "layouts/header" %>
 <div class="container-fluid">
 <p id="notice"><%= notice %></p>
 
 <script>
-$(document).ready(function() {   
-  abc_editor = new ABCJS.Editor("editor-input", { canvas_id: "sheet-music", warnings_id:"warnings", midi_id:"midi"});
-  $('#midi').click(function() {
-    var url = document.URL;
-    MIDIjs.play(url)
-  });
 
-});
 </script>
 
-<div id="midi"></div>
+<!--ALL THE RANDOM STUFF THAT GOES IN A MODAL -->
 <p>
   <strong>Name:</strong>
   <%= @project.name %>
@@ -39,24 +57,54 @@ $(document).ready(function() {
 
 <p>
   <strong>Owner:</strong>
-  <% @permission = @project.permissions %>
-  <% @permission.each do |f| %>
+  <% @perm1 = @project.permissions %>
+  <% @perm1.each do |f| %>
     <% if f.level == 'owner' %>
       <%= f.user_id %>
     <% end %>
   <% end %>
 </p>
+<div>
+Users with access to this 
+<% @perms = @project.permissions %>
+<% @perms.each do |f| %>
+  <% @user = User.find_by(id: f.user_id) %>
+  <%= link_to user_path(@user) do %>
+    <%= @user.username %>
+  <% end %>
+  <% if f.level == 'owner' %>
+    <%= " IS OWNER" %>
+  <% end %>
+<% end %>
+</div>
 
+<div>
+Give permissions to users
+<%= form_for @permission do |f| %>
+  <% f.label :user_id, url: {action: 'gperm'} %>
+  <%= f.text_field :user_id %>
+  <%= f.submit class:"btn btn-primary btn-block" %>
+<% end %>
+
+</div>
+<div>
+Get rid of permissions for users
+</div>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'List of Projects', projects_path %>
 <% provide(:title, "Editor") %>
 
+
+
+
+
+<!-- TEXT INPUT AREA -->
   <div class="col-md-4">
     <!--Editor-->
     <div class="col-md-12">
       <textarea class="form-control editor" id="editor-input"></textarea>
     </div>
-
+  </div>
 
 <script>
 
@@ -75,9 +123,8 @@ $(document).ready(function() {
 
 
 
-    <!--Chatbox-->
+    <!--CHATBOX-->
     <div class="col-md-12">
-      <!--Chatlog-->
 
       <div id='messagesDiv'>
     <input type='text' id='messageInput' placeholder='Message'>
@@ -104,49 +151,171 @@ $(document).ready(function() {
     </div>
 
 
+</div>
 
 
-    <div class="col-md-12">
-      <!--SMS-->
-      <div>
-      </div>
-    </div>
-  </div>
-  <!--Empty Coloumn-->
-  <div class="col-md-1">
-  </div>
-  <!--Editor Render-->
-<script>
-	
-</script>
+
+
+<!--OUTPUT OF MUSIC EDITOR-->
   <div class="col-md-6 editor-render">
+        <div class="sheet-music" id="sheet-music"></div>
+        <div id="midiPlay">Play</div>
+        <div id="midiPause">Pause</div>
+        <div id="midiStop">Stop</div>
+        <div id="midi" hidden="true"></div>
+        <div id="warnings"></div> 
+  </div>
 
-    <div class="sheet-music" id="sheet-music"></div>
- 
-    <div id="warnings"></div>
+<!-- Editing tab -->
+    <!--PNG making-->
+    <canvas id="PDFcanvas" width="1000px" height="600px" hidden="true"></canvas> 
+    <div id="editor"></div> 
+    <button id="cmd">generate PNG</button> 
+    <!---->
+    <div class="player" style="height: 42px; box-shadow: 0 -1px #000; margin-bottom: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
+      <div style="margin: 0 auto; width: 160px; float: right;">
+    </div>
+    <div class="time-controls" style="float: left; margin: 0; position: relative; top: 5px;">
+     <span id="time1" class="time">0:00</span>
+     <span id="capsule">
+      <span id="cursor"></span>
+     </span>
+     <span id="time2" class="time" style="text-align: left;">-0:00</span>
+    </div>
+   
+
+    <!--Functionality javascript-->
+    <script type="text/javascript">
+        //hides Quicktime and creates the ABC editor functionality
+
+$(document).ready(function() {   
+  abc_editor = new ABCJS.Editor("editor-input", { canvas_id: "sheet-music", warnings_id:"warnings", midi_id:"midi"});
+
+
+});
+
+        // midi playback functionality
+
+        var MIDIPlayerPercentage = function(player) {
+          // update the timestamp
+          var time1 = document.getElementById("time1");
+          var time2 = document.getElementById("time2");
+          var capsule = document.getElementById("capsule");
+          var timeCursor = document.getElementById("cursor");
+          //
+          eventjs.add(capsule, "drag", function (event, self) {
+            eventjs.cancel(event);
+            player.currentTime = (self.x) / 420 * player.endTime;
+            if (player.currentTime <= 0) player.currentTime = 0;
+            if (player.currentTime > player.endTime) player.currentTime = player.endTime;
+            if (self.state === "down") {
+              player.pause(true);
+            } else if (self.state === "up") {
+              player.resume();
+            }
+          });
+          //
+          function timeFormatting(n) {
+            var minutes = n / 60 >> 0; 
+            var seconds = String(n - (minutes * 60) >> 0);
+            if (seconds.length == 1) seconds = "0" + seconds;
+            return minutes + ":" + seconds;
+          };
+          
+          player.setAnimation(function(data, element) {
+            var percent = data.now / data.end;
+            var now = data.now >> 0; // where we are now
+            var end = data.end >> 0; // end of song
+            // display the information to the user
+            timeCursor.style.width = (percent * 100) + "%";
+            time1.innerHTML = timeFormatting(now);
+            time2.innerHTML = "-" + timeFormatting(end - now + 1);
+          });
+        };
+
+        $(document).ready(function() {   
+          var player = MIDI.Player;
+          MIDI.loadPlugin(function() {
+            $('#midiPlay').click(function() {
+              var url = document.getElementById("midifileay").getAttribute("href");
+              console.log(url);
+              player.timeWarp =1;
+              if(player.currentTime === 0 || player.currentTime === player.endTime) {
+                MIDI.Player.loadFile(url, player.start);
+              }
+              else {
+                player.resume();
+              }
+              MIDIPlayerPercentage(player);
+            });
+          });
+          $('#midiPause').click(function() {
+            MIDI.Player.pause();
+          });
+          $('#midiStop').click(function() {
+            MIDI.Player.stop();
+          });
+          
+        });
+
+    </script>
+    <!---->
+  
+    <!--most inefficient MIDI downloader ever-->
+    <a id="MIDIdown" href="">download midi</a>
+    <script>
+    $(document).ready(function() {
+      $('#MIDIdown').hover(function() {
+        var url = document.getElementById("midifileay").getAttribute("href");
+        document.getElementById("MIDIdown").setAttribute("href", url);
+        document.getElementById("MIDIdown").setAttribute("download", "music");
+      });
+    });
+    </script>
+    <!---->
 
   </div>
 
-</div>
-<!-- Editing tab -->
-<div>
-Users with access to this 
-<% @permission = @project.permissions %>
-<% @permission.each do |f| %>
-  <% @user = User.find_by(id: f.user_id) %>
-  <%= link_to user_path(@user) do %>
-    <%= @user.username %>
-  <% end %>
-  <% if f.level == 'owner' %>
-    <%= " IS OWNER" %>
-  <% end %>
-<% end %>
-</div>
+  <div onload="start()">
+    
+    <div id="menu">
+    
+        <div id="options">
+            <div id="note-lengths">   
+              <div class="button">
+                <input type="radio" name="a" value="whole" id="whole" />
+                <label for="whole"><%= image_tag "whole-note.jpg" %></label>
+              </div>
+              <div class="button">
+                  <input type="radio" name="a" value="half" id="half" />
+                  <label for="half"><%= image_tag "half-note.jpg" %></label>
+              </div>
+              <div class="button">
+                  <input type="radio" name="a" value="quarter" id="quarter" />
+                  <label for="quarter"><%= image_tag "quarter-note.jpg" %></label>
+              </div>
+              <div class="button">
+                  <input type="radio" name="a" value="eigth" id="eigth" />
+                  <label for="eigth"><%= image_tag "eigth-note.jpg" %></label>
+              </div>
+              <div class="button">
+                  <input type="radio" name="a" value="sixteenth" id="sixteenth" />
+                  <label for="sixteenth"><%= image_tag "sixteenth-note.jpg" %></label>
+              </div>
 
-<div>
-Give permissions to users
-<% @permission = Permission.new %>
+            </div>
+        </div>
+    </div>
 
-</div>
+    <div id="main">
+        <div id="piano-container">
+            <div id="piano">
+                 <canvas id="white-keys"  width="150"></canvas>                
+                 <canvas id="black-keys"  width="150"></canvas>
+            </div>
+        </div>
+    </div>
+
+    </div>
 </body>
 </html>

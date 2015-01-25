@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  layout "play", only: [:show]
+  before_action :set_project, only: [:show, :gperm, :edit, :update, :destroy]
   before_action :has_permission, only: [:show]
   before_action :is_owner, only: [:destroy, :edit, :update]
 
@@ -8,6 +9,26 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @permission = Permission.new
+  end
+
+  def gperm
+    set_project
+    @permission = Permission.new
+    respond_to do |format|
+      if User.exists?(:username => params[:permission][:user_id])
+        @user = User.find_by(username: params[:permission][:user_id])
+        @permission.user_id = @user.id
+        @permission.project_id = @project.id
+        @permission.level = "editor"
+        format.html {redirect_to @project, notice: 'Added!' }
+      else
+        format.html {redirect_to @project, notice: 'Failed!'}
+      end
+    end
+  end
+
+  def rperm
   end
 
   def new
@@ -15,14 +36,6 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-  end
-
-  def gperm(other_user)
-    permissions.create(project_id: @project.id, user_id: @other_user.id)
-  end
-
-  def rperm(other_user)
-    permissions.find_by(project_id: @project.id, user_id: @other_user.id).destroy
   end
 
   def create
@@ -40,10 +53,6 @@ class ProjectsController < ApplicationController
         format.html { render :new }
       end
     end
-  end
-
-  def cperm
-    @permission = Permission.new(permission_params)
   end
 
   def update
