@@ -1,56 +1,9 @@
-* {
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-html, body  {
-   height: 100%;
-}
-
-body {
-    background: #E5E5E5;
-    font-family: helvetica;
-}
-
-/*------------------------------------------------MENU-----------------------------------------------------*/
-#menu {
-    background-color: #335086;
-}
-
-#options {
-    /* height: 100px; */
-    /*width:100%;*/
-
-    margin-bottom: 5px;
-}
-
-#options>div {
-    margin: 5px;
-    display: inline-block;
-}
-img {
-    vertical-align: middle;
-}
-
-label > input{ /* HIDE RADIO */
-  display:none;
-}
-label > input + img{ /* IMAGE STYLES */
-  cursor:pointer;
-  border:2px solid transparent;
-}
-label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
-}
-
-
 /*------------------------------------------------PIANO-----------------------------------------------------*/
 
 #piano-container {
     float: right;/* Make this div as wide as its contents */
-    height: 100%;
-    overflow: hidden;
-
+    height: 750px;
+    overflow: scroll;
 }
 
 #piano {
