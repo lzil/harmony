@@ -4,12 +4,16 @@
 /* General Styling */
 
 	/* Element Styling */
-  		p {
+  		p, p label {
   			font-family: 'Raleway', sans-serif;
   			font-weight: 400;
   			padding-top: 10px;
   			padding-right: 10px;
   			text-align: right;}
+  		p label {
+  			padding: 0px;
+  			margin: 0px;
+  		}
   		input {
   			font-family: 'Raleway', sans-serif;
   			font-weight: 400;}
@@ -69,8 +73,10 @@
   			width: 100%;}
   		tr {height: 60px;}
   		td:nth-child(1) {
+  			min-width: 30%;
   			width: 30%;}
   		td:nth-child(2) {
+  			min-width: 70%;
   			width: 70%;}
 
 /* Header Styling */
@@ -107,9 +113,13 @@
 			background-color: #cc9900;
 			color: #663300;
 			font-family: 'Raleway', sans-serif;}
-		.log-sign .log-sign:link, .log-sign:active, .log-sign:visited, .log-sign:hover, .log-sign:focus{
-			text-decoration: none;
-			font-size: 16px;}
+		.login-box, .signup-box {
+			background-color: #ffffff;
+			border-radius: 2px;
+			margin: 6% 0 0 0;
+			opacity: 0.9;
+			padding: 3%;
+		}
 
 	/* Editor Page Styling */
 
@@ -163,7 +173,7 @@
 
 
 			
-/* Error page */
+/* Error page 
 
 #error_explanation {
   color: red;
@@ -184,3 +194,4 @@
 .alert-danger {
   outline: -5px 0px -50px 0px;
 }
+*/
