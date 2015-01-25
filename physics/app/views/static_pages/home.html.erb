@@ -1,13 +1,13 @@
-<% provide(:title, "Physics") %>
+<% provide(:title, "Harmony") %>
 <body class="body-home">
 <script type="text/javascript">$(document).ready(home);</script>
 <div class="container">
   <!--Large Poster-->
   <div class="row">
     <!--Empty row-->
-    <div class="col-md-3 col-sm-3"></div>
+    <div class="col-md-3"></div>
     <!--Center row-->
-    <center class="col-md-6 col-sm-3 heading-home">
+    <center class="col-md-6 heading-home">
       <!--Heading-->
         <h1 class="title">HARMONY</h1>
         <h2 class="subtitle">Collaborate on sheet music worldwide.</h2>
@@ -15,84 +15,82 @@
   </div>
   <!--Login Sign Up Widget-->
   <div class="row">
-    <!--Empty row-->
-    <div class="col-md-4 col-sm-4"></div>
-    <!--Center row-->
-    <center class="col-md-4 col-sm-4 center-home">
-      <!--Start accordion-->
-      <div class="panel-group" id="accordion">
-        <!--Login Panel-->
-        <div class="panel panel-default">
-          <!--Panel Heading-->
-          <div class="panel-heading">
-            <h1 class="panel-title">
-              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#login">LOGIN</a>
-            </h1>
-          </div>
-          <!--Panel Content-->
-          <div id="login" class="panel-collapse collapse in">
-            <div class="panel-body">
-              <!--Login Form-->
-              <%= form_for(:session, url: login_path) do |f| %>
-              <div class="alert alert-warning login-fail"><%= flash.now[:danger] %></div>
-                <!--Username-->
-                <div class="form-group">
-                  <%= f.label :username, class: 'sr-only' %>
-                  <%= f.text_field :username, class: 'form-control input', placeholder: "Enter Username" %>
-                </div>
-                <!--Password-->
-                <div class="form-group">
-                  <%= f.label :password, class: 'sr-only' %>
-                  <%= f.password_field :password, class: 'form-control input', placeholder: "Enter Password" %>
-                </div>
-                <!--Login Button-->
-                <%= f.submit "LOGIN", class: "btn btn-primary btn-block" %>
-              <% end %>
-            </div>
-          </div>
+    <!--Button-->
+    <div class="col-md-12">
+      <!--Empty row-->
+      <div class="col-md-3"></div>
+      <!--Center row-->
+      <div class="col-md-6 center-home">
+        <!--Login Button-->
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-default btn-block btn-lg login-tab" name="commit">LOGIN</button>
         </div>
-        <!--Sign Up Panel-->
-        <div class="panel panel-default">
-          <!--Panel Heading-->
-          <div class="panel-heading">
-            <h1 class="panel-title">
-              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#signup">SIGN UP</a>
-            </h1>
-          </div>
-          <!--Panel Content-->
-          <div  id="signup" class="panel-collapse collapse">
-            <div class="panel-body">
-              <!--Sign Up Form-->
-              <%= form_for(@user) do |f| %>
-              <div class="alert alert-warning signup-fail"><%= render 'shared/error_messages' %></div>
-                <!--Username-->
-                <div class="form-group">
-                  <%= f.label :username, class: 'sr-only'%>
-                  <%= f.text_field :username, class: 'form-control input', placeholder: "Enter Username"%>
-                </div>
-                <!--Email-->
-                <div class="form-group">
-                  <%= f.label :email, class: 'sr-only' %>
-                  <%= f.email_field :email, class: 'form-control input', placeholder: "Enter Email" %>
-                </div>
-                <!--Password-->
-                <div class="form-group">
-                  <%= f.label :password, class: 'sr-only' %>
-                  <%= f.password_field :password, class: 'form-control input', placeholder: "Enter Password" %>
-                </div>
-                <!--Password Authentication-->
-                <div class="form-group">
-                  <%= f.label :password_confirmation, "Confirmation", class: 'sr-only' %>
-                  <%= f.password_field :password_confirmation, class: 'form-control input', placeholder: "Re-Enter Password" %>
-                </div>
-                <!--Signup Button-->
-                <%= f.submit "SIGN UP", class: "btn btn-primary btn-block" %>
-              <% end %>
-            </div>
-          </div>
+        <!--Signup Button-->
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-default btn-block btn-lg signup-tab" name="commit">SIGN UP</button>
         </div>
       </div>
-    </center>
+    </div>
+    <!--Form-->
+    <div class="col-md-12">
+      <!--Empty row-->
+      <div class="col-md-4">
+      </div>
+      <!--Center row-->
+      <div class="col-md-4">
+        <!--Login Form-->
+        <div class="col-md-12 login-box">
+          <%= form_for(:session, url: login_path) do |f| %>
+          <div class="alert alert-warning login-fail"><%= flash.now[:danger] %></div>
+            <!--Username-->
+            <div class="form-group">
+              <%= f.label :username, class: 'sr-only' %>
+              <%= f.text_field :username, class: 'form-control input', placeholder: "Enter Username" %>
+            </div>
+            <!--Password-->
+            <div class="form-group">
+              <%= f.label :password, class: 'sr-only' %>
+              <%= f.password_field :password, class: 'form-control input', placeholder: "Enter Password" %>
+            </div>
+            <!--Login Button-->
+            <%= f.submit "LOGIN", class: "btn btn-primary btn-block" %>
+          <% end %>
+          <!--Alternate Signup Button-->
+          <a href="#" class="signup-tab">Don't have an account?</a>
+        </div>
+        <!--Signup Form-->
+        <div class="col-md-12 signup-box">
+          <!--Sign Up Form-->
+          <%= form_for(@user) do |f| %>
+          <div class="alert alert-warning signup-fail"><%= render 'shared/error_messages' %></div>
+            <!--Username-->
+            <div class="form-group">
+              <%= f.label :username, class: 'sr-only'%>
+              <%= f.text_field :username, class: 'form-control input', placeholder: "Enter Username"%>
+            </div>
+            <!--Email-->
+            <div class="form-group">
+              <%= f.label :email, class: 'sr-only' %>
+              <%= f.email_field :email, class: 'form-control input', placeholder: "Enter Email" %>
+            </div>
+            <!--Password-->
+            <div class="form-group">
+              <%= f.label :password, class: 'sr-only' %>
+              <%= f.password_field :password, class: 'form-control input', placeholder: "Enter Password" %>
+            </div>
+            <!--Password Authentication-->
+            <div class="form-group">
+              <%= f.label :password_confirmation, "Confirmation", class: 'sr-only' %>
+              <%= f.password_field :password_confirmation, class: 'form-control input', placeholder: "Re-Enter Password" %>
+            </div>
+            <!--Sign Up Button-->
+            <%= f.submit "SIGN UP", class: "btn btn-primary btn-block" %>
+          <% end %>
+          <!--Alternate Signup Button-->
+          <a href="#" class="login-tab">Already have an account?</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </body>

@@ -45,10 +45,8 @@ var home = function() {
 			}
 		}
 		else {
-			$('#signup-box').animate({opacity:1}, 300)
+			$('.signup-tab').animate({opacity:1}, 300)
 			$('.signup-box').fadeOut(300);
 		}
 	});
 };
-
-$(document).ready(home);

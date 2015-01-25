@@ -9,13 +9,13 @@ var home = function() {
 	};
 	$('.login-tab').click(function() {
 		if(!$('.login-box').is(':visible')) {
-			$('.login-tab').animate({opacity:0.25}, 300)
+			$('.signup-tab').animate({opacity:0.25}, 300)
 			if($('.signup-box').is(':visible')) {
 				$('.signup-box').fadeOut(150);
-				$('.signup-tab').animate({opacity:1}, 300)
-				$('.login-tab').animate({opacity:0.25}, 300)
+				$('.login-tab').animate({opacity:1}, 300)
+				$('.signup-tab').animate({opacity:0.25}, 300)
 				setTimeout(function() {
-					$('.signup-box').hide();
+					$('.login-tab').hide();
 					$('.login-box').fadeIn(150);
 				}, 150);
 			}
@@ -24,7 +24,7 @@ var home = function() {
 			}
 		}
 		else {
-			$('.login-tab').animate({opacity:1}, 300)
+			$('.signup-tab').animate({opacity:1}, 300)
 			$('.login-box').fadeOut(300);
 		}
 	});
@@ -32,8 +32,8 @@ var home = function() {
 		if(!$('.signup-box').is(':visible')) {
 			if($('.login-box').is(':visible')) {
 				$('.login-box').fadeOut(150);
-				$('.login-tab').animate({opacity:1}, 300)
-				$('.signup-tab').animate({opacity:0.25}, 300)
+				$('.signup-tab').animate({opacity:1}, 300)
+				$('.login-tab').animate({opacity:0.25}, 300)
 				setTimeout(function() {
 					$('.login-box').hide();
 					$('.signup-box').fadeIn(150);
@@ -41,14 +41,12 @@ var home = function() {
 			}
 			else {
 				$('.signup-box').fadeIn(300);
-				$('.signup-tab').animate({opacity:0.25}, 300)
+				$('.login-tab').animate({opacity:0.25}, 300)
 			}
 		}
 		else {
-			$('#signup-box').animate({opacity:1}, 300)
+			$('.login-tab').animate({opacity:1}, 300)
 			$('.signup-box').fadeOut(300);
 		}
 	});
 };
-
-$(document).ready(home);
