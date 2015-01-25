@@ -1,6 +1,3 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 /* General Styling */
 
 	/* Element Styling */
@@ -76,7 +73,7 @@
   			min-width: 30%;
   			width: 30%;}
   		td:nth-child(2) {
-  			mind-width: 70%;
+  			min-width: 70%;
   			width: 70%;}
 
 /* Header Styling */
@@ -92,7 +89,7 @@
 
 	/* Home Page Styling */
 		.body-home {
-			background: url("background.jpg") fixed no-repeat center;
+			background: url("background.JPG") fixed no-repeat center;
 			background-size: cover;}
 		.heading-home {
 			padding-top: 5%;}
@@ -113,9 +110,13 @@
 			background-color: #cc9900;
 			color: #663300;
 			font-family: 'Raleway', sans-serif;}
-		.log-sign .log-sign:link, .log-sign:active, .log-sign:visited, .log-sign:hover, .log-sign:focus{
-			text-decoration: none;
-			font-size: 16px;}
+		.login-box, .signup-box {
+			background-color: #ffffff;
+			border-radius: 2px;
+			margin: 6% 0 0 0;
+			opacity: 0.9;
+			padding: 3%;
+		}
 
 	/* Editor Page Styling */
 
@@ -169,7 +170,7 @@
 
 
 			
-/* Error page */
+/* Error page 
 
 #error_explanation {
   color: red;
@@ -190,3 +191,4 @@
 .alert-danger {
   outline: -5px 0px -50px 0px;
 }
+*/
