@@ -13,14 +13,13 @@
 </head>
 
 <body class="body-home">
-<script type="text/javascript">$(document).ready(home);</script>
 <div class="container">
   <!--Large Poster-->
   <div class="row">
     <!--Empty row-->
-    <div class="col-md-3 col-sm-3"></div>
+    <div class="col-md-3"></div>
     <!--Center row-->
-    <center class="col-md-6 col-sm-3 heading-home">
+    <center class="col-md-6 heading-home">
       <!--Heading-->
         <h1 class="title">HARMONY</h1>
         <h2 class="subtitle">Collaborate on sheet music worldwide.</h2>
@@ -28,86 +27,83 @@
   </div>
   <!--Login Sign Up Widget-->
   <div class="row">
-    <!--Empty row-->
-    <div class="col-md-4 col-sm-4"></div>
-    <!--Center row-->
-    <center class="col-md-4 col-sm-4 center-home">
-      <!--Start accordion-->
-      <div class="panel-group" id="accordion">
-        <!--Login Panel-->
-        <div class="panel panel-default">
-          <!--Panel Heading-->
-          <div class="panel-heading">
-            <h1 class="panel-title">
-              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#login">LOGIN</a>
-            </h1>
-          </div>
-          <!--Panel Content-->
-          <div id="login" class="panel-collapse collapse in">
-            <div class="panel-body">
-              <!--Login Form-->
-              <div class="alert alert-warning login-fail"></div>
-              <form role="form" accept-charset="UTF-8" action="/login" method="post">
-                <!--Username-->
-                <div class="form-group">
-                  <label class="sr-only" for="session_username">Username:</label>
-                  <input type="text" class="form-control input" id="session_username" name="session[username]" placeholder="Enter Username">
-                </div>
-                <!--Password-->
-                <div class="form-group">
-                  <label class="sr-only" for="session_password" >Password:</label>
-                  <input type="password" class="form-control input" id="session_password" placeholder="Enter Password">
-                </div>
-                <!--Login Button-->
-                <button type="submit" class="btn btn-primary btn-block" name="commit">LOGIN
-                </button>
-              </form>
-            </div>
-          </div>
+    <!--Button-->
+    <div class="col-md-12">
+      <!--Empty row-->
+      <div class="col-md-3"></div>
+      <!--Center row-->
+      <div class="col-md-6 center-home">
+        <!--Login Button-->
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-default btn-block btn-lg login-tab" name="commit">LOGIN</button>
         </div>
-        <!--Sign Up Panel-->
-        <div class="panel panel-default">
-          <!--Panel Heading-->
-          <div class="panel-heading">
-            <h1 class="panel-title">
-              <a class="log-sign" data-toggle="collapse" data-parent="#accordion" href="#signup">SIGN UP</a>
-            </h1>
-          </div>
-          <!--Panel Content-->
-          <div  id="signup" class="panel-collapse collapse">
-            <div class="panel-body">
-              <!--Sign Up Form-->
-              <form role="form" action="/users" class="new_user" id="new_user" method="post">
-              <div class="alert alert-warning signup-fail"></div>
-                <!--Username-->
-                <div class="form-group">
-                  <label class="sr-only" for="user_name">Username:</label>
-                  <input type="text" class="form-control input" id="user_username" placeholder="Enter Username" name="user[username]">
-                </div>
-                <!--Email-->
-                <div class="form-group">
-                  <label class="sr-only" for="user_rmail">Email:</label>
-                  <input type="text" class="form-control input" id="user_email" placeholder="Enter Email" name="user[email]">
-                </div>
-                <!--Password-->
-                <div class="form-group">
-                  <label class="sr-only" for="user_password">Password:</label>
-                  <input type="password" class="form-control input" id="user_password" placeholder="Enter Password" name="user[password">
-                </div>
-                <!--Password Authentication-->
-                <div class="form-group">
-                  <label class="sr-only" for="password" >Password Authentication:</label>
-                  <input type="password" class="form-control input" id="user_password_confirmation" placeholder="Re-Enter Password" name="user[password_confirmation">
-                </div>
-                <!--Sign Up Button-->
-                <button type="submit" class="btn btn-primary btn-block" name="commit">SIGN UP
-                </button>
-              </form>
-            </div>
-          </div>
+        <!--Signup Button-->
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-default btn-block btn-lg signup-tab" name="commit">SIGN UP</button>
         </div>
       </div>
-    </center>
+    <!--Form-->
+    <div class="col-md-12">
+      <!--Empty row-->
+      <div class="col-md-4">
+      </div>
+      <!--Center row-->
+      <div class="col-md-4">
+        <!--Login Form-->
+        <div class="col-md-12 login-box">
+          <div class="alert alert-warning login-fail"></div>
+          <form role="form" accept-charset="UTF-8" action="/login" method="post">
+            <!--Username-->
+            <div class="form-group">
+              <label class="sr-only" for="session_username">Username:</label>
+              <input type="text" class="form-control input" id="session_username" name="session[username]" placeholder="Enter Username">
+            </div>
+            <!--Password-->
+            <div class="form-group">
+              <label class="sr-only" for="session_password" >Password:</label>
+              <input type="password" class="form-control input" id="session_password" placeholder="Enter Password">
+            </div>
+            <!--Login Button-->
+            <button type="submit" class="btn btn-primary btn-block" name="commit">LOGIN
+            </button>
+          </form>
+          <!--Alternate Signup Button-->
+          <button type="submit" class="btn btn-primary btn-block signup-tab" name="commit">Don't have an account?</button>
+        </div>
+        <!--Signup Form-->
+        <div class="col-md-12 signup-box">
+          <!--Sign Up Form-->
+          <form role="form" action="/users" class="new_user" id="new_user" method="post">
+          <div class="alert alert-warning signup-fail"></div>
+            <!--Username-->
+            <div class="form-group">
+              <label class="sr-only" for="user_name">Username:</label>
+              <input type="text" class="form-control input" id="user_username" placeholder="Enter Username" name="user[username]">
+            </div>
+            <!--Email-->
+            <div class="form-group">
+              <label class="sr-only" for="user_rmail">Email:</label>
+              <input type="text" class="form-control input" id="user_email" placeholder="Enter Email" name="user[email]">
+            </div>
+            <!--Password-->
+            <div class="form-group">
+              <label class="sr-only" for="user_password">Password:</label>
+              <input type="password" class="form-control input" id="user_password" placeholder="Enter Password" name="user[password">
+            </div>
+            <!--Password Authentication-->
+            <div class="form-group">
+              <label class="sr-only" for="password" >Password Authentication:</label>
+              <input type="password" class="form-control input" id="user_password_confirmation" placeholder="Re-Enter Password" name="user[password_confirmation">
+            </div>
+            <!--Sign Up Button-->
+            <button type="submit" class="btn btn-primary btn-block" name="commit">SIGN UP
+            </button>
+          </form>
+          <!--Alternate Signup Button-->
+          <button type="submit" class="btn btn-primary btn-block login-tab" name="commit">Already have an account?</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </body>
