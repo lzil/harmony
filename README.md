@@ -4,11 +4,7 @@
 To build a website that allows users to compose and edit music together and at the same time.
 
 #TO-DO:
--fix jquery bug
 -Firebase security
--Inviting other users to Project
--download MIDI
--replay score
 -profile editing
 -download score as PDF
 -tutorial
@@ -17,6 +13,7 @@ To build a website that allows users to compose and edit music together and at t
 -database of music
 -who is editing
 -editor page
+-deleting other users from project
 
 
 #PATHS:
