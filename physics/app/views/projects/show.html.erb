@@ -168,19 +168,22 @@
     <script>
       var project = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("project".concat(String(<%= @project.id %>))));
       $('#editor-input').on('input', function() {
+          var name = "<%= current_user.username %>"
           var text = $('#editor-input').val();
-        project.push().set({text: text});
+        project.push().set({name: name, text: text});
       });
       project.on('child_added', function(snapshot) {
-      var message = snapshot.val();
-      $('#editor-input').val(message.text).change();
+        var message = snapshot.val();
+        $('#editor-input').val(message.text).change();
+        $('#lastedit').empty().append($('<em/>').text(message.name)).append(' made the last edit!');
       });
     </script>
-    <!--CHATBOX-->
     <div class="col-md-12">
+    <!--WHO MADE THE LAST EDIT-->
+    <div class="editor-field chatbox" id="lastedit"></div>
+    <!--CHATBOX-->
       <input class="form-control sms" type='text' id='messageInput' placeholder='Message'>
-      <div class="editor-field chatbox" id='messagesDiv'>
-      </div>
+      <div class="editor-field chatbox" id='messagesDiv'></div>
         <!--FIREBASE SCRIPT FOR CHATBOX -->
         <script>
           var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chat".concat(String(<%= @project.id %>))));
