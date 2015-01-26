@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :show, :update]
-  before_action :correct_user, only: [:update]
+  before_action :logged_in_user
+  before_action :correct_user, only: [:show, :edit, :update]
   
   def index
     @users = User.all
@@ -13,11 +13,6 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     @projects = @user.projects.all
-  end
-
-  def new
-    @user = User.new
-    render "static_pages/home"
   end
 
   def create
@@ -59,7 +54,7 @@ class UsersController < ApplicationController
     
     def correct_user
       @user = User.find(params[:id])
-      redirect_to user_path(@user) unless current_user?(@user) 
+      redirect_to dashboard_path unless current_user?(@user) 
     end
 end
 

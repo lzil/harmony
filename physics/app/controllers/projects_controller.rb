@@ -1,8 +1,9 @@
 class ProjectsController < ApplicationController
   layout "play", only: [:show]
-  before_action :set_project, only: [:show, :gperm, :edit, :update, :destroy]
+  before_action :logged_in_user
+  before_action :set_project, only: [:show, :gperm, :rperm, :edit, :update, :destroy]
   before_action :has_permission, only: [:show]
-  before_action :is_owner, only: [:destroy, :edit, :update]
+  before_action :is_owner, only: [:destroy, :edit, :update, :gperm, :rperm]
 
   def index
     @projects = Project.all
@@ -30,10 +31,8 @@ class ProjectsController < ApplicationController
   end
 
   def rperm
-  end
-
-  def new
-    @project = Project.new
+    @permission = Permission.find_by(user_id: params[:permission][:user_id], project_id: @project.id)
+    @permission.destroy
   end
 
   def edit
@@ -51,7 +50,7 @@ class ProjectsController < ApplicationController
         @permission.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
       else
-        format.html { render :new }
+        format.html { redirect_to dashboard_path }
       end
     end
   end
@@ -61,7 +60,7 @@ class ProjectsController < ApplicationController
       if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
       else
-        format.html { render :edit }
+        format.html { redirect_to project_path(@project) }
       end
     end
   end
@@ -74,6 +73,13 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to root_path
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])

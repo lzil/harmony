@@ -35,7 +35,10 @@
           <!-- Project Details Modal Button -->
         </h4>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3">          
+        <% @pm = Permission.find_by(project_id: @project.id, level: "owner") %>
+        <% @ow = User.find_by(id: @pm.user_id) %>
+        <% if current_user == @ow %>
         <h5>
           <button type="button" class="btn btn-default profile-btn" data-toggle="modal" data-target="#edit-proj">
             <span class="glyphicon glyphicon-pencil form-group-addon"></span>
@@ -45,6 +48,7 @@
           <button type="button" class="btn btn-default profile-btn" data-toggle="modal" data-target="#share-proj">
             <span class="glyphicon glyphicon-cloud form-group-addon"></span>
           </button>
+          <% end %>
         </h5>
       </div>
       <!--Project Details Modal-->
@@ -136,7 +140,7 @@
                   </td>
                   <td class="modal-table">
                     <div class="input-group profile-group">
-                      <%= f.text_field :user_id, class:"form-control profile-form", placeholder:"Enter Project Name", "aria-describedby" => "Project Name"%>
+                      <%= f.text_field :user_id, class:"form-control profile-form", placeholder:"Enter User Name", "aria-describedby" => "Project Name"%>
                       <span class="input-group-btn">
                         <%= f.submit class:"btn btn-primary profile-btn" %>
                       </span>
