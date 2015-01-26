@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150125042924) do
 
-  create_table "permissions", id: false, force: :cascade do |t|
+  create_table "permissions", force: :cascade do |t|
     t.integer "user_id"
     t.integer "project_id"
     t.string  "level"

@@ -9,8 +9,8 @@
   <script type="text/javascript" src="https://gabelerner.github.io/canvg/rgbcolor.js"></script> 
   <script type="text/javascript" src="https://gabelerner.github.io/canvg/StackBlur.js"></script>
   <script type="text/javascript" src="https://gabelerner.github.io/canvg/canvg.js"></script> 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all'%>
+  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 
 </head>
@@ -112,14 +112,17 @@
               <h4>Users with access to this project</h4>
               <table class="table-hover">
                 <% @perms = @project.permissions %>
-                <% @perms.each do |f| %>
-                  <% @user = User.find_by(id: f.user_id) %>
+                <% @perms.each do |p| %>
+                  <% @user = User.find_by(id: p.user_id) %>
                   <tr>
                     <td><%= link_to user_path(@user) do %>
                           <%= @user.username %>
-                          <% if f.level == 'owner' %>
+                          <% if p.level == 'owner' %>
                             <%= " IS OWNER" %>
                           <% end %>
+                        <% end %>
+                        <% if p.level != "owner" %>
+                        <%= button_to "Delete Permission", destroy_permission_path(p.project_id, p.user_id), :method => :delete %>
                         <% end %>
                     </td>
                   </tr>

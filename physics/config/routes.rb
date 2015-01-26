@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get       'dashboard'  => 'users#dashboard'
   get       'tutorial'   => 'static_pages#tutorial'
   post      'projects/:id/gperm' => 'projects#gperm', as: :permissions
+  delete    'projects/:id/rperm/:uid' => 'projects#rperm', as: :destroy_permission
 
 
   get       'playground' => 'static_pages#playground'
