@@ -57,7 +57,7 @@
                 <p><% f.label :description %>About Yourself!</p>
               <td>  
                 <div class="input-group profile-group">
-                <%= f.text_area :description, class: 'form-control profile-form', placeholder: @user.description, 'aria-describedby' => "Persona-info-field-3", disabled: "disabled" %>
+                <%= f.text_area :description, class: 'form-control profile-form', placeholder: @user.description, 'aria-describedby' => "Persona-info-field-3", disabled: "disabled", style:"overflow:auto;resize:none" %>
                   <span class="input-group-btn">
                     <button class="btn btn-default profile-btn" type="button">
                       <span class="glyphicon glyphicon-pencil form-group-addon"></span>

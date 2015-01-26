@@ -5,14 +5,13 @@ To build a website that allows users to compose and edit music together and at t
 
 #TO-DO:
 -Firebase security
--download score as PDF
--tutorial
--remove textbox => buttons
--all the other UI/CSS stuff
 -database of music
 -who is editing
 -deleting other users from project
--about us
+-Profile: CSS, make it so "save changes" saves everything instead of just the last textbox
+-Editor: keyboard, positioning of playback/download/etc. Limitation of chatbox to last 10 messages. Box showing who made the last edit.
+-Tutorial: everything.
+-About us: everything.
 
 
 #PATHS:
