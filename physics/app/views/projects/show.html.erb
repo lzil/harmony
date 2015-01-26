@@ -4,7 +4,7 @@
   <title>Project</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
   <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
   <script type="text/javascript" src="https://gabelerner.github.io/canvg/rgbcolor.js"></script> 
   <script type="text/javascript" src="https://gabelerner.github.io/canvg/StackBlur.js"></script>
@@ -12,14 +12,10 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <script type="application/javascript">
-    function start() {
-        initialize();
-        var sequencer = new Sequencer();
-    }
-  </script>
+
 </head>
-<body class="body-main" onload='start()'>
+<body class="body-editor">
+<script type="text/javascript">$(document).ready(project);</script>
 <!--Navbar-->
 <%= render "layouts/header" %>
 <!--Container-->
@@ -337,7 +333,7 @@
       });
     </script>
   </div>
-  <div onload="start()">
+  <div>
     <!-- MIDI Playback -->
     <div id="menu">
         <div id="options">

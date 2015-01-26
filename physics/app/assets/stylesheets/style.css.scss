@@ -161,6 +161,11 @@
 		}
 
 	/* Editor Page Styling */
+	  	.body-editor {
+  			padding-top: 70px;
+			background: url("ocean1.jpg") fixed no-repeat center;
+			background-size: cover;
+		}
 		.editor-field {
 			margin-bottom: 5%;
 			padding: 0;
@@ -210,7 +215,11 @@
 			text-align: center;}
 
 	/* Show Page Styling */
-
+	  	.body-profile {
+  			padding-top: 70px;
+			background: url("guitar6.jpg") fixed no-repeat center;
+			background-size: cover;
+		}
 		.data {
 			background-color: #ffffff;
 			border-radius: 4px;
@@ -224,7 +233,11 @@
   			outline: 0 none;}
 
   	/* Dashboard Page Styling */
-
+  		.body-dashboard {
+  			padding-top: 70px;
+			background: url("guitar5.jpg") fixed no-repeat center;
+			background-size: cover;
+		}
   		.modal-content {
   			border-radius: 0px;
   			font-family: 'Raleway', sans-serif;
