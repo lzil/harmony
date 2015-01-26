@@ -86,7 +86,7 @@
                   </td>
                   <td class="modal-table">
                     <div class="input-group profile-group">
-                      <%= f.text_field :description, class:"form-control profile-form", placeholder:"Enter Project Name", "aria-describedby" => "Project Name"%>
+                      <%= f.text_area :description, class:"form-control profile-form", placeholder:"Enter Project Description", "aria-describedby" => "Project Name", style:"overflow:auto;resize:none" %>
                       <span class="input-group-btn">
                         <%= f.submit class:"btn btn-primary profile-btn" %>
                       </span>

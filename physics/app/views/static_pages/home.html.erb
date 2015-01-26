@@ -41,7 +41,7 @@
         <!--Login Form-->
         <div class="col-md-12 login-box">
           <%= form_for(:session, url: login_path) do |f| %>
-          <div class="alert alert-warning login-fail"><%= flash.now[:danger] %></div>
+            <div class="alert alert-warning login-fail"><%= flash.now[:danger] %></div>
             <!--Username-->
             <div class="form-group">
               <%= f.label :username, class: 'sr-only' %>
@@ -56,13 +56,15 @@
             <%= f.submit "LOGIN", class: "btn btn-primary btn-block" %>
           <% end %>
           <!--Alternate Signup Button-->
-          <a href="#" class="signup-tab">Don't have an account?</a>
+          <center class="home-nav-link">
+            <a href="#" class="signup-link">Don't have an account?</a>
+          </center>
         </div>
         <!--Signup Form-->
         <div class="col-md-12 signup-box">
           <!--Sign Up Form-->
           <%= form_for(@user) do |f| %>
-          <div class="alert alert-warning signup-fail"><%= render 'shared/error_messages' %></div>
+            <div class="alert alert-warning signup-fail"><%= render 'shared/error_messages' %></div>
             <!--Username-->
             <div class="form-group">
               <%= f.label :username, class: 'sr-only'%>
@@ -87,7 +89,9 @@
             <%= f.submit "SIGN UP", class: "btn btn-primary btn-block" %>
           <% end %>
           <!--Alternate Signup Button-->
-          <a href="#" class="login-tab">Already have an account?</a>
+          <center class="home-nav-link">
+            <a href="#" class="login-link">Already have an account?</a>
+          </center>
         </div>
       </div>
     </div>

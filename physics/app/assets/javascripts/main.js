@@ -6,10 +6,12 @@ var main = function() {	// General
 		setTimeout(function() {
 			$('.profile-form').val('');
 			$('.data-2').hide();
+			$('.data-3').hide();
 			$('.data-1').show();
 		}, 300);
 		$('.data').slideDown(300);
 		$('.tab-2').removeClass('active');
+		$('.tab-3').removeClass('active');
 		$('.tab-1').addClass('active');
 	});
 	$('.tab-2').click(function() {
@@ -17,11 +19,26 @@ var main = function() {	// General
 		setTimeout(function() {
 			$('.profile-form').val('');
 			$('.data-1').hide();
+			$('.data-3').hide();
 			$('.data-2').show();
 		}, 300);
 		$('.data').slideDown(300);
 		$('.tab-1').removeClass('active');
+		$('.tab-3').removeClass('active');
 		$('.tab-2').addClass('active');
+	});
+	$('.tab-3').click(function() {
+		$('.data').slideUp(300);
+		setTimeout(function() {
+			$('.profile-form').val('');
+			$('.data-1').hide();
+			$('.data-2').hide();
+			$('.data-3').show();
+		}, 300);
+		$('.data').slideDown(300);
+		$('.tab-1').removeClass('active');
+		$('.tab-2').removeClass('active');
+		$('.tab-3').addClass('active');
 	});
 	// For Dashboard
 	$('.modal-cancel').click(function() {

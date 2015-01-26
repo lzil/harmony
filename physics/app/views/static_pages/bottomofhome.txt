@@ -1,0 +1,5 @@
+COMPOSE sheet music online with efficient and easy-to-use notation.
+
+INVITE other users to compose together with you in real time.
+
+PRODUCE a completed score with a .midi file that you and your co-composers can claim as a finished masterpiece!

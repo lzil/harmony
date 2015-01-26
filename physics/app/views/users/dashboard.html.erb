@@ -22,7 +22,7 @@
     </div>
     <!--Contents-->
     <div class="col-md-9 data">
-      <!--My tab-->
+      <!--My Projects-->
       <div class="col-md-12 data-1">
         <table class="table-hover">
           <thead>
@@ -30,7 +30,7 @@
               <th>NAME</th>
               <th>DESCRIPTION</th>
               <th>OWNER</th>
-              <th colspan="3"></th>
+              <th colspan="1"></th>
             </tr>
           </thead>
           <tbody>
@@ -38,8 +38,9 @@
               <tr>
                 <td><%= link_to project_path(project) do %><%= project.name %><% end %></td>
                 <td><%= project.description %></td>
-                <% @owner = Permission.find_by(project_id: project.id, level: "owner") %>
-                <td><%= @owner.user_id %></td>
+                <% @own = Permission.find_by(project_id: project.id, level: "owner") %>
+                <% @owner = User.find_by(id: @own.user_id) %>
+                <td><%= @owner.username %></td>
               </tr>
             <% end %>
           </tbody>
@@ -47,13 +48,14 @@
       </div>
       <!--Tab 2-->
       <div class="col-md-12 data-2">
-              <table class="table-hover">
+        <table class="table-hover">
           <thead>
             <tr>
-              <th>Username</th>
-              <th>Name</th>
-              <th>Location</th>
-              <th colspan="3"></th>
+              <th>USERNAME</th>
+              <th>NAME</th>
+              <th>LOCATION</th>
+              <th>INTRODUCTION</th>
+              <th colspan="1"></th>
             </tr>
           </thead>
           <tbody>
@@ -63,10 +65,12 @@
                 <td><%= user.username %></td>
                 <td><%= user.name %></td>
                 <td><%= user.location %></td>
+                <td><%= user.description %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
+        <% if false %>
         <div class="col-md-4">
           <!--Post-->
           <div class="thumbnail">
@@ -82,9 +86,18 @@
             </div>
           </div>
         </div>
+        <% end %>
       </div>
       <div class="col-md-12 data-3">
-        Tutorial to come!
+        <!--Center row-->
+        <center class="col-md-12 heading-dash">
+          <h1 class="tut-title">
+            First time using the editor?
+          </h1>
+          <h2 class="tut-subtitle">
+            <%= link_to tutorial_path do %>Get started now!<% end %>
+          </h2>
+        </center>
       </div>
         
       <!--Create tab-->
@@ -113,17 +126,16 @@
                 <p><%= f.label :description %></p>
               <td>  
                 <div class="input-group">
-                  <%= f.text_area :description, placeholder: "Project Description", class: "form-control" %>
+                  <%= f.text_area :description, placeholder: "Project Description", class: "form-control", style: "overflow:auto; resize:none"%>
                 </div>
               </td>
             </tr>
           </tbody>
         </table>
             <div class="modal-footer">
-              <%= f.submit class:"btn btn-primary btn-block" %>
+              <%= f.submit class:"btn btn-primary btn-block", value:"CREATE PROJECT" %>
               <% end %>
-              <a href="#" type="cancel" class="btn btn-default btn-block modal-cancel">CANCEL
-              </a>
+              <a href="#" type="cancel" class="btn btn-default btn-block modal-cancel">CANCEL</a>
             </div>
           </div>
         </div>
