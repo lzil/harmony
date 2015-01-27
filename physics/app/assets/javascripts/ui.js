@@ -144,7 +144,7 @@ Piano.prototype.drawPiano = function(startKey, startOctave, numKeys) {
         var finalNote = noteVal+bop;
         console.log(finalNote);
         $(document).ready(function() {
-          $('#editor-input').val($('#editor-input').val() + finalNote);
+          $('#editor-input').val($('#editor-input').val() + finalNote).change();
         })
 
     }).bind(this);
@@ -297,6 +297,9 @@ var defaultLength = function() {
   else if(textAreaText.search(getWhole) != -1) {
     noteDefault = 1;
   }
+  else {
+    noteDefault = 0.125;
+  }
   return noteDefault;
 }
 
@@ -306,17 +309,20 @@ var noteLength = function() {
   if(document.getElementById('whole').checked) {
     multiplier = 1/length;
   }
-  if(document.getElementById('half').checked) {
+  else if(document.getElementById('half').checked) {
     multiplier=0.5/length;
   }
-  if(document.getElementById('quarter').checked) {
+  else if(document.getElementById('quarter').checked) {
     multiplier=0.25/length;
   }
-  if(document.getElementById('eigth').checked) {
+  else if(document.getElementById('eigth').checked) {
     multiplier=0.125/length;
   }
-  if(document.getElementById('sixteenth').checked) {
+  else if(document.getElementById('sixteenth').checked) {
     multiplier=0.0625/length;
+  }
+  else {
+    multiplier=0.125/0.125;
   }
 
   var multiplierFrac = new Fraction(multiplier);

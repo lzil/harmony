@@ -21,13 +21,13 @@
 <!--Container-->
 <div class="container-fluid">
   <!--Controls, Text Input, Chatbox-->
-  <div class="col-md-4">
+  <div class="col-lg-3 col-md-2">
     <div class="col-md-12 editor-field editor-header">
       <!--Project Controls -->
       <div class="col-md-9">
         <h4>
-          Name: <%= @project.name %><br/>
-          Description: <%= @project.description %>
+          <strong>Name:</strong> <%= @project.name %><br/>
+          <strong>Description:</strong> <%= @project.description %>
           <!-- Project Details Modal Button -->
         </h4>
       </div>
@@ -57,45 +57,45 @@
             <div class="modal-body">
               <table class="table-hover">
                 <tr>
-                <%= form_for @project do |f| %>
-                  <td class="modal-table">
-                    <p>
-                      <%= f.label :name %>
-                    </p>
-                  </td>
-                  <td class="modal-table">
-                    <div class="input-group profile-group">
-                      <%= f.text_field :name, class:"form-control profile-form", placeholder:"Enter Project Name", "aria-describedby" => "Project Name"%>
-                      <span class="input-group-btn">
-                        <%= f.submit class:"btn btn-primary profile-btn" %>
-                      </span>
-                    </div>
-                  </td>
-                <% end %>
+                  <%= form_for @project do |f| %>
+                    <td class="modal-table">
+                      <p>
+                        <%= f.label :name %>
+                      </p>
+                    </td>
+                    <td class="modal-table">
+                      <div class="input-group profile-group">
+                        <%= f.text_field :name, class:"form-control profile-form", placeholder:"Enter Project Name", "aria-describedby" => "Project Name"%>
+                        <span class="input-group-btn update-btn-span">
+                          <%= f.submit class:"btn btn-primary profile-btn update-btn", value:"UPDATE" %>
+                        </span>
+                      </div>
+                    </td>
+                  <% end %>
                 </tr>
                 <tr>
-                <%= form_for @project do |f| %>
-                  <td class="modal-table">
-                    <p>
-                      <%= f.label :description %>
-                    </p>
-                  </td>
-                  <td class="modal-table">
-                    <div class="input-group profile-group">
-                      <%= f.text_area :description, class:"form-control profile-form", placeholder:"Enter Project Description", "aria-describedby" => "Project Name", style:"overflow:auto;resize:none" %>
-                      <span class="input-group-btn">
-                        <%= f.submit class:"btn btn-primary profile-btn" %>
-                      </span>
-                    </div>
-                  </td>
-                <% end %>
+                  <%= form_for @project do |f| %>
+                    <td class="modal-table">
+                      <p>
+                        <%= f.label :description %>
+                      </p>
+                    </td>
+                    <td class="modal-table">
+                      <div class="input-group profile-group">
+                        <%= f.text_area :description, class:"form-control profile-form descr-text", placeholder:"Enter Project Description", "aria-describedby" => "Project Name", style:"overflow:auto;resize:none" %>
+                        <span class="input-group-btn update-btn-span">
+                          <%= f.submit class:"btn btn-primary profile-btn", value:"UPDATE" %>
+                        </span>
+                      </div>
+                    </td>
+                  <% end %>
                 </tr>
               </table>
               <div class="profile-destroy">
                 <%= link_to 'Destroy this project', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default profile-btn profile-warning" %>
               </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer project-update-span">
               <button type="button" class="btn btn-default profile-btn" data-dismiss="modal">Close</button>
             </div>
           </div>
@@ -115,44 +115,45 @@
                 <% @perms.each do |p| %>
                   <% @user = User.find_by(id: p.user_id) %>
                   <tr>
-                    <td><%= link_to user_path(@user) do %>
-                          <%= @user.username %>
-                          <% if p.level == 'owner' %>
-                            <%= " IS OWNER" %>
-                          <% end %>
+                    <td>
+                      <%= link_to user_path(@user) do %>
+                        <%= @user.username %>
+                        <% if p.level == 'owner' %>
+                          <%= " IS OWNER" %>
                         <% end %>
-                        <% if p.level != "owner" %>
-                        <%= button_to "Delete Permission", destroy_permission_path(p.project_id, p.user_id), :method => :delete %>
+                      <% end %>
+                      <% if p.level != "owner" %>
+                        <%= button_to destroy_permission_path(p.project_id, p.user_id), :method => :delete, class:"close", 'aria-label' => "Close" do %>
+                          <span aria-hidden="true">&times;</span>
                         <% end %>
+                      <% end %>
                     </td>
                   </tr>
                 <% end %>
               </table>
-              <h4>Give permissions to users</h4>
+              <h4 class="add-users">Give permissions to users</h4>
               <table class="table-hover">
                 <tr>
-                <%= form_for @permission do |f| %>
-                  <td class="modal-table">
-                    <p>
-                      <% f.label :user_id, url: {action: 'gperm'} %>
-                    </p>
-                  </td>
-                  <td class="modal-table">
-                    <div class="input-group profile-group">
-                      <%= f.text_field :user_id, class:"form-control profile-form", placeholder:"Enter User Name", "aria-describedby" => "Project Name"%>
-                      <span class="input-group-btn">
-                        <%= f.submit class:"btn btn-primary profile-btn" %>
-                      </span>
-                    </div>
-                  </td>
-                <% end %>
+                  <%= form_for @permission do |f| %>
+                    <td class="modal-table">
+                      <p>
+                        <% f.label :user_id, url: {action: 'gperm'} %>
+                      </p>
+                    </td>
+                    <td class="modal-table">
+                      <div class="input-group profile-group">
+                        <%= f.text_field :user_id, class:"form-control profile-form", placeholder:"Enter User Name", "aria-describedby" => "Project Name"%>
+                        <span class="input-group-btn">
+                          <%= f.submit class:"btn btn-primary profile-btn" %>
+                        </span>
+                      </div>
+                    </td>
+                  <% end %>
                 </tr>
               </table>
-              <!--Get rid of permissions for users
-              <%= link_to 'Edit', edit_project_path(@project) %> |
-              <%= link_to 'List of Projects', projects_path %>-->
+              <!--Get rid of permissions for users-->
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer project-update-span">
               <button type="button" class="btn btn-default profile-btn" data-dismiss="modal">Close</button>
             </div>
           </div>
@@ -178,39 +179,39 @@
       });
     </script>
     <div class="col-md-12">
-    <!--WHO MADE THE LAST EDIT-->
-    <div class="editor-field chatbox" id="lastedit"></div>
-    <!--CHATBOX-->
+      <!--Last Editor-->
+      <div class="col-md-12 editor-field chatbox" id="lastedit"></div>
+      <!--Chatbox-->
       <input class="form-control sms" type='text' id='messageInput' placeholder='Message'>
       <div class="editor-field chatbox" id='messagesDiv'></div>
-        <!--FIREBASE SCRIPT FOR CHATBOX -->
-        <script>
-          var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chat".concat(String(<%= @project.id %>))));
-          $('#messageInput').keypress(function (e) {
-            if (e.keyCode == 13) {
-              var name = "<%= current_user.username %>";
-              var text = $('#messageInput').val();
-              if (text.length > 0) {
-                chat.push({name: name, text: text});
-                $('#messageInput').val('');
-              }
+      <!--Firebase script for chatbox :)-->
+      <script>
+        var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chat".concat(String(<%= @project.id %>))));
+        $('#messageInput').keypress(function (e) {
+          if (e.keyCode == 13) {
+            var name = "<%= current_user.username %>";
+            var text = $('#messageInput').val();
+            if (text.length > 0) {
+              chat.push({name: name, text: text});
+              $('#messageInput').val('');
             }
-          });
-          chat.limitToLast(10).on('child_added', function(snapshot) {
-            var message = snapshot.val();
-            displayChatMessage(message.name, message.text);
-          });
+          }
+        });
+        chat.limitToLast(10).on('child_added', function(snapshot) {
+          var message = snapshot.val();
+          displayChatMessage(message.name, message.text);
+        });
 
-          function displayChatMessage(name, text) {
-            $('<div/>').text(text).prepend($('<em/>').text(name+': ')).prependTo($('#messagesDiv'));
-            $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-            $('#messagesDiv').children('div').addClass('chat-message');
-          };
-        </script>
+        function displayChatMessage(name, text) {
+          $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+          $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+          $('#messagesDiv').children('div').addClass('chat-message');
+        };
+      </script>
     </div>
   </div>
   <!--Output of Music Editor-->
-  <div class="col-md-6 editor-render">
+  <div class="col-lg-7 col-md-8 editor-render">
     <!--Playback Control-->
     <div class="col-md-12">
       <!--Empty Coloumn-->
@@ -228,9 +229,9 @@
           <span class="glyphicon glyphicon-floppy-disk"></span>
         </button>
         <!--MIDI Downloader-->
-        <a class="btn btn-primary profile-btn" href="#" id="MIDIdown">
+        <button class="btn btn-primary profile-btn" id="MIDIdown">
           <span class="glyphicon glyphicon-music"></span>
-        </a>
+        </button>
         <script>
           $(document).ready(function() {
             $('#MIDIdown').hover(function() {
@@ -263,7 +264,7 @@
     <div class="abc-warning" id="warnings"></div> 
   </div>
   <!-- Editing tab -->
-  <div class="col-md-2">
+  <div class="col-lg-2 col-md-2">
     <!--PNG making-->
     <canvas id="PDFcanvas" width="1000px" height="600px" hidden="true"></canvas> 
     <div id="editor"></div> 
@@ -335,34 +336,34 @@
         });
       });
     </script>
+    <!-- MIDI Playback -->
   </div>
   <div>
-    <!-- MIDI Playback -->
     <div id="menu">
-        <div id="options">
-            <div id="note-lengths">   
-              <div class="button">
-                <input type="radio" name="a" value="whole" id="whole" />
-                <label for="whole"><%= image_tag "whole-note.jpg" %></label>
-              </div>
-              <div class="button">
-                  <input type="radio" name="a" value="half" id="half" />
-                  <label for="half"><%= image_tag "half-note.jpg" %></label>
-              </div>
-              <div class="button">
-                  <input type="radio" name="a" value="quarter" id="quarter" />
-                  <label for="quarter"><%= image_tag "quarter-note.jpg" %></label>
-              </div>
-              <div class="button">
-                  <input type="radio" name="a" value="eigth" id="eigth" />
-                  <label for="eigth"><%= image_tag "eigth-note.jpg" %></label>
-              </div>
-              <div class="button">
-                  <input type="radio" name="a" value="sixteenth" id="sixteenth" />
-                  <label for="sixteenth"><%= image_tag "sixteenth-note.jpg" %></label>
-              </div>
-            </div>
+      <div id="options">
+        <div id="note-lengths">   
+          <div class="button btn btn-default">
+            <input type="radio" name="a" value="whole" id="whole" />
+            <label for="whole"></label>
+          </div>
+          <div class="button btn btn-default">
+            <input type="radio" name="a" value="half" id="half" />
+            <label for="half"></label>
+          </div>
+          <div class="button btn btn-default">
+            <input type="radio" name="a" value="quarter" id="quarter" />
+            <label for="quarter"></label>
+          </div>
+          <div class="button btn btn-default">
+            <input type="radio" name="a" value="eigth" id="eigth" />
+            <label for="eigth"></label>
+          </div>
+          <div class="button btn btn-default">
+            <input type="radio" name="a" value="sixteenth" id="sixteenth" />
+            <label for="sixteenth"></label>
+          </div>
         </div>
+      </div>
     </div>
     <!--Keyboard-->
     <div id="main">
