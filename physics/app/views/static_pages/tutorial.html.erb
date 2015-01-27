@@ -1,11 +1,12 @@
 <% provide(:title, "Tutorial") %>
-<body class="body-main">
+<body class="body-tutorial">
+<script type="text/javascript">$(document).ready(tutorial);</script>
 <!--Navbar-->
 <%= render "layouts/header" %>
 <!--Container-->
-<div class="container-fluid">
+<div class="container-fluid tutorial-container">
 	<!--Carousel-->
-	<div id="tutorial-carousel" class="carousel slide" data-ride="carousel">
+	<div id="tutorial-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
 	  <!-- Indicators -->
 	  <ol class="carousel-indicators">
 	    <li data-target="#tutorial-carousel" data-slide-to="0" class="active"></li>
@@ -14,47 +15,238 @@
 	    <li data-target="#tutorial-carousel" data-slide-to="3"></li>
 	    <li data-target="#tutorial-carousel" data-slide-to="4"></li>
 	    <li data-target="#tutorial-carousel" data-slide-to="5"></li>
+	    <li data-target="#tutorial-carousel" data-slide-to="6"></li>
 	  </ol>
 	  <!-- Wrapper for slides -->
 	  <div class="carousel-inner carousel-body" role="listbox">
 	    <div class="item active carousel-body">
-	      <%= image_tag "guitar.jpg" %>
-	      <div class="carousel-caption">
-	        ...
-	      </div>
+	     	<div>
+	     		<div class="col-md-3"></div>
+	     		<div class="col-md-6">
+	     			<div class="tutorial-text">
+			      		<h3>I. Introduction</h3>
+						<h4>
+							<%= flash.now[:success] %><br/>
+
+							ABC notation is a streamlined, text-based music notation tool useful in composition. This tutorial is meant to help get you started writing your own ABC-based music!
+						</h4>
+					</div>
+				</div>
+	     	</div>
 	    </div>
 	    <div class="item carousel-body">
-	      <h1>This is a title</h1>
-	      <div class="carousel-caption">
-	        ...
-	      </div>
+	    	<div class="col-md-1"></div>
+     		<div class="col-md-5">
+     			<div class="tutorial-text">
+		     		<h3>II. Getting Started</h3>
+					<h4>
+						<ul>
+							<li>
+								Let's start off by creating the title and the composer (you!) for our piece. Write the following code into your editor: <code>X:1</code>, <br/><code>T:(Title)</code> and <code>C:(Composer)</code> in separate lines.
+							</li>
+							<li>
+								Now let's set up our staffs before we start composing: <br/><code>M:(Meter)</code>; <code>Q:(Tempo)</code>; <code>K:(Key)</code>; <code>L:(Note length)</code>; <br/><code>V:1 clef=(Voice 1 Clef)</code>; <code>V:2 clef=(Voice 2 Clef)</code> will initialize your staff.
+							</li>
+						</ul>
+					</h4>
+					<h6>Note: <code>X:1</code> is used by ABC editor for syntactical reasons. If you want to learn more <a href="http://trillian.mit.edu/~jc/doc/doc/ABCprimer.html">click here.</a></h6>
+				</div>
+			</div>
+			<div class="col-md-4 tutorial-desc">
+				<div class="tutorial-code">
+					<h5>
+						<samp>
+							X:1<br/>
+							T:Around The World<br/>
+							C:Daft Punk, Arr. Justin Xiao<br/>
+							M:<br/>
+							Q:1/4=126<br/>
+							K: C<br/>
+							L: 1/8<br/>
+							V:1 clef=treble<br/>
+							V:2 clef=bass<br/>
+							[V:1]|<br/>
+							[V:2]|<br/>
+						</samp>
+					</h5>
+				</div>
+				<div class="tutorial-img">
+					<%= image_tag "tutorial-slide-2.png", width: "150%", height: "150%" %>
+				</div>
+			</div>
 	    </div>
 	    <div class="item carousel-body">
-	      <%= image_tag "guitar.jpg" %>
-	      <div class="carousel-caption">
-	        ...
-	      </div>
+     		<div class="col-md-1"></div>
+     		<div class="col-md-5">
+     			<div class="tutorial-text">
+		     		<h3>III. Notes and Lengths</h3>
+					<h4>
+						<ul>
+							<li>
+								We use the <code>CDEFGAB</code> notation for individual notes: Middle C is given as <code>C</code>.
+							</li>
+							<li>
+								The <code>L: (Note length)</code> we included in our title is our default whole note. Using this measure we can construct notes of different lengths:<br/>
+								<code>(Note)(Relative length)</code>, i.e. <code>C2</code>.
+							</li>
+						</ul>
+					</h4>
+					<h5>Note: Liang has sabotaged Justin's sheet music to be "Mary had a Little Lamb"</h5>
+				</div>
+			</div>
+			<div class="col-md-4 tutorial-desc">
+				<div class="tutorial-code">
+					<h5>
+						<samp>
+							X:1<br/>
+							T:Around The World<br/>
+							C:Daft Punk, Arr. Justin Xiao<br/>
+							M:<br/>
+							Q:1/4=126<br/>
+							K: C<br/>
+							L: 1/8<br/>
+							V:1 clef=treble<br/>
+							[V:1]|EDCDEEE2DDD2EGG2EDCDEEE2DDEDC2<br/>
+						</samp>
+					</h5>
+				</div>
+				<div class="tutorial-img">
+					<%= image_tag "tutorial-slide-3.png", width: "150%", height: "150%" %>
+				</div>
+			</div>
+		</div>
+	    <div class="item carousel-body">
+  			<div class="col-md-1"></div>
+     		<div class="col-md-5">
+     			<div class="tutorial-text">
+     				<h3>IV. Octaves</h3>
+					<h4>
+						<ul>
+							<li>
+								To go up an octave (i.e. C5), we write in lowercase: <code>c</code>. To go up another, an apostrophe <code>'</code>is added: <code>c'</code>.
+							</li>
+							<li>
+								To go down an octave (i.e. C4), a comma <code>,</code> is added: <code>C,</code>.
+							</li>
+						</ul>
+					</h4>
+				</div>
+			</div>
+			<div class="col-md-4 tutorial-desc">
+				<div class="tutorial-code">
+					<h5>
+						<samp>
+							X:1<br/>
+							T:Around The World<br/>
+							C:Daft Punk, Arr. Justin Xiao<br/>
+							M:<br/>
+							Q:1/4=126<br/>
+							K: C<br/>
+							L: 1/8<br/>
+							V:1 clef=treble<br/>
+							[V:1]|C,8C8c8c'8<br/>
+						</samp>
+					</h5>
+				</div>
+				<div class="tutorial-img">
+					<%= image_tag "tutorial-slide-4.png", width: "150%", height: "150%" %>
+				</div>
+			</div>
+	    </div>
+	    
+	    <div class="item carousel-body">
+    		<div class="col-md-1"></div>
+     		<div class="col-md-5">
+     			<div class="tutorial-text">
+	     			<h3>V. Bars, Beams and Lines</h3>
+	     			<h4>
+	     				<ul>
+	     					<li>
+								To create a barline, we write a <code>|</code>. A double bar line is <code>|]</code>, and a repeat is given by <code>:|</code>.
+							</li>
+							<li>
+								Beams between beam-able notes are automatically created. To avoid a beam, insert a <kbd>Space</kbd>, and to create a new line, <br/>press <kbd>Enter</kbd>.
+							</li>
+							
+		      			</ul>
+		      		</h4>
+		      	</div>
+			</div>
+			<div class="col-md-4 tutorial-desc">
+				<div class="tutorial-code">
+					<h5>
+						<samp>
+							X:1<br/>
+							T:Around The World<br/>
+							C:Daft Punk, Arr. Justin Xiao<br/>
+							M:<br/>
+							Q:1/4=126<br/>
+							K: C<br/>
+							L: 1/8<br/>
+							V:1 clef=treble<br/>
+							[V:1]|:d c|BA:|G F|]<br/>
+						</samp>
+					</h5>
+				</div>
+				<div class="tutorial-img">
+					<%= image_tag "tutorial-slide-5.png", width: "150%", height: "150%"  %>
+				</div>
+			</div>
 	    </div>
 	    <div class="item carousel-body">
-	      <%= image_tag "guitar.jpg" %>
-	      <div class="carousel-caption">
-	        ...
-	      </div>
+      		<div class="col-md-1"></div>
+     		<div class="col-md-4">
+     			<div class="tutorial-text">
+     				<h3>VI. Accidentals, Rests and Chords</h3>
+     				<h4>
+     					<ul>
+     						<li>
+								To sharpen a note we add <code>^</code> before the note, to flatten, <code>_</code> and to neutralize, <code>=</code>.
+							</li>
+							<li>
+								A rest is denoted as <code>z</code>, and its length can be adjusted just like that of notes: <code>z3</code> produces a 3-beat-long rest.
+							<li>
+								Chords can be made by enclosing notes within brackets. The chord length is determined by the first note's length, so <code>[C2E4G4]</code> with <code>L: 1/4</code> is a half note chord.
+							</li>
+						</ul>
+					</h4>
+				</div>
+			</div>
+			<div class="col-md-4 tutorial-desc">
+				<div class="tutorial-code">
+					<h5>
+						<samp>
+							X:1<br/>
+							T:Around The World<br/>
+							C:Daft Punk, Arr. Justin Xiao<br/>
+							M:<br/>
+							Q:1/4=126<br/>
+							K: C<br/>
+							L: 1/8<br/>
+							V:1 clef=treble<br/>
+							V:2 clef=bass<br/>
+							[V:1]      z2 ^G_F2=G2A       |<br/>
+							[V:2][C,7E,G,B,][B,,D,F,A,]|<br/>
+						</samp>
+					</h5>
+				</div>
+				<div class="tutorial-img">
+					<%= image_tag "tutorial-slide-6.png", width: "150%", height: "150%"  %>
+				</div>
+			</div>
 	    </div>
 	    <div class="item carousel-body">
-	      <%= image_tag "guitar.jpg" %>
-	      <div class="carousel-caption">
-	        ...
-	      </div>
-	    </div>
-	    <div class="item">
-	      <%= image_tag "guitar.jpg" %>
-	      <div class="carousel-caption">
-	        ...
-	      </div>
+      		<div class="col-md-4"></div>
+     		<div class="col-md-4">
+     			<div class="tutorial-text">
+     				<h3>VII. Congratulations</h2>
+     				<h4>
+     					You are ready to start composing! You can now go to the <%= link_to dashboard_path do %>dashboard<%end%> and create a new project.
+					</h4>
+				</div>
+			</div>
 	    </div>
 	  </div>
-
 	  <!-- Controls -->
 	  <a class="left carousel-control" href="#tutorial-carousel" role="button" data-slide="prev">
 	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

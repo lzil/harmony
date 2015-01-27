@@ -11,8 +11,9 @@
       <!--Profile-->
     <div class="col-md-8 data">
       <center><h1 class="tut-title">Edit Your Profile</h1><h5>(If you don't want to change your password, leave the password form blank!)</h5></center>
+      <%= flash.now[:success] %>
+      <%= flash.now[:danger] %>
       <%= form_for(@user) do |f| %>
-      <div class="alert alert-warning account-fail"><%= render 'shared/error_messages' %></div>
       <table class="table-hover">
         <tbody>
           <tr>

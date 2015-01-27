@@ -19,10 +19,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Congratulations! You have successfully signed up <3"
-      redirect_to @user
+      flash[:success] = "Congratulations - you've successfully signed up for Harmony!"
+      redirect_to tutorial_path
     else
-      render 'static_pages/home'
+      flash[:danger2] = "Your email must follow the pattern user@sample.com, and your passwords must match."
+      redirect_to root_path
     end
   end
 
@@ -35,7 +36,8 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated!"
       redirect_to @user
     else
-      render 'show'
+      flash[:danger] = "Your email must follow the pattern user@sample.com, and your passwords must match."
+      redirect_to @user
     end
   end
 

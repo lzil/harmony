@@ -24,6 +24,8 @@
     <div class="col-md-9 data">
       <!--My Projects-->
       <div class="col-md-12 data-1">
+        <%= flash.now[:danger] %>
+        <% @projects = current_user.projects.all %>
         <% if @projects.length == 0 %>
         <center class="col-md-12 heading-dash">
           <h1 class='tut-title'>

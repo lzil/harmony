@@ -4,10 +4,13 @@
 /* General Styling */
 
 	/* Element Styling */
-		h4, h5 {
+		h3, h4, h5 {
 			font-family: 'Raleway', sans-serif;
 			font-weight: 400;
 			word-wrap: break-word;
+		}
+		h4 {
+			line-height: 40px;
 		}
   		p, p label {
   			font-family: 'Raleway', sans-serif;
@@ -22,6 +25,10 @@
   		input {
   			font-family: 'Raleway', sans-serif;
   			font-weight: 400;}
+  		h3 ul {
+  			list-style: none;
+  		}
+
 	/* Button Styling */
 		.btn-block {
 			background-color: #333333;
@@ -383,18 +390,44 @@
 			color: #333333;}
 
 	/*  Tutorial */
-
-		.carousel-body {
-			height: 70%;
-			min-height: 70%;
-			overflow: hidden;
+		.body-tutorial {
+			padding-top: 50px;
+			background-color: #DCDCDC;}
+		.tutorial-container {
+			padding: 0;
+		}
+		.tutorial-text {
+			text-align: center;
+			vertical-align: middle;
+			display: table-cell;
+			height: 700px;
+			font-family: 'Raleway', sans-serif;
+		}
+		.tutorial-code {
+			vertical-align: middle;
+			text-align: left;;
+			display: table-cell;
+			background-color: #ffffff;
+			border-radius: 2px;
+			border: 1px solid #aaa;
+			border-color: rgba(0, 0, 0, 0.2);
+  			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(150, 0, 0, 0.1);
+  			outline: 0 none;
+  			padding: 2% 2% 2% 2%;
+  			width: 40%;
+		}
+		.tutorial-desc {
+			margin-top: 6%;
+		}
+		.tutorial-img{
+			margin-top: 3%;
 		}
 
-	/* About Page Styling */
-	  	.body-about {
-  			padding-top: 70px;
-			background: url("guitar3.jpg") fixed no-repeat center;
-			background-size: cover;
+		.tutorial-img-3-1 {
+			background: url('ocean1.jpg') fixed no-repeat center;
+		}
+		.tutorial-img-3-2 {
+			background: url('tutorial-img-3-2.png') fixed no-repeat center;
 		}
 
 

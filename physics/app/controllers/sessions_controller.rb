@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to dashboard_path
     else
-      flash.now[:danger] = "Invalid username/password combo. Try again!!!!"
+      flash.now[:danger1] = "Invalid username or password. Please try again."
       @user = User.new
       render 'static_pages/home'
     end

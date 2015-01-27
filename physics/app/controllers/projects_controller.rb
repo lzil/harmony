@@ -46,35 +46,32 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
 
-    respond_to do |format|
-      if @project.save
-        @permission = Permission.new
-        @permission.user_id = current_user.id
-        @permission.project_id = @project.id
-        @permission.level = "owner"
-        @permission.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-      else
-        format.html { redirect_to dashboard_path }
-      end
+    if @project.save
+      @permission = Permission.new
+      @permission.user_id = current_user.id
+      @permission.project_id = @project.id
+      @permission.level = "owner"
+      @permission.save
+      flash[:success] = "Project was successfully created."
+      redirect_to @project
+    else
+      flash[:danger] = "Project name must be nonempty and less than 40 characters."
+      redirect_to dashboard_path
     end
   end
 
   def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
-      else
-        format.html { redirect_to project_path(@project) }
-      end
+    if @project.update(project_params)
+      flash[:success] = "Project was successfully updated."
+    else
+      flash[:danger] = 'Project name must be nonempty and less than 40 characters.'
     end
+    redirect_to @project
   end
 
   def destroy
     @project.destroy
-    respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Project was successfully destroyed.' }
-    end
+    flash[:success] = 'Project was successfully destroyed.'
   end
 
   private
