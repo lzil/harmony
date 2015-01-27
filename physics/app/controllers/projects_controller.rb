@@ -16,26 +16,28 @@ class ProjectsController < ApplicationController
   def gperm
     set_project
     @permission = Permission.new
-    respond_to do |format|
-      if User.exists?(:username => params[:permission][:user_id])
-        @user = User.find_by(username: params[:permission][:user_id])
+    if User.exists?(:username => params[:permission][:user_id])
+      @user = User.find_by(username: params[:permission][:user_id])
+      if Permission.where(:user_id => @user.id, :project_id => @project.id).blank?
         @permission.user_id = @user.id
         @permission.project_id = @project.id
         @permission.level = "editor"
         @permission.save
-        format.html {redirect_to @project, notice: 'Added!' }
+        flash.now[:success] = "Permission added!"
       else
-        format.html {redirect_to @project, notice: 'Failed!'}
+        flash.now[:danger] = "This user already has permission!"
       end
+    else
+      flash.now[:danger] = "This user doesn't exist!"
     end
+    redirect_to project_path(@project)
   end
 
   def rperm
     @perm = Permission.find_by(user_id: params[:uid], project_id: params[:id])
     @perm.destroy
-    respond_to do |format|
-      format.html { redirect_to project_path(@project), notice: 'Permission was successfully destroyed.' }
-    end
+    flash.now[:danger] = "Permission was successfully revoked."
+    redirect_to project_path(@project)
   end
 
   def edit

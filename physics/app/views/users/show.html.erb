@@ -6,120 +6,111 @@
 <!--Container-->
 <div class="container-fluid">
   <!--Empty Coloumn-->
-  <div class="col-md-1"></div>
+  <div class="col-md-2"></div>
   <!--Body-->
-  <div class="col-md-10">
-    <!--Tabs-->
-    <div class="col-md-3">
-      <div class="list-group">
-        <a href="#" class="list-group-item tab-1 active">Profile</a>
-        <a href="#" class="list-group-item tab-2">Private Messages</a>
-      </div>
-    </div>
-    <!--Contents-->
-    <div class="col-md-9 data">
       <!--Profile-->
-      <div class="col-md-11 data-1">
-        <%= form_for(@user) do |f| %>
-        <div class="alert alert-warning account-fail"><%= render 'shared/error_messages' %></div>
-        <table class="table-hover">
-          <tbody>
-            <tr>
-              <td>
-                <p><% f.label :name %>Name</p>
-              <td>  
-                <div class="input-group profile-group">
-                <%= f.text_field :name, class: 'form-control profile-form', placeholder: @user.name, 'aria-describedby' => "Persona-info-field-1", disabled: "disabled" %>
-                  <span class="input-group-btn">
-                    <button class="btn btn-default profile-btn" type="button">
-                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><% f.label :location %>Where You're From</p>
-              <td>  
-                <div class="input-group profile-group">
-                <%= f.text_field :location, class: 'form-control profile-form', placeholder: @user.location, 'aria-describedby' => "Persona-info-field-2", disabled: "disabled" %>
-                  <span class="input-group-btn">
-                    <button class="btn btn-default profile-btn" type="button">
-                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><% f.label :description %>About Yourself!</p>
-              <td>  
-                <div class="input-group profile-group">
-                <%= f.text_area :description, class: 'form-control profile-form', placeholder: @user.description, 'aria-describedby' => "Persona-info-field-3", disabled: "disabled", style:"overflow:auto;resize:none" %>
-                  <span class="input-group-btn">
-                    <button class="btn btn-default profile-btn" type="button">
-                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <hr/>
-        <table class="table-hover">
-          <tbody>
-            <tr>
-              <td>
-                <p><%= f.label :email %></p>
-              <td>  
-                <div class="input-group profile-group">
-                  <%= f.email_field :email, class: 'form-control profile-form', placeholder: @user.email, 'aria-describedby' => "New-Email", disabled: "disabled" %>
-                  <span class="input-group-btn">
-                    <button class="btn btn-default profile-btn" type="button">
-                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><%= f.label :password %></p>
-              <td>  
-                <div class="input-group profile-group">
-                  <%= f.password_field :password, class: 'form-control profile-form', placeholder: "Enter New Password", 'aria-describedby' => "New-Password", disabled: "disabled"%>
-                  <span class="input-group-btn">
-                    <button class="btn btn-default profile-btn" type="button">
-                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><%= f.label :password_confirmation, "Confirmation" %></p>
-              <td>  
-                <div class="input-group profile-group">
-                  <%= f.password_field :password_confirmation, class: 'form-control profile-form', placeholder: "Re-enter New Password", 'aria-describedby' => "Confirm-Password", disabled: "disabled"%>
-                  <span class="input-group-btn">
-                    <button class="btn btn-default profile-btn" type="button">
-                      <span class="glyphicon glyphicon-pencil form-group-addon"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="profile-submit">
-            <%= f.submit "Save changes", class: "btn btn-primary" %>
-            <%= link_to dashboard_path, class: "btn btn-default" do %> Back to Dashboard <% end %>
-            <% end %>
-        </div>
+    <div class="col-md-8 data">
+      <center><h1 class="tut-title">Edit Your Profile</h1><h5>(If you don't want to change your password, leave the password form blank!)</h5></center>
+      <%= form_for(@user) do |f| %>
+      <div class="alert alert-warning account-fail"><%= render 'shared/error_messages' %></div>
+      <table class="table-hover">
+        <tbody>
+          <tr>
+            <td>
+              <p><% f.label :name %>Name</p>
+            <td>  
+              <div class="input-group profile-group">
+              <%= f.text_field :name, class: 'form-control profile-form', placeholder: @user.name, 'aria-describedby' => "Persona-info-field-1", disabled: "disabled" %>
+                <span class="input-group-btn">
+                  <button class="btn btn-default profile-btn" type="button">
+                    <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                  </button>
+                </span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p><% f.label :location %>Where You're From</p>
+            <td>  
+              <div class="input-group profile-group">
+              <%= f.text_field :location, class: 'form-control profile-form', placeholder: @user.location, 'aria-describedby' => "Persona-info-field-2", disabled: "disabled" %>
+                <span class="input-group-btn">
+                  <button class="btn btn-default profile-btn" type="button">
+                    <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                  </button>
+                </span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p><% f.label :description %>About Yourself!</p>
+            <td>  
+              <div class="input-group profile-group">
+              <%= f.text_area :description, class: 'form-control profile-form', placeholder: @user.description, 'aria-describedby' => "Persona-info-field-3", disabled: "disabled", style:"overflow:auto;resize:none" %>
+                <span class="input-group-btn">
+                  <button class="btn btn-default profile-btn" type="button">
+                    <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                  </button>
+                </span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr/>
+      <table class="table-hover">
+        <tbody>
+          <tr>
+            <td>
+              <p><%= f.label :email %></p>
+            <td>  
+              <div class="input-group profile-group">
+                <%= f.email_field :email, class: 'form-control profile-form', placeholder: @user.email, 'aria-describedby' => "New-Email", disabled: "disabled" %>
+                <span class="input-group-btn">
+                  <button class="btn btn-default profile-btn" type="button">
+                    <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                  </button>
+                </span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p><%= f.label :password %></p>
+            <td>
+              <div class="input-group profile-group">
+                <%= f.password_field :password, class: 'form-control profile-form', placeholder: "Enter New Password", 'aria-describedby' => "New-Password", disabled: "disabled"%>
+                <span class="input-group-btn">
+                  <button class="btn btn-default profile-btn" type="button">
+                    <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                  </button>
+                </span>
+              </div>
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p><%= f.label :password_confirmation, "Confirmation" %></p>
+            <td>  
+              <div class="input-group profile-group">
+                <%= f.password_field :password_confirmation, class: 'form-control profile-form', placeholder: "Re-enter New Password", 'aria-describedby' => "Confirm-Password", disabled: "disabled"%>
+                <span class="input-group-btn">
+                  <button class="btn btn-default profile-btn" type="button">
+                    <span class="glyphicon glyphicon-pencil form-group-addon"></span>
+                  </button>
+                </span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="profile-submit">
+          <%= f.submit "Save changes", class: "btn btn-primary" %>
+          <%= link_to dashboard_path, class: "btn btn-default" do %> Back to Dashboard <% end %>
+          <% end %>
       </div>
     </div>
 </div>

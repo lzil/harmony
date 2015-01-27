@@ -24,6 +24,16 @@
     <div class="col-md-9 data">
       <!--My Projects-->
       <div class="col-md-12 data-1">
+        <% if @projects.length == 0 %>
+        <center class="col-md-12 heading-dash">
+          <h1 class='tut-title'>
+            You don't have any projects!
+          </h1>
+          <h2 class='tut-subtitle'>
+            <a href='#' data-toggle="modal" data-target="#new-proj">Create one now!</a>
+          </h2>
+        </center>
+        <% else %>
         <table class="table-hover">
           <thead>
             <tr>
@@ -45,6 +55,7 @@
             <% end %>
           </tbody>
         </table>
+        <% end %>
       </div>
       <!--Tab 2-->
       <div class="col-md-12 data-2">
