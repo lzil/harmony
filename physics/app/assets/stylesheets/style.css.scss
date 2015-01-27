@@ -279,9 +279,14 @@
 		.button input[type="radio"] {
 		    display: none;
 		}
+		.button {
+			margin: 7px;
+			}
 
 		input[type="radio"]:checked + label {
-		    border: 1px solid red;
+		    border-color: rgba(220, 0, 0, 1.0);
+  			box-shadow: 0 2px 2px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(200, 0, 0, 0.8);
+  			outline: 0 none;
 		}
 		div.player {
 		    background-color: #fff;
@@ -422,35 +427,19 @@
 		.tutorial-img{
 			margin-top: 3%;
 		}
-
-		.tutorial-img-3-1 {
-			background: url('ocean1.jpg') fixed no-repeat center;
-		}
-		.tutorial-img-3-2 {
-			background: url('tutorial-img-3-2.png') fixed no-repeat center;
+	/*  About */
+		.body-about {
+			padding-top: 70px;
+			background: url("guitar3.jpg") fixed no-repeat center;
+			background-size: cover;
 		}
 
 
 			
-/* Error page 
-
-#error_explanation {
-  color: red;
-  text-align: left;
-  ul {
-    color: red;
-    margin: -10px -50px 20px -20px;
-  }
+.error {
+	font-weight:700;
+	background-color:#eeeeee;
+	color: #b00000;
+	font-family: 'Raleway', sans-serif;
+	text-align: center;
 }
-
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
-
-.alert-danger {
-  outline: -5px 0px -50px 0px;
-}
-*/

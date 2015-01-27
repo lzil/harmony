@@ -72,6 +72,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     flash[:success] = 'Project was successfully destroyed.'
+    redirect_to dashboard_path
   end
 
   private

@@ -11,11 +11,13 @@
   <script type="text/javascript" src="https://gabelerner.github.io/canvg/canvg.js"></script> 
   <%= stylesheet_link_tag 'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= csrf_meta_tags %>
 
 </head>
 <body class="body-editor">
 <script type="text/javascript">$(document).ready(project);</script>
+<script type="text/javascript">$(document).ready(piano);</script>
 <!--Navbar-->
 <%= render "layouts/header" %>
 <!--Container-->
@@ -30,6 +32,7 @@
           <strong>Description:</strong> <%= @project.description %>
           <!-- Project Details Modal Button -->
         </h4>
+        <div class="error"><%= flash.now[:danger] %><%= flash.now[:success] %></div>
       </div>
       <div class="col-md-3">          
         <% @pm = Permission.find_by(project_id: @project.id, level: "owner") %>
@@ -242,6 +245,9 @@
           <span class="glyphicon glyphicon-music"></span>
         </button>
         </a>
+        <button type="button" class="btn btn-primary profile-btn" id="piano-controller">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </button>
         <script>
           $(document).ready(function() {
             $('#MIDIdown').hover(function() {
@@ -348,33 +354,7 @@
     </script>
     <!-- MIDI Playback -->
   </div>
-  <div>
-    <div id="menu">
-      <div id="options">
-        <div id="note-lengths">   
-          <div class="button btn btn-default">
-            <input type="radio" name="a" value="whole" id="whole" />
-            <label for="whole"></label>
-          </div>
-          <div class="button btn btn-default">
-            <input type="radio" name="a" value="half" id="half" />
-            <label for="half"></label>
-          </div>
-          <div class="button btn btn-default">
-            <input type="radio" name="a" value="quarter" id="quarter" />
-            <label for="quarter"></label>
-          </div>
-          <div class="button btn btn-default">
-            <input type="radio" name="a" value="eigth" id="eigth" />
-            <label for="eigth"></label>
-          </div>
-          <div class="button btn btn-default">
-            <input type="radio" name="a" value="sixteenth" id="sixteenth" />
-            <label for="sixteenth"></label>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="piano-cont enabled">
     <!--Keyboard-->
     <div id="main">
       <div id="piano-container">

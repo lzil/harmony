@@ -41,7 +41,7 @@
         <!--Login Form-->
         <div class="col-md-12 login-box">
           <%= form_for(:session, url: login_path) do |f| %>
-            <%= flash.now[:danger1] %>
+            <div class="error"><%= flash.now[:danger1] %></div><br/>
             <!--Username-->
             <div class="form-group">
               <%= f.label :username, class: 'sr-only' %>
@@ -64,7 +64,7 @@
         <div class="col-md-12 signup-box">
           <!--Sign Up Form-->
           <%= form_for(@user) do |f| %>
-          <%= flash.now[:danger2] %>
+          <div class="error"><%= flash.now[:danger2] %></div><br/>
             <!--Username-->
             <div class="form-group">
               <%= f.label :username, class: 'sr-only'%>

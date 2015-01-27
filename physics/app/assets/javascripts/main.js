@@ -1,15 +1,18 @@
 var main = function() {	// General
 	$('.data-2').hide();
 	$('.data-3').hide();
+	$('.data-4').hide();
 	$('.tab-1').click(function() {
 		$('.data').slideUp(300);
 		setTimeout(function() {
 			$('.profile-form').val('');
 			$('.data-2').hide();
 			$('.data-3').hide();
+			$('.data-4').hide();
 			$('.data-1').show();
 		}, 300);
 		$('.data').slideDown(300);
+		$('.tab-4').removeClass('active');
 		$('.tab-2').removeClass('active');
 		$('.tab-3').removeClass('active');
 		$('.tab-1').addClass('active');
@@ -19,10 +22,12 @@ var main = function() {	// General
 		setTimeout(function() {
 			$('.profile-form').val('');
 			$('.data-1').hide();
+			$('.data-4').hide();
 			$('.data-3').hide();
 			$('.data-2').show();
 		}, 300);
 		$('.data').slideDown(300);
+		$('.tab-4').removeClass('active');
 		$('.tab-1').removeClass('active');
 		$('.tab-3').removeClass('active');
 		$('.tab-2').addClass('active');
@@ -32,14 +37,32 @@ var main = function() {	// General
 		setTimeout(function() {
 			$('.profile-form').val('');
 			$('.data-1').hide();
+			$('.data-4').hide();
 			$('.data-2').hide();
 			$('.data-3').show();
 		}, 300);
 		$('.data').slideDown(300);
+		$('.tab-4').removeClass('active');
 		$('.tab-1').removeClass('active');
 		$('.tab-2').removeClass('active');
 		$('.tab-3').addClass('active');
 	});
+	$('.tab-4').click(function() {
+		$('.data').slideUp(300);
+		setTimeout(function() {
+			$('.profile-form').val('');
+			$('.data-1').hide();
+			$('.data-3').hide();
+			$('.data-2').hide();
+			$('.data-4').show();
+		}, 300);
+		$('.data').slideDown(300);
+		$('.tab-3').removeClass('active');
+		$('.tab-1').removeClass('active');
+		$('.tab-2').removeClass('active');
+		$('.tab-4').addClass('active');
+	});
+
 	// For Dashboard
 	$('.modal-cancel').click(function() {
 		$('#new-proj').modal('hide');

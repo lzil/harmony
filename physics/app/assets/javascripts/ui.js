@@ -140,8 +140,7 @@ Piano.prototype.drawPiano = function(startKey, startOctave, numKeys) {
         this.playNote(key);
         var note = key.note+key.octave;
         var noteVal = note2ABC(note);
-        var bop = noteLengthMultiplier();
-        var finalNote = noteVal+bop;
+        var finalNote = noteVal;
         console.log(finalNote);
         $(document).ready(function() {
           $('#editor-input').val($('#editor-input').val() + finalNote).change();
@@ -270,8 +269,6 @@ Sequencer.prototype.save = function() {
 
 
 var initialize = function(startNote) {
-    var menuHeight = document.getElementById('menu').clientHeight;
-    document.getElementById('quarter').style.border = "inset";
 };
 
 var defaultLength = function() {
@@ -306,30 +303,7 @@ var defaultLength = function() {
 var noteLength = function() {
   var length = defaultLength();
   var multiplier;
-  if(document.getElementById('whole').checked) {
-    multiplier = 1/length;
-  }
-  else if(document.getElementById('half').checked) {
-    multiplier=0.5/length;
-  }
-  else if(document.getElementById('quarter').checked) {
-    multiplier=0.25/length;
-  }
-  else if(document.getElementById('eigth').checked) {
-    multiplier=0.125/length;
-  }
-  else if(document.getElementById('sixteenth').checked) {
-    multiplier=0.0625/length;
-  }
-  else {
-    multiplier=0.125/0.125;
-  }
-
-  var multiplierFrac = new Fraction(multiplier);
-  return multiplierFrac;
-}
-var noteLengthMultiplier = function() {
-  return noteLength().numerator+"/"+noteLength().denominator;
+  return 1;
 }
 
 var note2ABC = function(note) {

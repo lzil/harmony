@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       flash[:success] = "Congratulations - you've successfully signed up for Harmony!"
       redirect_to tutorial_path
     else
-      flash[:danger2] = "Your email must follow the pattern user@sample.com, and your passwords must match."
+      flash[:danger2] = "Your email must be in the form user@sample.com, and your passwords must match."
       redirect_to root_path
     end
   end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation, :name, :location, :description)
+      params.fetch(:user, {}).permit(:username, :email, :password, :password_confirmation, :name, :location, :description)
     end
 
     def logged_in_user
