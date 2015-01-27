@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       flash[:success] = "Congratulations - you've successfully signed up for Harmony!"
       redirect_to tutorial_path
     else
-      flash[:danger2] = "Your email must be in the form user@sample.com, and your passwords must match."
+      flash[:danger2] = "Possible causes of error: Your username is taken, your email must be in the form user@sample.com, or your passwords must match and be longer than 6 characters.."
       redirect_to root_path
     end
   end
