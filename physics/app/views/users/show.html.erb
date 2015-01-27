@@ -13,13 +13,13 @@
     <div class="col-md-3">
       <div class="list-group">
         <a href="#" class="list-group-item tab-1 active">Profile</a>
-        <a href="#" class="list-group-item tab-2">Account Settings</a>
+        <a href="#" class="list-group-item tab-2">Private Messages</a>
       </div>
     </div>
     <!--Contents-->
     <div class="col-md-9 data">
       <!--Profile-->
-      <div class="col-md-8 data-1">
+      <div class="col-md-11 data-1">
         <%= form_for(@user) do |f| %>
         <div class="alert alert-warning account-fail"><%= render 'shared/error_messages' %></div>
         <table class="table-hover">
@@ -68,15 +68,7 @@
             </tr>
           </tbody>
         </table>
-        <div>
-        <%= f.submit "Save changes", class: "btn btn-primary" %>
-        <% end %>
-        </div>
-      </div>
-      <!--Account-->
-      <div class="col-md-8 data-2">
-        <%= form_for(@user) do |f| %>
-        <div class="alert alert-warning account-fail"><%= render 'shared/error_messages' %></div>
+        <hr/>
         <table class="table-hover">
           <tbody>
             <tr>
@@ -97,7 +89,7 @@
               <td>
                 <p><%= f.label :password %></p>
               <td>  
-                <div class="input-group-btnup profile-group">
+                <div class="input-group profile-group">
                   <%= f.password_field :password, class: 'form-control profile-form', placeholder: "Enter New Password", 'aria-describedby' => "New-Password", disabled: "disabled"%>
                   <span class="input-group-btn">
                     <button class="btn btn-default profile-btn" type="button">
@@ -123,8 +115,9 @@
             </tr>
           </tbody>
         </table>
-        <div>
+        <div class="profile-submit">
             <%= f.submit "Save changes", class: "btn btn-primary" %>
+            <%= link_to dashboard_path, class: "btn btn-default" do %> Back to Dashboard <% end %>
             <% end %>
         </div>
       </div>

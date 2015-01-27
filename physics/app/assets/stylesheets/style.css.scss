@@ -306,7 +306,6 @@
 		    z-index: 1;
 		}
 
-
 		#note-lengths div {
 		    display: inline-block;
 		    height: 40px;
@@ -328,9 +327,13 @@
 			border-radius: 0px;
 			border-color: #000000;}
 		.profile-btn:hover, .profile-btn:focus, .profile-btn:active, .profile-btn:visited, .profile-btn:link {
-			border-color: rgba(176, 0, 0, 0.8);
-  			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(100, 0, 0, 0.6);
+			border-color: rgba(255, 0, 0, 0.8);
+  			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(150, 0, 0, 0.6);
   			outline: 0 none;}
+  		.profile-submit {
+  			text-align: right;
+  			padding: 2% 2% 2% 0;
+  		}
 
   	/* Dashboard Page Styling */
   		.body-dashboard {

@@ -32,15 +32,9 @@ class ProjectsController < ApplicationController
 
   def rperm
     @perm = Permission.find_by(user_id: params[:uid], project_id: params[:id])
-
-    print @perm
-    print @perm.user_id
-    print @perm.project_id
-
     @perm.destroy
-    
     respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to project_path(@project), notice: 'Permission was successfully destroyed.' }
     end
   end
 

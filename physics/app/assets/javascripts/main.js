@@ -56,14 +56,13 @@ var main = function() {	// General
 		var $parent = $(this).parent().parent();
 		var $child = $parent.children('.profile-form');
 		if(!$parent.hasClass('enabled')) {
-			$('.profile-group').removeClass('enabled');
-			$('.profile-form').attr('disabled','disabled');
 			$parent.addClass('enabled');
 			$child.removeAttr('disabled');
 			$child.focus();
 		}
 		else {
 			$parent.removeClass('enabled');
+			$child.val('');
 			$child.attr('disabled','disabled');
 			$(this).blur();
 		};

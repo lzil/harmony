@@ -5,11 +5,9 @@ To build a website that allows users to compose and edit music together and at t
 
 #TO-DO:
 -database of music
--Profile: CSS, make it so "save changes" saves everything instead of just the last textbox
 -Editor: keyboard, positioning of playback/download/etc. Limitation of chatbox to last 10 messages. Box showing who made the last edit.
 -Tutorial: everything.
 -About us: everything.
-
 
 #PATHS:
 So the most confusing stuff will probably be in the /physics folder. Important directories/locations of relevant files:

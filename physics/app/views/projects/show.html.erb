@@ -111,24 +111,32 @@
             <div class="modal-body">
               <h4>Users with access to this project</h4>
               <table class="table-hover">
+              <thead>
+                <tr>
+                  <th>NAME</th>
+                  <th>LOCATION</th>
+                </tr>
+              </thead>
                 <% @perms = @project.permissions %>
                 <% @perms.each do |p| %>
                   <% @user = User.find_by(id: p.user_id) %>
+                  <tbody>
                   <tr>
                     <td>
-                      <%= link_to user_path(@user) do %>
-                        <%= @user.username %>
-                        <% if p.level == 'owner' %>
-                          <%= " IS OWNER" %>
-                        <% end %>
+                      <strong><%= @user.username %></strong>
+                      <% if p.level == 'owner' %>
+                        <%= " (YOU)" %>
+                      <% else %>
+                    </td>
+                    <td>
+                      <%= @user.location %>
+                      <%= button_to destroy_permission_path(p.project_id, p.user_id), :method => :delete, class:"close", 'aria-label' => "Close" do %>
+                        <span aria-hidden="true">&times;</span>
                       <% end %>
-                      <% if p.level != "owner" %>
-                        <%= button_to destroy_permission_path(p.project_id, p.user_id), :method => :delete, class:"close", 'aria-label' => "Close" do %>
-                          <span aria-hidden="true">&times;</span>
-                        <% end %>
-                      <% end %>
+                    <% end %>
                     </td>
                   </tr>
+                  </tbody>
                 <% end %>
               </table>
               <h4 class="add-users">Give permissions to users</h4>
@@ -229,9 +237,11 @@
           <span class="glyphicon glyphicon-floppy-disk"></span>
         </button>
         <!--MIDI Downloader-->
-        <button class="btn btn-primary profile-btn" id="MIDIdown">
+        <a id="MIDIdown" download="music">
+        <button class="btn btn-primary profile-btn">
           <span class="glyphicon glyphicon-music"></span>
         </button>
+        </a>
         <script>
           $(document).ready(function() {
             $('#MIDIdown').hover(function() {
