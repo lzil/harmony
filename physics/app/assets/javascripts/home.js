@@ -107,4 +107,11 @@ var home = function() {
 			$('.signup-box').fadeOut(300);
 		};
 	});
+
+	if (!$('.error').text() == '') {
+		$('.login-tab').click();
+	}
+	if (!$('.error2').text() == '') {
+		$('.signup-tab').click();
+	}
 };

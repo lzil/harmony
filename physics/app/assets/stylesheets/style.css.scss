@@ -128,7 +128,7 @@
 
 	/* Home Page Styling */
 		.body-home {
-			background: url("piano5.jpg") fixed no-repeat center;
+			background: url("piano9.jpg") fixed no-repeat center;
 			background-size: cover;}
 		.heading-home {
 			padding-top: 5%;}
@@ -166,6 +166,18 @@
 			font-family: 'Raleway', sans-serif;
 			opacity: 1;
 			color: #000000;
+		}
+		.home-footer {
+			font-family: 'Raleway', sans-serif;
+			text-align: center;
+			color: #333333;
+			posistion: absolute;
+			top: 120%;
+			}
+		.home-footer div {
+			posistion: absolute;
+			top: 500px;
+			padding: 3%;
 		}
 
 	/* Editor Page Styling */
@@ -437,6 +449,13 @@
 
 			
 .error {
+	font-weight:700;
+	background-color:#eeeeee;
+	color: #b00000;
+	font-family: 'Raleway', sans-serif;
+	text-align: center;
+}
+.error2 {
 	font-weight:700;
 	background-color:#eeeeee;
 	color: #b00000;
