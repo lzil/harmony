@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, except: [:create]
   before_action :correct_user, only: [:show, :edit, :update]
-  
+  before_action :is_liang, only: [:index]
+#  
   def index
     @users = User.all
   end
@@ -13,17 +14,17 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     @projects = @user.projects.all
+    @project = Project.new
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Congratulations - you've successfully signed up for Harmony!"
-      redirect_to tutorial_path
+      flash[:success] = "Congratulations - you've successfully signed up for Harmony! Click the 'Tutorial' tab on the left hand side to learn how to use the editor, or create a new project if you're ready to start!"
+      redirect_to dashboard_path
     else
-      flash[:danger2] = "Possible causes of error: Your username is taken, your email must be in the form user@sample.com, or your passwords must match and be longer than 6 characters.."
-      redirect_to root_path
+      render 'static_pages/home'
     end
   end
 
@@ -36,9 +37,15 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated!"
       redirect_to @user
     else
-      flash[:danger] = "Your email must follow the pattern user@sample.com, and your passwords must match."
+      flash[:danger] = "Possible errors: Your email must be unique and follow the pattern 'user@sample.com', and your password must be at least 6 characters long and match the confirmation."
       redirect_to @user
     end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = 'User was successfully destroyed.'
+    redirect_to dashboard_path
   end
 
   private
@@ -56,7 +63,11 @@ class UsersController < ApplicationController
     
     def correct_user
       @user = User.find(params[:id])
-      redirect_to dashboard_path unless current_user?(@user) 
+      redirect_to dashboard_path unless (current_user?(@user) or @user.username == 'liang')
+    end
+
+    def is_liang
+      redirect_to dashboard_path unless current_user.username == "liang" 
     end
 end
 

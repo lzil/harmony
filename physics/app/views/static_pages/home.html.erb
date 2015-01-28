@@ -2,6 +2,7 @@
 <body class="body-home">
 <script type="text/javascript">$(document).ready(home);</script>
 <div class="container">
+<%= render "layouts/header" %>
   <!--Large Poster-->
   <div class="row">
     <!--Empty row-->
@@ -41,7 +42,7 @@
         <!--Login Form-->
         <div class="col-md-12 login-box">
           <%= form_for(:session, url: login_path) do |f| %>
-            <div class="error"><%= flash.now[:danger1] %></div><br/>
+            <div class="error"><%= flash.now[:danger1] %></div>
             <!--Username-->
             <div class="form-group">
               <%= f.label :username, class: 'sr-only' %>
@@ -64,7 +65,7 @@
         <div class="col-md-12 signup-box">
           <!--Sign Up Form-->
           <%= form_for(@user) do |f| %>
-            <div class="error2"><%= flash.now[:danger2] %></div><br/>
+            <div class="error2"><%= render 'shared/error_messages_user' %></div>
             <!--Username-->
             <div class="form-group">
               <%= f.label :username, class: 'sr-only'%>

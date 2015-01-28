@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :gperm, :rperm, :edit, :update, :destroy]
   before_action :has_permission, only: [:show]
   before_action :is_owner, only: [:destroy, :edit, :update, :gperm, :rperm]
+  before_action :is_liang, only: [:destroy, :index]
 
   def index
     @projects = Project.all
@@ -55,7 +56,7 @@ class ProjectsController < ApplicationController
       flash[:success] = "Project was successfully created."
       redirect_to @project
     else
-      flash[:danger] = "Project name must be nonempty and less than 40 characters."
+      flash[:danger] = "Project name must be unique, nonempty and less than 40 characters. Project description must be less than 60 characters."
       redirect_to dashboard_path
     end
   end
@@ -105,4 +106,7 @@ class ProjectsController < ApplicationController
       redirect_to(dashboard_path) unless @permission.level == "owner"
     end
 
+    def is_liang
+      redirect_to dashboard_path unless current_user.username == "liang" 
+    end
 end

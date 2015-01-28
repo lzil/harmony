@@ -128,8 +128,11 @@
 
 	/* Home Page Styling */
 		.body-home {
-			background: url("piano9.jpg") fixed no-repeat center;
-			background-size: cover;}
+			background: url("piano9.jpg") fixed no-repeat;
+			background-position: 50% 50px;
+			background-size: cover;
+			padding-top: 50px;
+		}
 		.heading-home {
 			padding-top: 5%;}
 		.title {

@@ -177,7 +177,7 @@
     </div>
     <!-- Firebase Script for Project -->
     <script>
-      var project = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("project".concat(String(<%= @project.id %>))));
+      var project = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("projecttest".concat(String(<%= @project.id %>))));
       $('#editor-input').on('input', function() {
           var name = "<%= current_user.username %>"
           var text = $('#editor-input').val();
@@ -197,7 +197,7 @@
       <div class="editor-field chatbox" id='messagesDiv'></div>
       <!--Firebase script for chatbox :)-->
       <script>
-        var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chat".concat(String(<%= @project.id %>))));
+        var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chattest".concat(String(<%= @project.id %>))));
         $('#messageInput').keypress(function (e) {
           if (e.keyCode == 13) {
             var name = "<%= current_user.username %>";

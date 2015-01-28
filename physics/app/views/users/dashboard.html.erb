@@ -24,7 +24,7 @@
     <div class="col-md-9 data">
       <!--My Projects-->
       <div class="col-md-12 data-1">
-        <div class="error"><%= flash.now[:danger] %></div>
+        <div class="error"><%= flash.now[:danger] %><%= flash.now[:success]%></div>
         <% @projects = current_user.projects.all %>
         <% if @projects.length == 0 %>
         <center class="col-md-12 heading-dash">
@@ -42,7 +42,6 @@
               <th>NAME</th>
               <th>DESCRIPTION</th>
               <th>OWNER</th>
-              <th colspan="1"></th>
             </tr>
           </thead>
           <tbody>
@@ -68,7 +67,6 @@
               <th>NAME</th>
               <th>LOCATION</th>
               <th>INTRODUCTION</th>
-              <th colspan="1"></th>
             </tr>
           </thead>
           <tbody>
