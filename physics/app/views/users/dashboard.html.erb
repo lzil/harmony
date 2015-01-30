@@ -48,7 +48,7 @@
             <% @projects.each do |project| %>
               <tr>
                 <td><%= link_to project_path(project) do %><%= project.name %><% end %></td>
-                <td><%= project.description %></td>
+                <td style="word-wrap: break-word"><%= project.description %></td>
                 <% @own = Permission.find_by(project_id: project.id, level: "owner") %>
                 <% @owner = User.find_by(id: @own.user_id) %>
                 <td><%= @owner.username %></td>
@@ -76,7 +76,7 @@
                 <td><%= user.username %></td>
                 <td><%= user.name %></td>
                 <td><%= user.location %></td>
-                <td><%= user.description %></td>
+                <td style="word-wrap: break-word"><%= user.description %></td>
               </tr>
             <% end %>
           </tbody>
@@ -110,7 +110,6 @@
           </h2>
         </center>
       </div>
-        
       <!--Create tab-->
       <div class="modal fade" id="new-proj" tabindex="-1" role="dialog" aria-labelledby="Create New Project" aria-hidden="true">
         <div class="modal-dialog">

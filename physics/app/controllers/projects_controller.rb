@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       flash[:success] = "Project was successfully updated."
     else
-      flash[:danger] = 'Project name must be nonempty and less than 40 characters.'
+      flash[:danger] = 'Project name must be unique, nonempty and less than 40 characters. Project description must be less than 60 characters.'
     end
     redirect_to @project
   end
@@ -103,7 +103,7 @@ class ProjectsController < ApplicationController
     def is_owner
       @project = Project.find(params[:id])
       @permission = Permission.find_by(user_id: current_user.id, project_id: @project.id)
-      redirect_to(dashboard_path) unless @permission.level == "owner"
+      redirect_to(dashboard_path) unless (@permission.level == "owner" or current_user.username == 'liang')
     end
 
     def is_liang

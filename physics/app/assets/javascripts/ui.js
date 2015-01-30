@@ -144,6 +144,7 @@ Piano.prototype.drawPiano = function(startKey, startOctave, numKeys) {
         console.log(finalNote);
         $(document).ready(function() {
           $('#editor-input').val($('#editor-input').val() + finalNote).change();
+          $('#editor-input').focus();
         })
 
     }).bind(this);

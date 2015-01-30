@@ -18,4 +18,10 @@ var tutorial = function() {
 	checkitem();
 
 	$("#tutorial-carousel").on("slid.bs.carousel", "", checkitem);
+	$("[data-toggle=popover]").popover({
+    	html: true,
+    });
+    $('[data-toggle="tooltip"]').tooltip({
+    	html: true,
+    });
 };

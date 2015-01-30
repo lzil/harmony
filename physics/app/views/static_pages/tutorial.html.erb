@@ -25,7 +25,7 @@
 	     		<div class="col-md-6">
 	     			<div class="tutorial-text">
 			      		<h3>I. Introduction</h3>
-						<h4>
+						<h4 class="tutfont">
 							ABC notation is a streamlined, text-based music notation tool useful in composition. This tutorial is meant to help get you started writing your own ABC-based music!
 						</h4>
 					</div>
@@ -37,7 +37,7 @@
      		<div class="col-md-5">
      			<div class="tutorial-text">
 		     		<h3>II. Getting Started</h3>
-					<h4>
+					<h4 class="tutfont">
 						<ul>
 							<li>
 								Let's start off by creating the title and the composer (you!) for our piece. Write the following code into your editor: <code>X:1</code>, <br/><code>T:(Title)</code> and <code>C:(Composer)</code> in separate lines.
@@ -78,7 +78,7 @@
      		<div class="col-md-5">
      			<div class="tutorial-text">
 		     		<h3>III. Notes and Lengths</h3>
-					<h4>
+					<h4 class="tutfont">
 						<ul>
 							<li>
 								We use the <code>CDEFGAB</code> notation for individual notes: Middle C is given as <code>C</code>.
@@ -118,7 +118,7 @@
      		<div class="col-md-5">
      			<div class="tutorial-text">
      				<h3>IV. Octaves</h3>
-					<h4>
+					<h4 class="tutfont">
 						<ul>
 							<li>
 								To go up an octave (i.e. C5), we write in lowercase: <code>c</code>. To go up another, an apostrophe <code>'</code>is added: <code>c'</code>.
@@ -157,7 +157,7 @@
      		<div class="col-md-5">
      			<div class="tutorial-text">
 	     			<h3>V. Bars, Beams and Lines</h3>
-	     			<h4>
+	     			<h4 class="tutfont">
 	     				<ul>
 	     					<li>
 								To create a barline, we write a <code>|</code>. A double bar line is <code>|]</code>, and a repeat is given by <code>:|</code>.
@@ -196,7 +196,7 @@
      		<div class="col-md-4">
      			<div class="tutorial-text">
      				<h3>VI. Accidentals, Rests and Chords</h3>
-     				<h4>
+     				<h4 class="tutfont">
      					<ul>
      						<li>
 								To sharpen a note we add <code>^</code> before the note, to flatten, <code>_</code> and to neutralize, <code>=</code>.
@@ -238,10 +238,10 @@
      		<div class="col-md-6">
      			<div class="tutorial-text">
      				<h3>VII. Congratulations</h2>
-     				<h4>
+     				<h4 class="tutfont">
      					You are ready to start composing! You can now go to the <%= link_to dashboard_path do %>dashboard<%end%> and create a new project.
 					</h4>
-					<h4>
+					<h4 class="tutfont">
 						<strong>Remember</strong>: with Harmony, you can invite others to compose with you. The owner of a project can do so by clicking the "cloud" share button on the editor page.
 					</h4>
 				</div>
@@ -259,4 +259,50 @@
 	  </a>
 	</div>
 </div>
+<div class="container-fluid">
+	<div class="col-lg-3 col-md-2">
+		<div class="col-md-12 editor-field">
+		  <div class="col-md-6">
+		    <h4><strong>Editor Input</strong></h4>
+		  </div>
+		  <div class="col-md-6">
+		    <h5 class="editor-tut-link">
+		      <a tabindex="0" href="#" type="button"
+		        data-container="body"
+		        data-toggle="popover"
+		        data-trigger="focus"
+		        data-placement="top"
+		        data-content=
+		          "Meter: <code>M:2/4</code><br/>
+		          Key: <code>K:Em</code><br/>
+		          Voice 1 Treble clef: <code>V:1 clef=treble</code><br/>
+		          Voice 2 Bass clef: <code>V:2 vlef=base</code><br/>
+		          C4: <code>C</code>; C5: <code>c</code><br/>
+		          Length of note: <code>C2</code><br/>
+		          Up an octave: <code>C'</code><br/>
+		          Down an octave: <code>C,</code><br/>
+		          Rest: <code>z</code><br/>
+		          Sharp: <code>^C</code></br>
+		          Flat: <code>_C</code><br/>
+		          Neutral: <code>=C</code><br/>
+		          Bar: <code>|</code><br/>
+		          Chords: <code>[C4E4G4]</code>">
+		          Reference
+		      </a>
+		    </h5>
+		  </div>  
+		  <textarea class="form-control editor tutorial-editor-input" id="editor-input"></textarea>
+		</div>
+	</div>
+	<script>
+	  $(document).ready(function() {   
+        abc_editor = new ABCJS.Editor("editor-input", { canvas_id: "sheet-music", warnings_id:"warnings"});
+      });
+    </script>
+    <!--Output of Music Editor-->
+  	<div class="col-lg-9 col-md-10 editor-render tutorial-editor">
+		<div class="sheet-music" id="sheet-music"></div>
+		<div class="abc-warning" id="warnings"></div> 
+  	</div>
+  
 </body>

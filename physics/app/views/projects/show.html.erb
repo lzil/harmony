@@ -11,7 +11,7 @@
   <script type="text/javascript" src="https://gabelerner.github.io/canvg/canvg.js"></script> 
   <%= stylesheet_link_tag 'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
-  <%= favicon_link_tag 'favicon.ico' %>
+  <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAABNAAAAhAAAAIgAAABmAAAAHwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAA/wAAAP8AAAD/AAAA/wAAAPsAAACZAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxgAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAHsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACkAAADUAAAA/wAAAP8AAAD/AAAA/wAAAP8AAACVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAEYAAACCAAAAlwAAAIEAAABaAAAAlQAAAAAAAAABAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAJYAAAAAAAAACwAAAKYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAACXAAAAAAAAAAAAAABzAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmAAAAmAAAAAAAAAAAAAAApgAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJgAAAJoAAAAAAAAASQAAAOwAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACUAAAC+AAAAiwAAANcAAABdAAAANgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAAA/wAAAO0AAAAmAAAAkQAAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAP8AAADJAAAAxQAAAMYAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAD/AAAA+wAAAJUAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZAAAApwAAAC8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwP8AAMA/AADAPwAAwD8AAOAnAAD/JwAA/zMAAP8zAAD/IwAA/wMAAP8DAAD/AwAA/wcAAP8fAAD//wAA//8AAA==" rel="icon" type="image/x-icon">
   <%= csrf_meta_tags %>
 
 </head>
@@ -27,8 +27,10 @@
     <div class="col-md-12 editor-field editor-header">
       <!--Project Controls -->
       <div class="col-md-9">
-        <h4>
-          <strong>Name:</strong> <%= @project.name %><br/>
+        <h4 class="editor-name">
+          <strong>Name:</strong> <%= @project.name %>
+        </h4>
+        <h4 >
           <strong>Description:</strong> <%= @project.description %>
           <!-- Project Details Modal Button -->
         </h4>
@@ -173,11 +175,40 @@
     </div>
     <!--Editor-->
     <div class="col-md-12 editor-field">
+      <div class="col-md-6">
+        <h4><strong>Editor Input</strong></h4>
+      </div>
+      <div class="col-md-6">
+        <h5 class="editor-tut-link">
+          <a tabindex="0" href="#" type="button"
+            data-container="body"
+            data-toggle="popover"
+            data-trigger="focus"
+            data-placement="bottom"
+            data-content=
+              "Meter: <code>M:2/4</code><br/>
+              Key: <code>K:Em</code><br/>
+              Voice 1 Treble clef: <code>V:1 clef=treble</code><br/>
+              Voice 2 Bass clef: <code>V:2 clef=bass</code><br/>
+              C4: <code>C</code>; C5: <code>c</code><br/>
+              Length of note: <code>C2</code><br/>
+              Up an octave: <code>C'</code><br/>
+              Down an octave: <code>C,</code><br/>
+              Rest: <code>z</code><br/>
+              Sharp: <code>^C</code></br>
+              Flat: <code>_C</code><br/>
+              Neutral: <code>=C</code><br/>
+              Bar: <code>|</code><br/>
+              Chords: <code>[C4E4G4]</code>">
+              Reference</a>/
+           <%= link_to tutorial_path, 'data-toggle' => "tooltip", 'data-placement' => "top", title: "Tutorial link", target:"_blank" do %>Tutorial<% end %>
+        </h5>
+      </div>  
       <textarea class="form-control editor" id="editor-input"></textarea>
     </div>
     <!-- Firebase Script for Project -->
     <script>
-      var project = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("projecttest".concat(String(<%= @project.id %>))));
+      var project = new Firebase('https://brilliant-fire-2071.firebaseio.com/projs/'.concat("p".concat(String(<%= @project.id %>))));
       $('#editor-input').on('input', function() {
           var name = "<%= current_user.username %>"
           var text = $('#editor-input').val();
@@ -189,15 +220,16 @@
         $('#lastedit').empty().append($('<em/>').text(message.name)).append(' made the last edit!');
       });
     </script>
-    <div class="col-md-12">
+    <div class="col-md-12 editor-field">
       <!--Last Editor-->
-      <div class="col-md-12 editor-field chatbox" id="lastedit"></div>
+      <h5 class="editor-input-title"><strong>Chatbox</strong></h5>
+      <div class="col-md-12 chatbox" id="lastedit"></div>
       <!--Chatbox-->
       <input class="form-control sms" type='text' id='messageInput' placeholder='Message'>
-      <div class="editor-field chatbox" id='messagesDiv'></div>
+      <div class="chatbox" id='messagesDiv'></div>
       <!--Firebase script for chatbox :)-->
       <script>
-        var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/Projects/'.concat("chattest".concat(String(<%= @project.id %>))));
+        var chat = new Firebase('https://brilliant-fire-2071.firebaseio.com/chats/'.concat("c".concat(String(<%= @project.id %>))));
         $('#messageInput').keypress(function (e) {
           if (e.keyCode == 13) {
             var name = "<%= current_user.username %>";
@@ -222,31 +254,31 @@
     </div>
   </div>
   <!--Output of Music Editor-->
-  <div class="col-lg-7 col-md-8 editor-render">
+  <div class="col-lg-9 col-md-10 editor-render">
     <!--Playback Control-->
     <div class="col-md-12">
       <!--Empty Coloumn-->
       <div class="col-md-6 playback-control">
-        <div class="btn btn-primary profile-btn" id="midiPlay">
+        <div class="btn btn-primary profile-btn" id="midiPlay" data-toggle="tooltip" data-placement="top" title="Play">
           <span class="glyphicon glyphicon-play"></span>
         </div>
-        <div class="btn btn-primary profile-btn" id="midiPause">
+        <div class="btn btn-primary profile-btn" id="midiPause" data-toggle="tooltip" data-placement="top" title="Pause">
           <span class="glyphicon glyphicon-pause"></span>
         </div>
-        <div class="btn btn-primary profile-btn" id="midiStop">
+        <div class="btn btn-primary profile-btn" id="midiStop" data-toggle="tooltip" data-placement="top" title="Stop">
           <span class="glyphicon glyphicon-stop"></span>
         </div>
-        <button class="btn btn-primary profile-btn" id="cmd">
+        <button class="btn btn-primary profile-btn" id="cmd" data-toggle="tooltip" data-placement="top" title="Download as PNG">
           <span class="glyphicon glyphicon-floppy-disk"></span>
         </button>
         <!--MIDI Downloader-->
         <a id="MIDIdown" download="music">
-        <button class="btn btn-primary profile-btn">
+        <button class="btn btn-primary profile-btn" data-toggle="tooltip" data-placement="top" title="Download as MIDI">
           <span class="glyphicon glyphicon-music"></span>
         </button>
         </a>
-        <button type="button" class="btn btn-primary profile-btn" id="piano-controller">
-          <span class="glyphicon glyphicon-chevron-left"></span>
+        <button type="button" class="btn btn-primary profile-btn" id="piano-controller" data-toggle="tooltip" data-placement="top" title="Enable Keyboard">
+          <span class="glyphicon glyphicon-chevron-left" id="piano-toggle"></span> Keyboard
         </button>
         <script>
           $(document).ready(function() {
@@ -354,7 +386,7 @@
     </script>
     <!-- MIDI Playback -->
   </div>
-  <div class="piano-cont enabled">
+  <div class="piano-cont">
     <!--Keyboard-->
     <div id="main">
       <div id="piano-container">
