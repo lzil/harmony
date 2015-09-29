@@ -20,28 +20,29 @@ Everything else just talk to Liang about.
 
 
 #Libraries/APIs/tools/people/images used
-* abc.js
-* audiolet.js
-* base64.js
-* canvas-toblob.js
-* domloader.xmlhttp.js
-* event.js
-* filesaver.js
-* jsequencer.js
-* loader.js
-* midi.js
-* replayer.js
-
-* Firebase
-* Bootstrap
-* Ruby on Rails
-* Heroku
-
-* Xander
-* Felix
-
-* http://pixabay.com/en/piano-keys-music-instrument-old-91048/
-* http://wallpaperswide.com/guitar_15-wallpapers.html
-* http://camicarmen.deviantart.com/art/Acoustic-guitar-150648564
-* http://pixabay.com/en/string-bass-guitar-music-rock-555070/
-* http://pixabay.com/p-569336/?no_redirect
+- libraries/APIs
+  * abc.js
+  * audiolet.js
+  * base64.js
+  * canvas-toblob.js
+  * domloader.xmlhttp.js
+  * event.js
+  * filesaver.js
+  * jsequencer.js
+  * loader.js
+  * midi.js
+  * replayer.js
+- tools
+  * Firebase
+  * Bootstrap
+  * Ruby on Rails
+  * Heroku
+- people
+  * Xander
+  * Felix
+- images
+  * http://pixabay.com/en/piano-keys-music-instrument-old-91048/
+  * http://wallpaperswide.com/guitar_15-wallpapers.html
+  * http://camicarmen.deviantart.com/art/Acoustic-guitar-150648564
+  * http://pixabay.com/en/string-bass-guitar-music-rock-555070/
+  * http://pixabay.com/p-569336/?no_redirect
